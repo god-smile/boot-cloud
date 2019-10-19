@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxcv.busi.mapper.sys.TsOpMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zxcv.busi.domain.sys.TsOp">
+        <id column="id" property="id" />
+        <result column="org_id" property="orgId" />
+        <result column="login_code" property="loginCode" />
+        <result column="login_password" property="loginPassword" />
+        <result column="op_code" property="opCode" />
+        <result column="op_name" property="opName" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="login_code_type" property="loginCodeType" />
+        <result column="jobfunc_id" property="jobfuncId" />
+        <result column="img_path" property="imgPath" />
+        <result column="contact_address" property="contactAddress" />
+        <result column="telephone" property="telephone" />
+        <result column="card_type_id" property="cardTypeId" />
+        <result column="card_no" property="cardNo" />
+        <result column="email" property="email" />
+        <result column="try_times" property="tryTimes" />
+        <result column="acct_start_date" property="acctStartDate" />
+        <result column="acct_end_date" property="acctEndDate" />
+        <result column="last_login_time" property="lastLoginTime" />
+        <result column="email_switch" property="emailSwitch" />
+        <result column="sms_switch" property="smsSwitch" />
+        <result column="data_state" property="dataState" />
+        <result column="remark" property="remark" />
+        <result column="create_emp_id" property="createEmpId" />
+        <result column="create_emp_name" property="createEmpName" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_emp_id" property="modifyEmpId" />
+        <result column="modify_emp_name" property="modifyEmpName" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, org_id, login_code, login_password, op_code, op_name, sex, age, login_code_type, jobfunc_id, img_path, contact_address, telephone, card_type_id, card_no, email, try_times, acct_start_date, acct_end_date, last_login_time, email_switch, sms_switch, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
+    </sql>
+
+</mapper>

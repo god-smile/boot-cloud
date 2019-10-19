@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用名称信息，这个相当于起一个名字，我们dubbo管理页面比较清晰是哪个应用暴露出来的 -->
+    <dubbo:application name="${spring.springdubbo.application.name}"></dubbo:application>
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="${spring.springdubbo.registry.address}" check="false"></dubbo:registry>
+
+    <dubbo:consumer retries="0" check="false"></dubbo:consumer>
+
+    
+
+    <!-- 用户 -->
+    <dubbo:reference id="tsOpService"
+                     interface="com.zxcv.api.commom.service.sys.TsOpService"
+                     version="${spring.springdubbo.provider.version}" />
+
+
+
+</beans>

@@ -1,0 +1,47 @@
+spring:
+  redis:
+      host: 39.98.58.92
+      database: 0
+      port: 6379
+      password: 111111111
+      #连接超时时间（毫秒）
+      timeout: 10000
+      lettuce:
+        pool:
+          max-wait: -1ms
+
+
+
+  application:
+    name: zxcv-web
+  springdubbo:
+    application:
+      name: ${spring.application.name}
+    registry:
+      address: zookeeper://127.0.0.1:2181
+      #address: zookeeper://47.104.196.152:2181
+    provider:
+      version: 1.0.0
+
+
+logging:
+  level:
+    org.springframework.web: error
+    io.lettuce.core.protocol: error
+  path:  ./logs/${spring.application.name}
+  file: ${logging.path}/${spring.application.name}.log
+  config: classpath:logback-spring.xml
+
+
+
+server:
+  port: 8088
+#  servlet:
+#    context-path: /prod-api
+
+
+rocketmq:
+  nameServer: 47.104.138.10:9876
+  producer:
+    group: clouds_park
+    sendMessageTimeout: 300000

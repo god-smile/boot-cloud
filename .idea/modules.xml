@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/boot-cloud.iml" filepath="$PROJECT_DIR$/boot-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxcv-api/zxcv-api.iml" filepath="$PROJECT_DIR$/zxcv-api/zxcv-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxcv-busi/zxcv-busi.iml" filepath="$PROJECT_DIR$/zxcv-busi/zxcv-busi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxcv-framework/zxcv-framework.iml" filepath="$PROJECT_DIR$/zxcv-framework/zxcv-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxcv-web/zxcv-web.iml" filepath="$PROJECT_DIR$/zxcv-web/zxcv-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active:  dev
+
+
+
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    executor:
+      appname: zxcv-busi
+      ip:
+      port: 9000
+      logpath: ./logs/${spring.application.name}/xxl-job
+      logretentiondays: -1
+    accessToken:
+    switch:
+      auto:
+        XxlJobConfiguration: false
+
+
+
+
+
+

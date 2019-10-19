@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zxcv</groupId>
+    <artifactId>boot-cloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <!--聚合模块-->
+    <modules>
+        <module>zxcv-api</module>
+        <module>zxcv-framework</module>
+        <module>zxcv-busi</module>
+        <module>zxcv-web</module>
+    </modules>
+
+    <!-- Spring boot 父引用-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+    </parent>
+    <properties>
+        <java.version>1.8</java.version>
+        <com-alibaba-dubbo-version>2.6.1</com-alibaba-dubbo-version>
+        <zookeeper-version>3.4.8</zookeeper-version>
+        <zkclient>0.1</zkclient>
+        <mysql-version>5.1.10</mysql-version>
+        <mybatis-version>2.0.1</mybatis-version>
+        <druid-version>1.1.17</druid-version>
+        <pagehelper-version>1.2.5</pagehelper-version>
+        <hutool-version>4.4.0</hutool-version>
+        <fastjson-version>1.2.49</fastjson-version>
+        <mybatis-generator-version>1.3.5</mybatis-generator-version>
+        <springboot-version>2.1.4.RELEASE</springboot-version>
+        <zxcv-version>0.0.1-SNAPSHOT</zxcv-version>
+        <io-netty-version>4.1.32.Final</io-netty-version>
+        <curator-framework-version>4.0.1</curator-framework-version>
+        <springfox-swagger-version>2.6.1</springfox-swagger-version>
+        <jedis-version>2.10.2</jedis-version>
+        <mybatisplus.version>3.1.1</mybatisplus.version>
+        <spring-jdbc-version>5.1.4.RELEASE</spring-jdbc-version>
+        <rocketmq-version>2.0.3</rocketmq-version>
+        <ijapy.version>1.2.0</ijapy.version>
+        <alipay-sdk-java.version>3.0.52.ALL</alipay-sdk-java.version>
+        <weixin-java-miniapp.version>3.3.0</weixin-java-miniapp.version>
+        <lombok.version>1.18.6</lombok.version>
+        <xxl-job-version>2.1.0</xxl-job-version>
+    </properties>
+
+    <!--依赖配置-->
+    <dependencyManagement>
+        <dependencies>
+            <!--API模块 -->
+            <dependency>
+                <groupId>com.zxcv</groupId>
+                <artifactId>zxcv-api</artifactId>
+                <version>${zxcv-version}</version>
+            </dependency>
+            <!--framework模块 -->
+            <dependency>
+                <groupId>com.zxcv</groupId>
+                <artifactId>zxcv-framework</artifactId>
+                <version>${zxcv-version}</version>
+            </dependency>
+            <!--busi模块 -->
+            <dependency>
+                <groupId>com.zxcv</groupId>
+                <artifactId>zxcv-busi</artifactId>
+                <version>${zxcv-version}</version>
+            </dependency>
+            <!--web模块 -->
+            <dependency>
+                <groupId>com.zxcv</groupId>
+                <artifactId>zxcv-web</artifactId>
+                <version>${zxcv-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot-version}</version>
+            </dependency>
+            <!-- Testing Dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!--redis-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${springboot-version}</version>
+            </dependency>
+            <!-- spring session-->
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId>
+                <version>${springboot-version}</version>
+            </dependency>
+            <!--druid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-jdbc-version}</version>
+            </dependency>
+            <!-- dubbo配置-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${com-alibaba-dubbo-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                   <exclusion>
+                        <artifactId>netty</artifactId>
+                        <groupId>org.jboss.netty</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--dubbo 依赖包-->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${io-netty-version}</version>
+            </dependency>
+            <!--apache-->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator-framework-version}</version>
+            </dependency>
+            <!--zookeeper-->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper-version}</version>
+                <exclusions>
+                    <!--如果你用的logback日志，该包会引起jar包冲突-->
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient}</version>
+            </dependency>
+            <!-- mysql驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-version}</version>
+            </dependency>
+            <!-- mybatisplus与springboot整合 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+            <!--mybatis-plus-generator-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+            <!-- 模板引擎 代码生成 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>1.7</version>
+            </dependency>
+
+            <!--hutool-all-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson-version}</version>
+            </dependency>
+            <!-- swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-version}</version>
+            </dependency>
+            <!--rocketMQ-->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq-version}</version>
+            </dependency>
+            <!--###############支付场景接入##################### -->
+            <!-- IJPay-->
+            <dependency>
+                <groupId>com.github.javen205</groupId>
+                <artifactId>IJPay</artifactId>
+                <version>${ijapy.version}</version>
+            </dependency>
+            <!-- 支付宝必须 -->
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-sdk-java</artifactId>
+                <version>${alipay-sdk-java.version}</version>
+            </dependency>
+            <!--小程序依赖jar包-->
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>${weixin-java-miniapp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- xxl-job-core -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job-version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.3.5.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

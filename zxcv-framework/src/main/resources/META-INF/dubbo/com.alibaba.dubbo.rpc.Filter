@@ -1,0 +1,3 @@
+rpcProviderFilter=com.zxcv.commom.filter.dubbo.RPCProviderFilte
+rpcProviderFilter=com.zxcv.commom.filter.dubbo.RPCConsumerFilter
+

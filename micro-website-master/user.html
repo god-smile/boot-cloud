@@ -1,0 +1,63 @@
+<!-- 用户界面js -->
+<script src="./js/user.js"></script>
+<!-- 用户控制管理 -->
+<div class="user-manage">
+    <div class="btns-div">
+        <button type="button" class="btn btn-success" id="add">新增</button>
+    </div>
+    <div class="btns-div">
+        <button type="button" class="btn btn-success" id="showAll">所有用户</button>
+    </div>
+    <div class="allUser row"></div>
+    <!-- 新增用户模态框 -->
+    <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">新增用户</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="uname" class="col-md-2 control-label">用户名</label>
+                            <div class="col-md-10">
+                                <input id="uname" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwd" class="col-md-2 control-label">密码</label>
+                            <div class="col-md-10">
+                                <input id="passwd" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmpwd" class="col-md-2 control-label">确认密码</label>
+                            <div class="col-md-10">
+                                <input id="confirmpwd" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nkname" class="col-md-2 control-label">真实姓名</label>
+                            <div class="col-md-10">
+                                <input id="nkname" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-md-2 control-label">邮箱</label>
+                            <div class="col-md-10">
+                                <input id="email" type="email" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="to-save" type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

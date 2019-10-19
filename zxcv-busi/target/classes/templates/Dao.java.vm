@@ -1,0 +1,72 @@
+package ${package.Service};
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import ${package.Entity}.${entity};
+import ${cfg.dtoPath};
+import ${cfg.queryPath};
+import ${cfg.operPath};
+
+/**
+ * $!{table.comment} Dao接口
+ * Copyright: Copyright (c) ${year}
+ * @ClassName: ${table.serviceName}.java
+ * @Description:
+ * @version: v1.0.0
+ * @author: ${author}
+ * @date: ${date}
+ * Modification History:
+ * Date             Author          Version            Description
+ * ---------------------------------------------------------*
+ * ${date}         ${author}         v1.0.0               创建
+ */
+#if(${kotlin})
+interface ${table.serviceName} : ${superServiceClass}<${entity}>
+#else
+public interface ${table.serviceName} {
+    /**
+     * 新增$!{table.comment}
+     * @param req
+     * @author: ${author}
+     * @since ${date}
+     * @return
+     */
+    Integer  save${table.entityName}(SaveAndModify${table.entityName}Req req);
+
+    /**
+     * 修改$!{table.comment}
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+    Integer  update${table.entityName}ById(SaveAndModify${table.entityName}Req req);
+
+    /**
+     * 删除$!{table.comment}
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+    Integer  delete${table.entityName}(SaveAndModify${table.entityName}Req req);
+
+    /**
+     * 查询$!{table.comment}对象
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+    ${table.entityName}  select${table.entityName}(Query${table.entityName}Req req);
+
+
+    /**
+     * 分页-查询$!{table.comment}列表
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+   IPage<${table.entityName}>  query${table.entityName}ForPage(Query${table.entityName}Req req);
+}
+#end
