@@ -55,50 +55,76 @@ $(document).ready(function() {
     // findAllUser();
     //查询所有用户
     function findAllUser() {
+        
+        var req = {
+          "pageReq": {
+            "pageNum": 1,
+            "pageSize": 10
+          },
+        };
         console.log("user.js->findAllUser");
-        getAjax('/user/queryUserInfoForPage', 'post', null,
-            function(res) {
+        var opt = {
+            method: 'post',
+            //url: "http://47.104.166.165:8088/tsOp/queryTsOpForPage",
+            //url: "http://localhost:8089/pda/chargerAuth/login",
+            url: "/user/queryUserInfoForPage",
+            data: JSON.stringify(req),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (res) {
+            
+                if (res.code == '8888') {
+                    
                 res.data.forEach(function(item) {
-                    var str = `<div class="col-sm-4">
-            <div class="thumbnail">
-                <img src="./images/goat.jpg" alt="">
-                <div class="caption">
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-1">用户名</div>
-                        <div class="col-sm-7">` + (item.userName ? item.userName : '-') + `</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-1">真实姓名</div>
-                        <div class="col-sm-7">` + (item.realName ? item.realName : '-') + `</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-1">注册时间</div>
-                        <div class="col-sm-7">` + (item.createTime ? item.createTime : '-') + `</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-1">email</div>
-                        <div class="col-sm-7">` + (item.userEmail ? item.userEmail : '-') + `</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-1">状态</div>
-                        <div class="col-sm-7">
-                            <input type="hidden" value="` + item.userId + `">
-                            <div class="switch mySwitch">
-                                <input type="checkbox"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>   `;
+                    var str = '<div class="col-sm-4">'+
+                        '<div class="thumbnail">'
+                            '<img src="./images/goat.jpg" alt="">'+
+                            '<div class="caption">'+
+                                '<div class="row">'+
+                                    '<div class="col-sm-4 col-sm-offset-1">用户名</div>'+
+                                    '<div class="col-sm-7">' + (item.userName ? item.userName : '-') + '</div>'+
+                                '</div>'+
+                                '<div class="row">'
+                                    '<div class="col-sm-4 col-sm-offset-1">真实姓名</div>'+
+                                    '<div class="col-sm-7">' + (item.realName ? item.realName : '-') + '</div>'+
+                                '</div>'+
+                                '<div class="row">'+
+                                    '<div class="col-sm-4 col-sm-offset-1">注册时间</div>'+
+                                    '<div class="col-sm-7">' + (item.createTime ? item.createTime : '-') + '</div>'+
+                               ' </div>'+
+                               ' <div class="row">'+
+                                 '   <div class="col-sm-4 col-sm-offset-1">email</div>'+
+                                 '   <div class="col-sm-7">' + (item.userEmail ? item.userEmail : '-') + '</div>'+
+                               ' </div>'+
+                               ' <div class="row">'+
+                               '     <div class="col-sm-4 col-sm-offset-1">状态</div>'+
+                               '     <div class="col-sm-7">'+
+                                '        <input type="hidden" value="' + item.userId + '">'+
+                               '         <div class="switch mySwitch">'+
+                                '            <input type="checkbox"/>'+
+                               '         </div>'+
+                               '     </div>'+
+                               ' </div>'+
+                          '  </div>'+
+                       ' </div>'+
+                   ' </div>   ';
                     $('.allUser').append(str);
                     //给开关设置属性值,.mySwitch input会选中多个，所以每次应该给最后一个追加属性值
                     $('.mySwitch input:last').bootstrapSwitch('state', item.enabled);
                 });
-            },
-            function(error) {
-                console.log(error);
-            });
+            
+                } else {
+                     console.log(res)
+                }
+            }
+        }
+        getAjax(opt);
+        
+//      getAjax('/user/queryUserInfoForPage', 'post', null,
+//          function(res) {},
+//          function(error) {
+//              console.log(error);
+//          });
     }
 
     //保存或刷新

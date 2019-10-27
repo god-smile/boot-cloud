@@ -19,6 +19,10 @@
                      interface="com.zxcv.api.commom.service.sys.TsOpService"
                      version="${spring.springdubbo.provider.version}" />
 
+    <!-- 用户 -->
+    <dubbo:reference id="userInfoService"
+                     interface="com.zxcv.api.commom.service.sys.UserInfoService"
+                     version="${spring.springdubbo.provider.version}" />
 
 
 </beans>

@@ -11,6 +11,7 @@ import com.zxcv.api.commom.service.sys.dto.AuthUserInfo;
 import com.zxcv.api.commom.service.sys.dto.UserInfoDTO;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifyUserInfoReq;
 import com.zxcv.api.commom.service.sys.param.query.QueryUserInfoReq;
+import com.zxcv.commom.annotation.NoAuth;
 import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
 import io.swagger.annotations.Api;
@@ -101,9 +102,10 @@ private static final Logger logger = LoggerFactory.getLogger(UserInfoController.
 	   return new BizResultVO<UserInfoDTO>(result);
    }
 
+   @NoAuth
    @ApiOperation("分页-操作员表(用户)对象")
-   // @PostMapping("/queryUserInfoForPage")
-   @GetMapping("/queryUserInfoForPage")
+   @PostMapping("/queryUserInfoForPage")
+   //@GetMapping("/queryUserInfoForPage")
    public BizResultVO<PageBean<UserInfoDTO>> queryUserInfoForPage(@RequestBody QueryUserInfoReq req) {
 	   logger.info("begin分页-查询操作员表(用户)controller,入参={}", JSONObject.toJSON(req));
 	   BizResult<PageBean<UserInfoDTO>> result = userInfoService.queryUserInfoForPage(req);
