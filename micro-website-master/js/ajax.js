@@ -1,6 +1,6 @@
 //ajax的封装
 // var baseURL = 'http://47.104.166.165:8088';
-var baseURL = 'localhost:8888';
+var baseURL = 'http://localhost:8088';
 function getAjax(url,method,data,successFun,errorFun){
 	$.ajax({
 		url:baseURL+url,

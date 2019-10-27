@@ -102,8 +102,8 @@ private static final Logger logger = LoggerFactory.getLogger(UserInfoController.
    }
 
    @ApiOperation("分页-操作员表(用户)对象")
-   // @PostMapping("/queryUserInfoForPage")
-   @GetMapping("/queryUserInfoForPage")
+   @PostMapping("/queryUserInfoForPage")
+   // @GetMapping("/queryUserInfoForPage")
    public BizResultVO<PageBean<UserInfoDTO>> queryUserInfoForPage(@RequestBody QueryUserInfoReq req) {
 	   logger.info("begin分页-查询操作员表(用户)controller,入参={}", JSONObject.toJSON(req));
 	   BizResult<PageBean<UserInfoDTO>> result = userInfoService.queryUserInfoForPage(req);
