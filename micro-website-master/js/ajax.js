@@ -53,11 +53,4 @@ function getAjax(opts){
         }
     });
     
-//	$.ajax({
-//		url:baseURL+url,
-//		method:method,
-//		data:data,
-//		success:successFun,
-//		error:errorFun
-//	});
 }
