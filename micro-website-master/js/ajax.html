@@ -80,13 +80,12 @@ var req = {
 			  }};
 			  
 var opt = {
-        method: 'get',
-        url: "http://localhost:8888/user/queryUserInfoForPage",
+        method: 'post',
+        url: "http://182.92.118.137:8088/user/queryUserInfoForPage",
         data: JSON.stringify(req),
         contentType: 'application/json; charset=utf-8',
-        dataType: 'jsonp',
         crossDomain: true,
-        origin: 'http://localhost',
+        origin: 'http://182.92.118.137',
         success: function (res) {
 		
             if (res.code == '8888') {

@@ -23,8 +23,6 @@ function getAjax(opts){
     for (var key in opts) {
         defaults[key] = opts[key];
     }
-    // console.log("请求相关参数：");
-    // console.log(defaults)
     $.ajax({
         type: defaults.method,
         url: baseURL+defaults.url,
