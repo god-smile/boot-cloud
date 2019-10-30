@@ -31,21 +31,18 @@ import java.util.*;
  */
 public class Generator {
     /**项目包名后缀*/
-    private static final String packageNameSuffix = ".bill";
+    private static final String packageNameSuffix = ".sys";
     /**mapper文件生成包.*/
-    private static final String mapperPackageNameSuffix = "bill";
+    private static final String mapperPackageNameSuffix = "sys";
     /**是否覆盖更新.*/
     private static final Boolean isFileOverride = true;
 
     /**如果不填会选择项目根路径*/
-    //private static  String absolutePath ="/Users/xiejianpeng/idea/park-clouds/";
-    //private static  String absolutePath ="/Users/wangbiao/IdeaProjects/park-clouds/";
-    //    private static  String absolutePath ="/Users/wangfs/java_worksapce_bak/park-clouds/";
-    private static  String absolutePath ="/Users/atao/IdeaProjects/park-clouds/";
-    //private static  String absolutePath ="D:/workspace_park/park-clouds/";
+    private static final String absolutePath = "D:/workspace_private/works/boot-cloud/";//更改1
+//  private static final String absolutePath = "D://workspace_private/works/boot-cloud/";//更改1
 
     public static void main(String[] args) {
-        String[] tableNames = new String[]{"tb_billing_group_park_rel","tb_billing_group_rule_rel","tb_billing_rule_group","tb_billing_rule","tb_billing_rule_config"};
+        String[] tableNames = new String[]{"test_cust"};
         String[] modules = new String[]{"zxcv-busi"};//项目模块名，需自定义
         for (String module : modules) {
             moduleGenerator(module, tableNames);
@@ -179,12 +176,12 @@ public class Generator {
     }
 
     private static DataSourceConfig getDataSourceConfig() {
-        String dbUrl = "jdbc:mysql://renniting-test-net.mysql.zhangbei.rds.aliyuncs.com:3306/cloud_park?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
+        String dbUrl = "jdbc:mysql://182.92.118.137:3306/zxcv?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)
             .setDriverName(Driver.class.getName())
-            .setUsername("cloud_dev")
-            .setPassword("cloud@123")
+            .setUsername("root")
+            .setPassword("123qwe")
             .setUrl(dbUrl);
         return dataSourceConfig;
     }
