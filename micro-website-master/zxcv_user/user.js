@@ -24,7 +24,7 @@ $(function(){
             height:tableHeight(),//高度调整
             striped: true, //是否显示行间隔色
             rownumbers:true,
-            dataField: "res",
+            // dataField: "res",
             pageNumber: 1, //初始化加载第一页，默认第一页
             pagination:true,//是否分页
             paginationPreText: '上一页',
@@ -43,12 +43,12 @@ $(function(){
             ajax: tableLoadRequest,//自定义ajax加载数据
             columns:[
                 {title:'全选',field:'select',checkbox:true,width:25,align:'center',valign:'middle'},
-                {title:'ID',field:'userId',visible:false},
-                {title:'登录名',field:'userName',sortable:true},
+                {title:'id',field:'userId',visible:false},
+                {title:'用户名',field:'userName',sortable:true},
                 {title:'姓名',field:'realName',sortable:true},
                 {title:'邮箱',field:'userEmail'},
                 {title:'注册日期',field:'createTime',sortable:true},
-                {title:'注册日期',field:'modifyTime',sortable:true},
+                {title:'修改日期',field:'modifyTime',sortable:true},
                 {title:'状态',field:'userState',align:'center',formatter:operateFormatter}
             ],
             locale:'zh-CN',//中文支持,

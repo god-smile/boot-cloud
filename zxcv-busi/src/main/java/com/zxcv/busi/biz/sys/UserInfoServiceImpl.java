@@ -199,7 +199,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         if (StringUtils.isNotEmpty(req.getRealName())) {
             queryWrapper.like("real_name", "%" + req.getRealName() + "%");
         }
-        queryWrapper.orderByDesc("id");
+        queryWrapper.orderByDesc("user_id");
         IPage<UserInfo> pageInfo = userInfoMapper.selectPage(page, queryWrapper);
         if(pageInfo != null ){
         	PageBeanUtil.copyProperties(pageInfo, pageBean,UserInfoDTO.class);
