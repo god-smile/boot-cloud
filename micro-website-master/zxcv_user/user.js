@@ -80,10 +80,10 @@ $(function(){
                 console.log("code:"+res.code);
                 console.log("data:"+res.data);
                 if(res.code == "8888"){
-                    for(var i=0;i<res.data.dataList.length;i++){
+                    for(var i=0;i<res.data.rows.length;i++){
                         var obj=new Object();
-                        obj.userId=res.data.dataList[i].userId;
-                        obj.userName=res.data.dataList[i].userName;
+                        obj.userId=res.data.rows[i].userId;
+                        obj.userName=res.data.rows[i].userName;
                         user[i]=obj;
                     }
                     //生成增加与修改页面的角色复选框

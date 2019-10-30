@@ -51,11 +51,11 @@ public class PageBeanUtil {
                         e.printStackTrace();
                     }
                 }
-                to.setDataList(list);
+                to.setRows(list);
                 to.setPageNum(Integer.valueOf(form.getCurrent()+""));
                 to.setPageSize(Integer.valueOf(form.getSize()+""));
                 to.setPages(Integer.valueOf(form.getPages()+""));
-                to.setPageTotals(Integer.valueOf(String.valueOf(form.getTotal())));
+                to.setTotal(Integer.valueOf(String.valueOf(form.getTotal())));
             }
         } else {
             try {

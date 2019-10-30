@@ -204,7 +204,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         if(pageInfo != null ){
         	PageBeanUtil.copyProperties(pageInfo, pageBean,UserInfoDTO.class);
         }
-        logger.info("end调用service-查询操作员表(用户)列表分页()方法,查询条数={}条。", pageBean.getPageTotals());
+        logger.info("end调用service-查询操作员表(用户)列表分页()方法,查询条数={}条。", pageBean.getTotal());
         return new BizResult<PageBean<UserInfoDTO>>(pageBean);
     }
 

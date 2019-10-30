@@ -64,8 +64,8 @@ public class BaseController {
         PageBean<DTO> pageBean = getBizResultData(bizResult);
         //将DTO转换为VO
         List<VO> vos = new ArrayList<>();
-        if (!CollectionUtils.isEmpty(pageBean.getDataList())) {
-            for (DTO dto : pageBean.getDataList()) {
+        if (!CollectionUtils.isEmpty(pageBean.getRows())) {
+            for (DTO dto : pageBean.getRows()) {
                 VO vo = voClass.newInstance();
                 BeanUtils.copyProperties(dto, vo);
                 vos.add(vo);
@@ -73,7 +73,7 @@ public class BaseController {
         }
         //返回jqGrid数据
         EasyUIDataGridVO<VO> jqGridDatas = new EasyUIDataGridVO<>();
-        jqGridDatas.setTotal(pageBean.getPageTotals() == null ? 0 : pageBean.getPageTotals());
+        jqGridDatas.setTotal(pageBean.getTotal() == null ? 0 : pageBean.getTotal());
         jqGridDatas.setRows(vos);
 
         BizResultVO<EasyUIDataGridVO<VO>> bizResultVO = new BizResultVO<>();
@@ -94,8 +94,8 @@ public class BaseController {
         PageBean<DTO> pageBean = getBizResultData(bizResult);
         //返回jqGrid数据
         EasyUIDataGridVO<DTO> jqGridDatas = new EasyUIDataGridVO<>();
-        jqGridDatas.setTotal(pageBean.getPageTotals() == null ? 0 : pageBean.getPageTotals());
-        jqGridDatas.setRows(pageBean.getDataList());
+        jqGridDatas.setTotal(pageBean.getTotal() == null ? 0 : pageBean.getTotal());
+        jqGridDatas.setRows(pageBean.getRows());
 
         BizResultVO<EasyUIDataGridVO<DTO>> bizResultVO = new BizResultVO<>();
         bizResultVO.setCode(bizResult.getErrCode().getCode());
@@ -122,8 +122,8 @@ public class BaseController {
             if (result.getData() instanceof PageBean<?>) {
                 PageBean<?> pageBean = (PageBean<?>) result.getData();
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("total", (null == pageBean.getPageTotals() ? 0 : pageBean.getPageTotals()));
-                map.put("rows", pageBean.getDataList() != null ? pageBean.getDataList() : new ArrayList<Object>());
+                map.put("total", (null == pageBean.getTotal() ? 0 : pageBean.getTotal()));
+                map.put("rows", pageBean.getRows() != null ? pageBean.getRows() : new ArrayList<Object>());
                 resultMap.put("code", result.getErrCode().getCode());
                 resultMap.put("msg", result.getErrMsg());
                 resultMap.put("data", map);
