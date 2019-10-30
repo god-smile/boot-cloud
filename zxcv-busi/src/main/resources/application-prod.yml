@@ -37,9 +37,9 @@ logging:
 
 
 druid:
-  url: jdbc:mysql://renniting-test-net.mysql.zhangbei.rds.aliyuncs.com:3306/cloud_park?useUnicode=true&characterEncoding=UTF-8
-  username: cloud_dev
-  password: cloud@123
+  url: jdbc:mysql://182.92.118.137:3306/zxcv?useUnicode=true&characterEncoding=UTF-8
+  username: root
+  password: 123qwe
   driverClass: com.mysql.jdbc.Driver
   type: com.alibaba.druid.pool.DruidDataSource
   ## 初始化连接池的连接数量 大小，最小，最大

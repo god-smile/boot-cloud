@@ -133,7 +133,6 @@ public class ${table.serviceImplName}  implements ${table.serviceName} {
          QueryWrapper<${table.entityName}> queryWrapper = new QueryWrapper<${table.entityName}>();
          queryWrapper.lambda().eq(true, ${table.entityName}::getDataState,DataStatusEnum.DATA_STATUS_VALID.getValue())
          .eq(req.getId() != null, ${table.entityName}::getId,req.getId())
-         .eq(req.getOrgId() != null, ${table.entityName}::getOrgId,req.getOrgId());
          queryWrapper.lambda().orderByDesc(${table.entityName}::getId);
          //TODO自定义查询条件
 	     IPage<${table.entityName}> pageInfo = ${mapperName}.selectPage(page, queryWrapper);

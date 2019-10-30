@@ -37,18 +37,15 @@ public class GeneratorJavaCode {
     /**
      * 项目跟路径.
      */
-    //private static final String projectRootPath = "/Users/xiejianpeng/idea/park-clouds/";//更改1
-    //      private static  String projectRootPath ="/Users/wangbiao/IdeaProjects/park-clouds/";
-//       private static final String projectRootPath = "/Users/wangfs/java_worksapce_bak/park-clouds/";//更改1
-    //private static final String projectRootPath = "D:/workspace_park/park-clouds/";//更改1
-    private static String projectRootPath = "/Users/atao/IdeaProjects/park-clouds/";
+    
+    private static final String projectRootPath = "D:/workspace_private/works/boot-cloud/";//更改1
+//    private static final String projectRootPath = "D:/workspace_private/works/boot-cloud/";//更改1
     /**
      * 项目名称.
      */
     private static final String projectApiName = "zxcv-api/";
     private static final String projectbusiName = "zxcv-busi/";
     private static final String projectWebName = "zxcv-web/";
-    //    private static final String projectWebName = "zxcv-pay-portal/";
 
     /**
      * 项目根包名称.
@@ -62,7 +59,7 @@ public class GeneratorJavaCode {
     /**
      * 项目包名后缀
      */
-    private static final String packageNameSuffix = ".bill";//更改2
+    private static final String packageNameSuffix = ".sys";//更改2
 
     /**
      * zxcv-api 代码.
@@ -279,13 +276,12 @@ public class GeneratorJavaCode {
 
     private static DataSourceConfig getDataSourceConfig() {
         String dbUrl
-            = "jdbc:mysql://renniting-test-net.mysql.zhangbei.rds.aliyuncs"
-            + ".com:3306/cloud_park?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
+            = "jdbc:mysql://182.92.118.137:3306/zxcv?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)
             .setDriverName(Driver.class.getName())
-            .setUsername("cloud_dev")
-            .setPassword("cloud@123")
+            .setUsername("root")
+            .setPassword("123qwe")
             .setUrl(dbUrl);
         return dataSourceConfig;
     }
