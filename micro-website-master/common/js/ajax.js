@@ -1,7 +1,7 @@
 //ajax的封装
 // var baseURL = 'http://47.104.166.165:8088';
 //var baseURL = 'http://182.92.118.137:8088';
-var baseURL = 'http://127.0.0.1:8088';
+var baseURL = 'http://182.92.118.137:8088';
 function getAjax(opts){
     
     //一.设置默认参数
