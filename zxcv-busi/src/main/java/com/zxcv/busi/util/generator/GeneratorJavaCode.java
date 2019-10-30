@@ -64,10 +64,10 @@ public class GeneratorJavaCode {
     /**
      * zxcv-api 代码.
      */
-    private static final String javaClassPreffixName = "TbBillingRule";//更改3
+    private static final String javaClassPreffixName = "TestCust";//更改3
 
     public static void main(String[] args) {
-        String[] tableNames = new String[] {"tb_billing_rule"};////更改4
+        String[] tableNames = new String[] {"test_cust"};////更改4
         String[] modules = new String[] {"DTO", "queryReq", "SaveAndModifyReq", "Service", "ServiceImpl", "Controller",
             "Dao", "DaoImpl"};
         for (String module : modules) {
@@ -312,7 +312,7 @@ public class GeneratorJavaCode {
             .setBaseColumnList(true)                 // XML columList
             .setOpen(false)                          //生成后打开文件夹
             .setDateType(DateType.ONLY_DATE)
-            .setAuthor("xiejp");
+            .setAuthor("zxcv");
         if ("DTO".equals(module)) {
             globalConfig.setEntityName(javaClassPreffixName + "DTO");
         } else if ("queryReq".equals(module)) {

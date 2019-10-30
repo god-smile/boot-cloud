@@ -28,5 +28,10 @@
     <dubbo:service interface="com.zxcv.api.commom.service.sys.UserInfoService" version="${spring.dubbo.provider.version}"
                    timeout="10000" retries="3" loadbalance="random"
                    ref="com.zxcv.busi.biz.sys.UserInfoServiceImpl" />
+                   
+    <!-- 客户-测试 -->
+    <dubbo:service interface="com.zxcv.api.commom.service.sys.TestCustService" version="${spring.dubbo.provider.version}"
+                   timeout="10000" retries="3" loadbalance="random"
+                   ref="com.zxcv.busi.biz.sys.TestCustServiceImpl" />
 
 </beans>

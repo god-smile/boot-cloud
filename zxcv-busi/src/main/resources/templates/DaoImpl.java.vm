@@ -13,8 +13,6 @@ import ${cfg.queryPath};
 import ${cfg.operPath};
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * $!{table.comment} 服务实现类
@@ -39,7 +37,6 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 #set($entityName ="${table.entityName.substring(0,1).toLowerCase()}${table.entityName.substring(1)}")
 public class ${table.serviceImplName}  implements ${table.serviceName} {
 
-    private static final Logger logger = LoggerFactory.getLogger(${table.serviceImplName}.class);
 
     @Autowired
     private ${table.mapperName} ${mapperName};
@@ -105,14 +102,12 @@ public class ${table.serviceImplName}  implements ${table.serviceName} {
       */
      @Override
      public ${table.entityName} select${table.entityName}(Query${table.entityName}Req req) {
-         ${table.entityName} ${entityName} = new ${table.entityName}();
          ${table.entityName} ${entityName}Query = new ${table.entityName}();
-
          BeanUtils.copyProperties(req, ${entityName}Query);
          QueryWrapper<${table.entityName}> querySQL = new QueryWrapper<${table.entityName}>();
          querySQL.setEntity(${entityName}Query);
-          ${table.entityName} obj = ${mapperName}.selectOne(querySQL);
-         return ${entityName};
+         ${table.entityName} obj = ${mapperName}.selectOne(querySQL);
+         return obj;
      }
 
      /**
@@ -125,16 +120,14 @@ public class ${table.serviceImplName}  implements ${table.serviceName} {
       */
      @Override
      public IPage<${table.entityName}> query${table.entityName}ForPage(Query${table.entityName}Req req) {
-          ${table.entityName} ${entityName}Query = new  ${table.entityName}();
-         BeanUtils.copyProperties(req, ${entityName}Query);
          //1.设置分页
          Page<${table.entityName}> page = new Page<>(req.getPageReq().getPageNum(), req.getPageReq().getPageSize());
          //2.查询数据
          QueryWrapper<${table.entityName}> queryWrapper = new QueryWrapper<${table.entityName}>();
          queryWrapper.lambda().eq(true, ${table.entityName}::getDataState,DataStatusEnum.DATA_STATUS_VALID.getValue())
-         .eq(req.getId() != null, ${table.entityName}::getId,req.getId())
-         queryWrapper.lambda().orderByDesc(${table.entityName}::getId);
+         .eq(req.getId() != null, ${table.entityName}::getId,req.getId());
          //TODO自定义查询条件
+         queryWrapper.lambda().orderByDesc(${table.entityName}::getId);
 	     IPage<${table.entityName}> pageInfo = ${mapperName}.selectPage(page, queryWrapper);
 
          return pageInfo;

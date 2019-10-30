@@ -203,7 +203,7 @@ public class Generator {
             .setBaseColumnList(true)                 // XML columList
             .setOpen(false)                          //生成后打开文件夹
             .setDateType(DateType.ONLY_DATE)
-            .setAuthor("xiejp")
+            .setAuthor("zxcv")
             .setMapperName("%sMapper")
             .setXmlName("%sMapper")
             .setServiceName("%sService")
