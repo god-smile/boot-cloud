@@ -39,7 +39,7 @@ $(function(){
             clickToSelect: true,//是否启用点击选中行
             toolbarAlign:'right',
             buttonsAlign:'right',//按钮对齐方式
-            // toolbar:'#toolbar',//指定工作栏
+            toolbar:'#toolbar',//指定工作栏
             ajax: tableLoadRequest,//自定义ajax加载数据
             columns:[
                 {title:'全选',field:'select',checkbox:true,width:25,align:'center',valign:'middle'},
