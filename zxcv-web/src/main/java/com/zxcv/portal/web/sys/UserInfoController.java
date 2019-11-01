@@ -45,7 +45,6 @@ private static final Logger logger = LoggerFactory.getLogger(UserInfoController.
    @Autowired
    private UserInfoService userInfoService;
 
-
    @ApiOperation("新增操作员表(用户)")
    @PostMapping("/saveUserInfo")
    public BizResultVO<Long> saveUserInfo(@RequestBody SaveAndModifyUserInfoReq req) {
