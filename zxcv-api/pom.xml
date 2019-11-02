@@ -53,12 +53,12 @@
 	
 	<distributionManagement>
         <repository>
-            <id>my-deploy-release</id>
+            <id>my-deploy-release-cnm</id>
             <url>http://47.104.166.165:8001/nexus/content/repositories/releases/</url>
         </repository>
  
         <snapshotRepository>
-            <id>my-deploy-snapshot</id>
+            <id>my-deploy-snapshot-cnm</id>
             <url>http://47.104.166.165:8001/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
