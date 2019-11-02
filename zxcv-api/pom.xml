@@ -51,16 +51,16 @@
         </plugins>
     </build>
 	
-	<!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<id>my-deploy-release</id>-->
-            <!--<url>http://47.104.166.165:8001/nexus/content/repositories/releases/</url>-->
-        <!--</repository>-->
- <!---->
-        <!--<snapshotRepository>-->
-            <!--<id>my-deploy-snapshot</id>-->
-            <!--<url>http://47.104.166.165:8001/nexus/content/repositories/snapshots/</url>-->
-        <!--</snapshotRepository>-->
-    <!--</distributionManagement>-->
+	<distributionManagement>
+        <repository>
+            <id>my-deploy-release</id>
+            <url>http://47.104.166.165:8001/nexus/content/repositories/releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>my-deploy-snapshot</id>
+            <url>http://47.104.166.165:8001/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
