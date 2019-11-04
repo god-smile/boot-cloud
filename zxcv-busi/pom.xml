@@ -79,7 +79,10 @@
                     <mainClass>com.zxcv.busi.ZXCVBusiApplication</mainClass>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
