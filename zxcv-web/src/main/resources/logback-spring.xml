@@ -17,7 +17,7 @@
         </rollingPolicy>
         <encoder>
             <!-- 格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
-            <pattern>%yellow(%date{yyyy-MM-dd HH:mm:ss})|%cyan(%-5level) %highlight(%X{trackId})|%cyan(%thread) |%green(%logger:%line) |%highlight(%msg%n)</pattern>
+            <pattern>%yellow(%date{yyyy-MM-dd HH:mm:ss})|%cyan(%-5level) %highlight(%X{trackId})|%cyan(%thread) |%green(%logger:%line) |%cyan(%msg%n)</pattern>
         </encoder>
     </appender>
 
@@ -29,7 +29,7 @@
     <!--console log-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%yellow(%date{yyyy-MM-dd HH:mm:ss})|%cyan(%-5level) %highlight(%X{trackId})|%cyan(%thread) |%green(%logger:%line) |%highlight(%msg%n)</pattern>
+            <pattern>%yellow(%date{yyyy-MM-dd HH:mm:ss})|%cyan(%-5level) %highlight(%X{trackId})|%cyan(%thread) |%green(%logger:%line) |%cyan(%msg%n)</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
