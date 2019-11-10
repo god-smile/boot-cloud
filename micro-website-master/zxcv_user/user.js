@@ -71,7 +71,7 @@ $(function(){
 
         var userTableAjax= {
             method: 'POST',
-            url: "/user/queryUserInfoForPage",
+            url: dataUrl.util.queryUserInfoForPage(),
             data: JSON.stringify(req),
             contentType: 'application/json; charset=utf-8',
             dataType:'json',
@@ -524,7 +524,7 @@ $(function(){
         };
         var userTableAjax= {
             method: params.type,
-            url: "/user/queryUserInfoForPage",
+            url: dataUrl.util.queryUserInfoForPage(),
             data: JSON.stringify(req),
             contentType: 'application/json; charset=utf-8',
             dataType:'json',

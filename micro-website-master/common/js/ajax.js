@@ -2,6 +2,26 @@
 // var baseURL = 'http://47.104.166.165:8088';
 //var baseURL = 'http://182.92.118.137:8088';
 var baseURL = 'http://localhost:8088';
+
+var dataUrl = {};
+dataUrl.util = {
+    //分页查询用户
+    queryUserInfoForPage: function () {
+        return baseURL + '/user/queryUserInfoForPage';
+    },
+    //分页查询新闻
+    queryUserRechargeRefundForPage: function () {
+        return baseURL + '/newsInfo/queryNewsInfoForPage';
+    },
+    //新增新闻
+    saveNewsInfo: function () {
+        return baseURL + '/newsInfo/saveNewsInfo';
+    },
+    //查询新闻
+    selectNewsInfo: function () {
+        return baseURL + '/newsInfo/selectNewsInfo';
+    },
+}
 function getAjax(opts){
     
     //一.设置默认参数
@@ -25,7 +45,7 @@ function getAjax(opts){
     }
     $.ajax({
         type: defaults.method,
-        url: baseURL+defaults.url,
+        url: defaults.url,
         dataType: defaults.dataType,
         contentType: defaults.contentType,
         data: defaults.data,
@@ -54,3 +74,16 @@ function getAjax(opts){
     });
     
 }
+var documentBindFunc = {
+    /**
+     * @param event  事件名称如：click
+     * @param element 元素 如：id,class 元素等
+     * @param func 函数
+     * 例子：documentBindFunc.on('click','#berthmanage-addBtn',function () {});
+     */
+    on: function (event, element, func) {
+        $(document).off(event, element);
+        $(document).on(event, element, func);
+    }
+
+};

@@ -28,6 +28,11 @@
     <dubbo:reference id="testCustService"
                      interface="com.zxcv.api.commom.service.sys.TestCustService"
                      version="${spring.springdubbo.provider.version}" />
+                     
+    <!-- 新闻 -->
+    <dubbo:reference id="newsInfoService"
+                     interface="com.zxcv.api.commom.service.site.NewsInfoService"
+                     version="${spring.springdubbo.provider.version}" />
 
 
 </beans>

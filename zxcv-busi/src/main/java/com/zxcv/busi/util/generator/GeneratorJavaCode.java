@@ -59,15 +59,15 @@ public class GeneratorJavaCode {
     /**
      * 项目包名后缀
      */
-    private static final String packageNameSuffix = ".sys";//更改2
+    private static final String packageNameSuffix = ".site";//更改2
 
     /**
      * zxcv-api 代码.
      */
-    private static final String javaClassPreffixName = "TestCust";//更改3
+    private static final String javaClassPreffixName = "NewsInfo";//更改3
 
     public static void main(String[] args) {
-        String[] tableNames = new String[] {"test_cust"};////更改4
+        String[] tableNames = new String[] {"news_info"};////更改4
         String[] modules = new String[] {"DTO", "queryReq", "SaveAndModifyReq", "Service", "ServiceImpl", "Controller",
             "Dao", "DaoImpl"};
         for (String module : modules) {
