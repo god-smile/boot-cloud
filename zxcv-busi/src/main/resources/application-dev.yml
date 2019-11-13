@@ -13,10 +13,16 @@ spring:
       version: 1.0.0
   #redis配置
   redis:
-    host: 47.94.158.36
-    database: 0
-    port: 7013
+    cluster:
+      nodes:
+      - 47.94.158.36:7011
+      - 47.94.158.36:7012
+      - 47.94.158.36:7013
+      - 47.94.158.36:7014
+      - 47.94.158.36:7015
+      - 47.94.158.36:7016
     password: zxcv@redis
+    max-redirects: 3  # 获取失败 最大重定向次数
     #连接超时时间（毫秒）
     timeout: 50000
     lettuce:
