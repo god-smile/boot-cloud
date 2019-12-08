@@ -42,7 +42,7 @@ public class Generator {
 //  private static final String absolutePath = "D://workspace_private/works/boot-cloud/";//更改1
 
     public static void main(String[] args) {
-        String[] tableNames = new String[]{"news_info"};
+        String[] tableNames = new String[]{"site_news_info"};
         String[] modules = new String[]{"zxcv-busi"};//项目模块名，需自定义
         for (String module : modules) {
             moduleGenerator(module, tableNames);

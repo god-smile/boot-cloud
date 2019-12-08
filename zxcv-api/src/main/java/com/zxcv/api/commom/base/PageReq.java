@@ -26,7 +26,7 @@ public class PageReq implements Serializable {
 	/**
      * 当前页.
      */
-    private int pageNum = 0;
+    private int pageNum = 1;
 
     /**
      * 每页的数量.

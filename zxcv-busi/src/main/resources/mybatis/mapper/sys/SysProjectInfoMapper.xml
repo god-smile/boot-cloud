@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxcv.busi.mapper.sys.SysProjectInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zxcv.busi.domain.sys.SysProjectInfo">
+        <id column="id" property="id" />
+        <result column="project_no" property="projectNo" />
+        <result column="project_type" property="projectType" />
+        <result column="project_name" property="projectName" />
+        <result column="db_name" property="dbName" />
+        <result column="user_no" property="userNo" />
+        <result column="special_type" property="specialType" />
+        <result column="index_url" property="indexUrl" />
+        <result column="data_state" property="dataState" />
+        <result column="remark" property="remark" />
+        <result column="create_emp_id" property="createEmpId" />
+        <result column="create_emp_name" property="createEmpName" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_emp_id" property="modifyEmpId" />
+        <result column="modify_emp_name" property="modifyEmpName" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, project_no, project_type, project_name, db_name, user_no, special_type, index_url, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
+    </sql>
+
+</mapper>

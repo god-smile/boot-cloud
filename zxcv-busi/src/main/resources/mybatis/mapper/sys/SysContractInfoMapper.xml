@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxcv.busi.mapper.sys.SysContractInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zxcv.busi.domain.sys.SysContractInfo">
+        <id column="id" property="id" />
+        <result column="contract_no" property="contractNo" />
+        <result column="project_no" property="projectNo" />
+        <result column="project_name" property="projectName" />
+        <result column="user_no" property="userNo" />
+        <result column="total_money" property="totalMoney" />
+        <result column="discount_money" property="discountMoney" />
+        <result column="discount_value" property="discountValue" />
+        <result column="act_money" property="actMoney" />
+        <result column="valid_days" property="validDays" />
+        <result column="start_date" property="startDate" />
+        <result column="end_date" property="endDate" />
+        <result column="delivery_finished" property="deliveryFinished" />
+        <result column="first_commit" property="firstCommit" />
+        <result column="data_state" property="dataState" />
+        <result column="remark" property="remark" />
+        <result column="create_emp_id" property="createEmpId" />
+        <result column="create_emp_name" property="createEmpName" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_emp_id" property="modifyEmpId" />
+        <result column="modify_emp_name" property="modifyEmpName" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, contract_no, project_no, project_name, user_no, total_money, discount_money, discount_value, act_money, valid_days, start_date, end_date, delivery_finished, first_commit, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
+    </sql>
+
+</mapper>

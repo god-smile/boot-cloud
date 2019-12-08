@@ -15,24 +15,22 @@
     
 
     <!-- 用户 -->
-    <dubbo:reference id="tsOpService"
-                     interface="com.zxcv.api.commom.service.sys.TsOpService"
-                     version="${spring.springdubbo.provider.version}" />
+    <dubbo:reference id="tsOpService" interface="com.zxcv.api.commom.service.sys.TsOpService" version="${spring.springdubbo.provider.version}"/>
 
-    <!-- 用户 -->
-    <dubbo:reference id="userInfoService"
-                     interface="com.zxcv.api.commom.service.sys.UserInfoService"
-                     version="${spring.springdubbo.provider.version}" />
-                     
-    <!-- 客户-测试 -->
-    <dubbo:reference id="testCustService"
-                     interface="com.zxcv.api.commom.service.sys.TestCustService"
-                     version="${spring.springdubbo.provider.version}" />
-                     
-    <!-- 新闻 -->
-    <dubbo:reference id="newsInfoService"
-                     interface="com.zxcv.api.commom.service.site.NewsInfoService"
-                     version="${spring.springdubbo.provider.version}" />
+    <!-- 用户信息 -->
+    <dubbo:reference id="sysUserInfoService" interface="com.zxcv.api.commom.service.sys.SysUserInfoService" version="${spring.springdubbo.provider.version}"/>
+    <!-- 项目信息 -->
+    <dubbo:reference id="sysProjectInfoService" interface="com.zxcv.api.commom.service.sys.SysProjectInfoService" version="${spring.springdubbo.provider.version}"/>
+    <!-- 项目类别 -->
+    <dubbo:reference id="sysProjectItemService" interface="com.zxcv.api.commom.service.sys.SysProjectItemService" version="${spring.springdubbo.provider.version}"/>
+    <!-- 合同信息 -->
+    <dubbo:reference id="sysContractInfoService" interface="com.zxcv.api.commom.service.sys.SysContractInfoService" version="${spring.springdubbo.provider.version}"/>
+    <!-- 合同附件信息 -->
+    <dubbo:reference id="sysAttachmentInfoService" interface="com.zxcv.api.commom.service.sys.SysAttachmentInfoService" version="${spring.springdubbo.provider.version}" />
+    <!-- 官网新闻信息 -->
+    <dubbo:reference id="siteNewsInfoService" interface="com.zxcv.api.commom.service.site.SiteNewsInfoService" version="${spring.springdubbo.provider.version}"/>
+    <!-- 官网产品信息 -->
+    <dubbo:reference id="siteProductInfoService" interface="com.zxcv.api.commom.service.site.SiteProductInfoService" version="${spring.springdubbo.provider.version}" />
 
 
 </beans>

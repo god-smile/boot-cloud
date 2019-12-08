@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxcv.busi.mapper.sys.SysUserInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zxcv.busi.domain.sys.SysUserInfo">
+        <id column="id" property="id" />
+        <result column="user_no" property="userNo" />
+        <result column="user_name" property="userName" />
+        <result column="password" property="password" />
+        <result column="phone_number" property="phoneNumber" />
+        <result column="wechat_number" property="wechatNumber" />
+        <result column="email" property="email" />
+        <result column="real_name" property="realName" />
+        <result column="card_no" property="cardNo" />
+        <result column="sex" property="sex" />
+        <result column="address" property="address" />
+        <result column="level" property="level" />
+        <result column="data_state" property="dataState" />
+        <result column="remark" property="remark" />
+        <result column="create_emp_id" property="createEmpId" />
+        <result column="create_emp_name" property="createEmpName" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_emp_id" property="modifyEmpId" />
+        <result column="modify_emp_name" property="modifyEmpName" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_no, user_name, password, phone_number, wechat_number, email, real_name, card_no, sex, address, level, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
+    </sql>
+
+</mapper>

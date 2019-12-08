@@ -39,7 +39,7 @@ logging:
   level:
     org.springframework.web: error
     io.lettuce.core.protocol: error
-  path: /zxcv/zxcv/zxcv-logs/${spring.application.name}
+  path: ./zxcv-logs/${spring.application.name}
   file: ${logging.path}/${spring.application.name}.log
   config: classpath:logback-spring.xml
 
