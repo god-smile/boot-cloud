@@ -3,23 +3,23 @@ package com.zxcv.api.commom.service.site.param.oper;
 import java.util.Date;
 import com.zxcv.api.commom.base.BaseReq;
 
- /**
-  * 新闻表查询类
-  * Copyright: Copyright (c) ${year}
-  * @ClassName: SaveAndModifySiteNewsInfoReq.java
-  * @Description:
-  * @version: v1.0.0
-  * @author: zxcv
-  * @date: 2019-12-08
-  * Modification History:
-  * Date             Author          Version            Description
-  * ---------------------------------------------------------*
-  * 2019-12-08         zxcv         v1.0.0               创建
-  */
+/**
+ * 新闻表查询类
+ * Copyright: Copyright (c) ${year}
+ * @ClassName: SaveAndModifySiteNewsInfoReq.java
+ * @Description:
+ * @version: v1.0.0
+ * @author: zxcv
+ * @date: 2019-12-08
+ * Modification History:
+ * Date             Author          Version            Description
+ * ---------------------------------------------------------*
+ * 2019-12-08         zxcv         v1.0.0               创建
+ */
 
 public class SaveAndModifySiteNewsInfoReq extends  BaseReq {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID=1L;
 
     /**
      * 主键
@@ -107,6 +107,17 @@ private static final long serialVersionUID=1L;
      */
     private Date modifyTime;
 
+    private String newsContent;
+
+    public String getNewsContent()
+    {
+        return newsContent;
+    }
+
+    public void setNewsContent(String newsContent)
+    {
+        this.newsContent = newsContent;
+    }
 
     public Long getId() {
         return id;
@@ -244,28 +255,28 @@ private static final long serialVersionUID=1L;
         this.modifyTime = modifyTime;
     }
 
-	
+
     @Override
     public String toString() {
         return "SaveAndModifySiteNewsInfoReq{" +
-        "id=" + id +
-        ", newsNo=" + newsNo +
-        ", newsType=" + newsType +
-        ", title=" + title +
-        ", description=" + description +
-        ", beginTime=" + beginTime +
-        ", endTime=" + endTime +
-        ", content=" + content +
-        ", projectNo=" + projectNo +
-        ", dataState=" + dataState +
-        ", remark=" + remark +
-        ", createEmpId=" + createEmpId +
-        ", createEmpName=" + createEmpName +
-        ", createTime=" + createTime +
-        ", modifyEmpId=" + modifyEmpId +
-        ", modifyEmpName=" + modifyEmpName +
-        ", modifyTime=" + modifyTime +
-        "}";
+                "id=" + id +
+                ", newsNo=" + newsNo +
+                ", newsType=" + newsType +
+                ", title=" + title +
+                ", description=" + description +
+                ", beginTime=" + beginTime +
+                ", endTime=" + endTime +
+                ", content=" + content +
+                ", projectNo=" + projectNo +
+                ", dataState=" + dataState +
+                ", remark=" + remark +
+                ", createEmpId=" + createEmpId +
+                ", createEmpName=" + createEmpName +
+                ", createTime=" + createTime +
+                ", modifyEmpId=" + modifyEmpId +
+                ", modifyEmpName=" + modifyEmpName +
+                ", modifyTime=" + modifyTime +
+                "}";
     }
 
 }
