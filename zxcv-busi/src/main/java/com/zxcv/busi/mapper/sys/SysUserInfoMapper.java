@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author zxcv
- * @since 2019-12-08
+ * @since 2019-12-12
  */
 public interface SysUserInfoMapper extends BaseMapper<SysUserInfo> {
 

@@ -16,6 +16,9 @@
         <result column="sex" property="sex" />
         <result column="address" property="address" />
         <result column="level" property="level" />
+        <result column="begin_time" property="beginTime" />
+        <result column="end_time" property="endTime" />
+        <result column="user_state" property="userState" />
         <result column="data_state" property="dataState" />
         <result column="remark" property="remark" />
         <result column="create_emp_id" property="createEmpId" />
@@ -28,7 +31,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_no, user_name, password, phone_number, wechat_number, email, real_name, card_no, sex, address, level, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
+        id, user_no, user_name, password, phone_number, wechat_number, email, real_name, card_no, sex, address, level, begin_time, end_time, user_state, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
     </sql>
 
 </mapper>

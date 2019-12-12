@@ -1,5 +1,8 @@
 package com.zxcv.busi.dao.sys.impl;
+import com.alibaba.dubbo.common.utils.CollectionUtils;
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.zxcv.api.commom.constants.DataStatusEnum;
+import com.zxcv.api.commom.constants.NoInitEnum;
 import com.zxcv.api.commom.constants.NoPrefixEnum;
 import com.zxcv.busi.domain.sys.SysUserInfo;
 import com.zxcv.busi.mapper.sys.SysUserInfoMapper;
@@ -47,7 +50,7 @@ public class SysUserInfoDaoImpl  implements SysUserInfoDao {
     public Integer saveSysUserInfo(SaveAndModifySysUserInfoReq req) {
         SysUserInfo sysUserInfo = new SysUserInfo();
         BeanUtils.copyProperties(req, sysUserInfo);
-        sysUserInfo.setUserNo(SequenceUtil.getNextId(NoPrefixEnum.USER_NO.getValue()));
+        sysUserInfo.setUserNo(getNextUserNo());
         int insertCount = sysUserInfoMapper.insert(sysUserInfo);
         return insertCount;
     }
@@ -127,5 +130,26 @@ public class SysUserInfoDaoImpl  implements SysUserInfoDao {
         IPage<SysUserInfo> pageInfo = sysUserInfoMapper.selectPage(page, queryWrapper);
 
         return pageInfo;
+    }
+
+    private String getNextUserNo(){
+        //1.设置分页
+        Page<SysUserInfo> page = new Page<>(1, 1);
+        //2.查询数据
+        QueryWrapper<SysUserInfo> queryWrapper = new QueryWrapper<SysUserInfo>();
+
+        queryWrapper.lambda().orderByDesc(SysUserInfo::getId);
+        IPage<SysUserInfo> pageInfo = sysUserInfoMapper.selectPage(page, queryWrapper);
+        if (pageInfo == null || CollectionUtils.isEmpty(pageInfo.getRecords())
+            || StringUtils.isBlank(pageInfo.getRecords().get(0).getUserNo())) {
+            return NoInitEnum.USER_NO.getValue();
+        }
+        String templateNo = pageInfo.getRecords().get(0).getUserNo();
+        //切割字母+数字
+        String []strs = templateNo.split("(?<=\\D)(?=\\d+\\b)");
+        String letter = strs[0];
+        String number = strs[1];
+        Integer num = Integer.valueOf(number);
+        return letter+(num+1);
     }
 }

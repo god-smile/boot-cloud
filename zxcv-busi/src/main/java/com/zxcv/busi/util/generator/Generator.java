@@ -31,9 +31,9 @@ import java.util.*;
  */
 public class Generator {
     /**项目包名后缀*/
-    private static final String packageNameSuffix = ".site";
+    private static final String packageNameSuffix = ".sys";
     /**mapper文件生成包.*/
-    private static final String mapperPackageNameSuffix = "site";
+    private static final String mapperPackageNameSuffix = "sys";
     /**是否覆盖更新.*/
     private static final Boolean isFileOverride = true;
 
@@ -42,7 +42,7 @@ public class Generator {
 //  private static final String absolutePath = "D://workspace_private/works/boot-cloud/";//更改1
 
     public static void main(String[] args) {
-        String[] tableNames = new String[]{"site_news_info"};
+        String[] tableNames = new String[]{"sys_user_info"};
         String[] modules = new String[]{"zxcv-busi"};//项目模块名，需自定义
         for (String module : modules) {
             moduleGenerator(module, tableNames);

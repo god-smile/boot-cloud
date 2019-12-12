@@ -81,6 +81,20 @@ private static final long serialVersionUID=1L;
      * 用户星级:一、二、三
      */
     private Integer level;
+    /**
+     * 账号生效日期
+     */
+    private Date beginTime;
+
+    /**
+     * 账号失效日期
+     */
+    private Date endTime;
+
+    /**
+     * 用户状态：1正常， 0冻结
+     */
+    private Integer userState;
 
     /**
      * 数据状态：1有效，0无效
@@ -283,6 +297,29 @@ private static final long serialVersionUID=1L;
         this.modifyTime = modifyTime;
     }
 
+    public Date getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getUserState() {
+        return userState;
+    }
+
+    public void setUserState(Integer userState) {
+        this.userState = userState;
+    }
 
     @Override
     public String toString() {

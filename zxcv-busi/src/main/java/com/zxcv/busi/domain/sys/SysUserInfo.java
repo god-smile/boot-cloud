@@ -14,7 +14,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zxcv
- * @since 2019-12-08
+ * @since 2019-12-12
  */
 public class SysUserInfo extends Model<SysUserInfo> {
 
@@ -91,6 +91,24 @@ private static final long serialVersionUID=1L;
      */
     @TableField("level")
     private Integer level;
+
+    /**
+     * 账号生效日期
+     */
+    @TableField("begin_time")
+    private Date beginTime;
+
+    /**
+     * 账号失效日期
+     */
+    @TableField("end_time")
+    private Date endTime;
+
+    /**
+     * 用户状态：1正常， 0冻结
+     */
+    @TableField("user_state")
+    private Integer userState;
 
     /**
      * 数据状态：1有效，0无效
@@ -238,6 +256,30 @@ private static final long serialVersionUID=1L;
         this.level = level;
     }
 
+    public Date getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getUserState() {
+        return userState;
+    }
+
+    public void setUserState(Integer userState) {
+        this.userState = userState;
+    }
+
     public Integer getDataState() {
         return dataState;
     }
@@ -322,6 +364,9 @@ private static final long serialVersionUID=1L;
         ", sex=" + sex +
         ", address=" + address +
         ", level=" + level +
+        ", beginTime=" + beginTime +
+        ", endTime=" + endTime +
+        ", userState=" + userState +
         ", dataState=" + dataState +
         ", remark=" + remark +
         ", createEmpId=" + createEmpId +
