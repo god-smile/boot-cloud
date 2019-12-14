@@ -47,6 +47,7 @@ public class SysUserInfoController extends BaseController {
     @ApiOperation("新增用户表")
     @PostMapping("/saveSysUserInfo")
     public BizResultVO<Integer> saveSysUserInfo(@RequestBody SaveAndModifySysUserInfoReq req) {
+        req.setCreateEmpId("");
         req.setCreateTime(new Date());
         logger.info("begin新增用户表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysUserInfoService.saveSysUserInfo(req);

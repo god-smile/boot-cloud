@@ -117,8 +117,8 @@ public class AppException extends RuntimeException {
 
         if (null != errMsg &&errMsg.length>0) {
         	if(errCode.getMsg().contains("%s") && isTransfer){
-//        		this.errMsg = String.format(errCode.getMsg(), errMsg);
-        		this.errMsg = String.format(errCode.getMsg());
+        		this.errMsg = String.format(errCode.getMsg(), errMsg);
+        		// this.errMsg = String.format(errCode.getMsg());
         	}else{
         		StringBuffer sf = new StringBuffer();
         		for (String msg : errMsg) {
