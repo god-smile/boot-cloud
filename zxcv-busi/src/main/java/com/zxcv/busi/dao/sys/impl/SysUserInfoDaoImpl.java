@@ -125,6 +125,7 @@ public class SysUserInfoDaoImpl  implements SysUserInfoDao {
         QueryWrapper<SysUserInfo> queryWrapper = new QueryWrapper<SysUserInfo>();
         queryWrapper.lambda().eq(true, SysUserInfo::getDataState,DataStatusEnum.DATA_STATUS_VALID.getValue())
                 .eq(req.getId() != null, SysUserInfo::getId,req.getId());
+        queryWrapper.lambda().like(!StringUtils.isBlank(req.getUserName()),SysUserInfo::getUserName,req.getUserName());
         //TODO自定义查询条件
         queryWrapper.lambda().orderByDesc(SysUserInfo::getId);
         IPage<SysUserInfo> pageInfo = sysUserInfoMapper.selectPage(page, queryWrapper);
