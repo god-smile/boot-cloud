@@ -1,25 +1,27 @@
 package com.zxcv.api.commom.service.sys.dto;
 
 import java.util.Date;
+
 import com.zxcv.api.commom.bean.BaiscDTO;
 
-  /**
-    * 用户表 DTO类
-    * Copyright: Copyright (c) ${year}
-    * @ClassName: SysUserInfoDTO.java
-    * @Description:
-    * @version: v1.0.0
-    * @author: zxcv
-    * @date: 2019-12-08
-    * Modification History:
-    * Date             Author          Version            Description
-    * ---------------------------------------------------------*
-    * 2019-12-08         zxcv         v1.0.0               创建
-    */
+/**
+ * 用户表 DTO类
+ * Copyright: Copyright (c) ${year}
+ *
+ * @ClassName: SysUserInfoDTO.java
+ * @Description:
+ * @version: v1.0.0
+ * @author: zxcv
+ * @date: 2019-12-08
+ * Modification History:
+ * Date             Author          Version            Description
+ * ---------------------------------------------------------*
+ * 2019-12-08         zxcv         v1.0.0               创建
+ */
 
 public class SysUserInfoDTO extends BaiscDTO {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键
@@ -81,6 +83,21 @@ private static final long serialVersionUID=1L;
      * 用户星级:一、二、三
      */
     private Integer level;
+
+    /**
+     * 账号生效日期
+     */
+    private Date beginTime;
+
+    /**
+     * 账号失效日期
+     */
+    private Date endTime;
+
+    /**
+     * 用户状态：1正常， 0冻结
+     */
+    private Integer userState;
 
     /**
      * 数据状态：1有效，0无效
@@ -283,30 +300,56 @@ private static final long serialVersionUID=1L;
         this.modifyTime = modifyTime;
     }
 
+    public Date getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getUserState() {
+        return userState;
+    }
+
+    public void setUserState(Integer userState) {
+        this.userState = userState;
+    }
 
     @Override
     public String toString() {
         return "SysUserInfoDTO{" +
-        "id=" + id +
-        ", userNo=" + userNo +
-        ", userName=" + userName +
-        ", password=" + password +
-        ", phoneNumber=" + phoneNumber +
-        ", wechatNumber=" + wechatNumber +
-        ", email=" + email +
-        ", realName=" + realName +
-        ", cardNo=" + cardNo +
-        ", sex=" + sex +
-        ", address=" + address +
-        ", level=" + level +
-        ", dataState=" + dataState +
-        ", remark=" + remark +
-        ", createEmpId=" + createEmpId +
-        ", createEmpName=" + createEmpName +
-        ", createTime=" + createTime +
-        ", modifyEmpId=" + modifyEmpId +
-        ", modifyEmpName=" + modifyEmpName +
-        ", modifyTime=" + modifyTime +
-        "}";
+                "id=" + id +
+                ", userNo='" + userNo + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", wechatNumber='" + wechatNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", realName='" + realName + '\'' +
+                ", cardNo='" + cardNo + '\'' +
+                ", sex=" + sex +
+                ", address='" + address + '\'' +
+                ", level=" + level +
+                ", beginTime=" + beginTime +
+                ", endTime=" + endTime +
+                ", userState=" + userState +
+                ", dataState=" + dataState +
+                ", remark='" + remark + '\'' +
+                ", createEmpId='" + createEmpId + '\'' +
+                ", createEmpName='" + createEmpName + '\'' +
+                ", createTime=" + createTime +
+                ", modifyEmpId='" + modifyEmpId + '\'' +
+                ", modifyEmpName='" + modifyEmpName + '\'' +
+                ", modifyTime=" + modifyTime +
+                '}';
     }
 }
