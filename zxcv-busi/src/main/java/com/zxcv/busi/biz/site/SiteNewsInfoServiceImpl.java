@@ -54,6 +54,9 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
          if (req == null) {
              throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
          }
+
+         // 用户添加 或 修改新闻以后，需要 根据 userNo 去 sys_project_info 表里查projectNo set 到该请求对象中
+
          int insertCount = siteNewsInfoDao.saveSiteNewsInfo(req);
          logger.info("end调用新闻表service层add()方法,插入条数=【{}】条。", insertCount);
          return new BizResult<Integer>(insertCount);
