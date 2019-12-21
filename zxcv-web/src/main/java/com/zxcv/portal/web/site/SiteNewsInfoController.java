@@ -1,34 +1,31 @@
 package com.zxcv.portal.web.site;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.Date;
-
 import cn.hutool.http.HttpUtil;
 import com.alibaba.dubbo.common.utils.StringUtils;
-import com.zxcv.api.commom.base.ErrorType;
-import com.zxcv.api.commom.exception.BizException;
-import com.zxcv.portal.utils.FastDFSClientWrapper;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestMapping;
-import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RestController;
-import com.zxcv.portal.common.BaseController;
 import com.alibaba.fastjson.JSONObject;
+import com.zxcv.api.commom.base.ErrorType;
 import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
+import com.zxcv.api.commom.exception.BizException;
 import com.zxcv.api.commom.service.site.SiteNewsInfoService;
 import com.zxcv.api.commom.service.site.dto.SiteNewsInfoDTO;
-import com.zxcv.api.commom.service.site.param.query.QuerySiteNewsInfoReq;
 import com.zxcv.api.commom.service.site.param.oper.SaveAndModifySiteNewsInfoReq;
+import com.zxcv.api.commom.service.site.param.query.QuerySiteNewsInfoReq;
+import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Date;
 
 
 /**
@@ -53,18 +50,25 @@ public class SiteNewsInfoController extends BaseController {
 	@Autowired
 	private SiteNewsInfoService siteNewsInfoService;
 
-	@Autowired
-	private FastDFSClientWrapper fastDFSClientWrapper;
-	@Value("${fdfs.fdsurl}")
-	private String fdsUrl;
 
 	@ApiOperation("新增新闻表")
 	@PostMapping("/saveSiteNewsInfo")
 	public BizResultVO<Integer> saveSiteNewsInfo(@RequestBody SaveAndModifySiteNewsInfoReq req) {
-		req.setCreateTime(new Date());
-		logger.info("begin新增新闻表信息,入参={}", JSONObject.toJSON(req));
-		BizResult<Integer> result = siteNewsInfoService.saveSiteNewsInfo(req);
-		logger.info("end新增新闻表信息,结果={}", JSONObject.toJSON(result));
+	    req.setCreateEmpId("1");
+	    req.setCreateEmpName("");
+        req.setCreateTime(new Date());
+        logger.info("begin新增新闻表信息,入参={}", JSONObject.toJSON(req));
+        String address;
+        try {
+            address = this.uploadNoticeToFastDFS(req.getNewsContent(),"txt");
+            req.setContent(address);
+        } catch (UnsupportedEncodingException e) {
+            logger.error(JSONObject.toJSONString(e));
+            throw new BizException(ErrorType.BIZ_ERROR,"文件上传失败："+JSONObject.toJSONString(e));
+
+        }
+        BizResult<Integer> result = siteNewsInfoService.saveSiteNewsInfo(req);
+        logger.info("end新增新闻表信息,结果={}", JSONObject.toJSON(result));
 		return new BizResultVO<Integer>(result);
 	}
 
@@ -75,6 +79,15 @@ public class SiteNewsInfoController extends BaseController {
 		req.setModifyEmpName("");
 		req.setModifyTime(new Date());
 		logger.info("begin修改新闻表信息,入参={}", JSONObject.toJSON(req));
+        String address;
+        try {
+            address = this.uploadNoticeToFastDFS(req.getNewsContent(),"txt");
+            req.setContent(address);
+        } catch (UnsupportedEncodingException e) {
+            logger.error(JSONObject.toJSONString(e));
+            throw new BizException(ErrorType.BIZ_ERROR,"文件上传失败："+JSONObject.toJSONString(e));
+
+        }
 		BizResult<Integer> result = siteNewsInfoService.updateSiteNewsInfoById(req);
 		logger.info("end修改新闻表信息,结果={}", JSONObject.toJSON(result));
 		return new BizResultVO<Integer>(result);
@@ -124,44 +137,25 @@ public class SiteNewsInfoController extends BaseController {
 	}
 
 
-	@ApiOperation("新增新闻表")
-	@PostMapping("/saveNewsInfo")
-	public BizResultVO<Integer> saveNewsInfo(@RequestBody SaveAndModifySiteNewsInfoReq req) {
-		req.setCreateTime(new Date());
-		logger.info("begin新增新闻表信息,入参={}", JSONObject.toJSON(req));
-		String address;
-		try {
-			address = this.uploadNoticeToFastDFS(req.getNewsContent());
-			req.setContent(address);
-		} catch (UnsupportedEncodingException e) {
-			logger.error(JSONObject.toJSONString(e));
-			throw new BizException(ErrorType.BIZ_ERROR,"文件上传失败："+JSONObject.toJSONString(e));
+//	@ApiOperation("新增新闻表")
+//	@PostMapping("/saveNewsInfo")
+//	public BizResultVO<Integer> saveNewsInfo(@RequestBody SaveAndModifySiteNewsInfoReq req) {
+//		req.setCreateTime(new Date());
+//		logger.info("begin新增新闻表信息,入参={}", JSONObject.toJSON(req));
+//		String address;
+//		try {
+//			address = this.uploadNoticeToFastDFS(req.getNewsContent());
+//			req.setContent(address);
+//		} catch (UnsupportedEncodingException e) {
+//			logger.error(JSONObject.toJSONString(e));
+//			throw new BizException(ErrorType.BIZ_ERROR,"文件上传失败："+JSONObject.toJSONString(e));
+//
+//		}
+//		BizResult<Integer> result = siteNewsInfoService.saveSiteNewsInfo(req);
+//		logger.info("end新增新闻表信息,结果={}", JSONObject.toJSON(result));
+//		return new BizResultVO<Integer>(result);
+//	}
 
-		}
-		BizResult<Integer> result = siteNewsInfoService.saveSiteNewsInfo(req);
-		logger.info("end新增新闻表信息,结果={}", JSONObject.toJSON(result));
-		return new BizResultVO<Integer>(result);
-	}
 
-	/**
-	 * 上传fastdfs富文本 文件
-	 * @param newsContent
-	 * @return
-	 * @throws UnsupportedEncodingException
-	 * 2019年11月10日 wangfei
-	 */
-	private String uploadNoticeToFastDFS(String newsContent) throws UnsupportedEncodingException
-	{
-		try
-		{
-			newsContent = URLEncoder.encode(newsContent, "UTF-8");
-		}
-		catch (UnsupportedEncodingException e)
-		{
-			e.printStackTrace();
-		}
-		String address = fastDFSClientWrapper.uploadFile(newsContent, "txt");
-		return fdsUrl +"/"+ address;
-	}
 }
 

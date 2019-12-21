@@ -1,0 +1,75 @@
+package com.zxcv.portal.web.sys;
+
+import com.alibaba.fastjson.JSONObject;
+import com.zxcv.api.commom.base.ErrorType;
+import com.zxcv.api.commom.bean.BizResult;
+import com.zxcv.api.commom.bean.PageBean;
+import com.zxcv.api.commom.exception.BizException;
+import com.zxcv.api.commom.service.sys.SysUserInfoService;
+import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
+import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysUserInfoReq;
+import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
+import com.zxcv.portal.common.BaseController;
+import com.zxcv.portal.common.vo.BizResultVO;
+import com.zxcv.portal.utils.FastDFSClientWrapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Date;
+
+
+/**
+ * Copyright: Copyright (c) 2019
+ *
+ * ClassName: 公共接口
+ * Description:
+ * version: v1.0.0
+ * author: wangfei
+ * date: 2019-12-21   17:40:32
+ * Modification History:
+ * Date         Author          Version      Description
+ * ---------------------------------------------------------*
+ * 2019-12-21      wangfei          v1.0.0          创建
+ */
+@Api(value = "公共接口", description = "公共接口")
+@RestController
+@RequestMapping("/common")
+public class CommonController extends BaseController {
+private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
+
+    @Autowired
+    private FastDFSClientWrapper fastDFSClientWrapper;
+    @Value("${fdfs.fdsurl}")
+    private String fdsUrl;
+
+
+    @ApiOperation("上传图片")
+    @PostMapping("/uploadPicture")
+    @ResponseBody
+    public BizResultVO<String> uploadPicture(
+            @RequestParam(required = false, name = "pictureFile") MultipartFile pictureFile) throws IOException {
+        String result = "";
+        if (pictureFile != null) {
+            try {
+                String url = fastDFSClientWrapper.uploadFile(pictureFile);
+                result = fdsUrl +"/"+ url;
+            } catch (Exception e) {
+                logger.info(JSONObject.toJSONString(e));
+                throw new BizException(ErrorType.BIZ_ERROR,"上传图片失败！");
+            }
+
+        }
+        logger.info("上传图片返回地址：",result);
+        return new BizResultVO<>(new BizResult<>(result));
+    }
+
+
+}
+

@@ -8,24 +8,24 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
+import java.util.Date;
 import com.zxcv.api.commom.service.site.param.query.QuerySiteProductInfoReq;
 import com.zxcv.api.commom.service.site.param.oper.SaveAndModifySiteProductInfoReq;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * 产品表 服务实现类
+ * 用户产品表 服务实现类
  * Copyright: Copyright (c)
  * @ClassName: SiteProductInfoDaoImpl.java
  * @Description:
  * @version: v1.0.0
  * @author: zxcv
- * @date: 2019-12-08
+ * @date: 2019-12-21
  * Modification History:
  * Date             Author          Version            Description
  * ---------------------------------------------------------*
- * 2019-12-08         zxcv         v1.0.0               创建
+ * 2019-12-21         zxcv         v1.0.0               创建
  */
 @Component
 public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
@@ -35,9 +35,9 @@ public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
     private SiteProductInfoMapper siteProductInfoMapper;
 
      /**
-      * 新增产品表
+      * 新增用户产品表
       * @author: zxcv
-      * @since 2019-12-08
+      * @since 2019-12-21
       * @param req
       * @return
       */
@@ -45,14 +45,15 @@ public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
      public Integer saveSiteProductInfo(SaveAndModifySiteProductInfoReq req) {
          SiteProductInfo siteProductInfo = new SiteProductInfo();
          BeanUtils.copyProperties(req, siteProductInfo);
+         siteProductInfo.setCreateTime(new Date());
          int insertCount = siteProductInfoMapper.insert(siteProductInfo);
          return insertCount;
      }
 
      /**
-      * 修改产品表
+      * 修改用户产品表
       * @author: zxcv
-      * @since 2019-12-08
+      * @since 2019-12-21
       * @param req
       * @return
       */
@@ -60,14 +61,15 @@ public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
      public Integer updateSiteProductInfoById(SaveAndModifySiteProductInfoReq req) {
          SiteProductInfo siteProductInfo = new SiteProductInfo();
          BeanUtils.copyProperties(req, siteProductInfo);
+         siteProductInfo.setModifyTime(new Date());
          int updateCount = siteProductInfoMapper.updateById(siteProductInfo);
          return updateCount;
      }
 
      /**
-      * 删除产品表
+      * 删除用户产品表
       * @author: zxcv
-      * @since 2019-12-08
+      * @since 2019-12-21
       * @param req
       * @return
       */
@@ -80,15 +82,15 @@ public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
          updateWrapper.lambda().set(SiteProductInfo::getDataState,DataStatusEnum.DATA_STATUS_NO_VALID.getValue())
          .set(SiteProductInfo::getModifyEmpId, req.getModifyEmpId())
          .set(SiteProductInfo::getModifyEmpName, req.getModifyEmpName())
-         .set(SiteProductInfo::getModifyTime, req.getModifyTime());
+         .set(SiteProductInfo::getModifyTime, new Date());
 		 int deleteCount = siteProductInfoMapper.update(siteProductInfo, updateWrapper);
          return deleteCount;
      }
 
      /**
-      * 查询产品表对象
+      * 查询用户产品表对象
       * @author: zxcv
-      * @since 2019-12-08
+      * @since 2019-12-21
       * @param req
       * @return
       *
@@ -104,10 +106,10 @@ public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
      }
 
      /**
-      * 分页-查询产品表列表
+      * 分页-查询用户产品表列表
       *
       * @author: zxcv
-      * @since 2019-12-08
+      * @since 2019-12-21
       * @param req
       * @return
       */

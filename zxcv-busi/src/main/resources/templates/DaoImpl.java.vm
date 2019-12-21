@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
+import java.util.Date;
 import ${cfg.queryPath};
 import ${cfg.operPath};
 import org.springframework.beans.BeanUtils;
@@ -52,6 +52,7 @@ public class ${table.serviceImplName}  implements ${table.serviceName} {
      public Integer save${table.entityName}(SaveAndModify${table.entityName}Req req) {
          ${table.entityName} ${entityName} = new ${table.entityName}();
          BeanUtils.copyProperties(req, ${entityName});
+         ${entityName}.setCreateTime(new Date());
          int insertCount = ${mapperName}.insert(${entityName});
          return insertCount;
      }
@@ -67,6 +68,7 @@ public class ${table.serviceImplName}  implements ${table.serviceName} {
      public Integer update${table.entityName}ById(SaveAndModify${table.entityName}Req req) {
          ${table.entityName} ${entityName} = new ${table.entityName}();
          BeanUtils.copyProperties(req, ${entityName});
+         ${entityName}.setModifyTime(new Date());
          int updateCount = ${mapperName}.updateById(${entityName});
          return updateCount;
      }
@@ -87,7 +89,7 @@ public class ${table.serviceImplName}  implements ${table.serviceName} {
          updateWrapper.lambda().set(${table.entityName}::getDataState,DataStatusEnum.DATA_STATUS_NO_VALID.getValue())
          .set(${table.entityName}::getModifyEmpId, req.getModifyEmpId())
          .set(${table.entityName}::getModifyEmpName, req.getModifyEmpName())
-         .set(${table.entityName}::getModifyTime, req.getModifyTime());
+         .set(${table.entityName}::getModifyTime, new Date());
 		 int deleteCount = ${mapperName}.update(${entityName}, updateWrapper);
          return deleteCount;
      }

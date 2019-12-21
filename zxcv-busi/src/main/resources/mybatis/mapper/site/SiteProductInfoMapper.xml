@@ -7,9 +7,13 @@
         <id column="id" property="id" />
         <result column="product_no" property="productNo" />
         <result column="pic_url" property="picUrl" />
+        <result column="pic_url1" property="picUrl1" />
+        <result column="pic_url2" property="picUrl2" />
         <result column="title" property="title" />
+        <result column="content_url" property="contentUrl" />
         <result column="description" property="description" />
         <result column="user_no" property="userNo" />
+        <result column="project_no" property="projectNo" />
         <result column="data_state" property="dataState" />
         <result column="remark" property="remark" />
         <result column="create_emp_id" property="createEmpId" />
@@ -22,7 +26,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, product_no, pic_url, title, description, user_no, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
+        id, product_no, pic_url, pic_url1, pic_url2, title, content_url, description, user_no, project_no, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
     </sql>
 
 </mapper>

@@ -10,11 +10,11 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 产品表
+ * 用户产品表
  * </p>
  *
  * @author zxcv
- * @since 2019-12-08
+ * @since 2019-12-21
  */
 public class SiteProductInfo extends Model<SiteProductInfo> {
 
@@ -39,10 +39,28 @@ private static final long serialVersionUID=1L;
     private String picUrl;
 
     /**
+     * 封面图url
+     */
+    @TableField("pic_url1")
+    private String picUrl1;
+
+    /**
+     * 封面图url
+     */
+    @TableField("pic_url2")
+    private String picUrl2;
+
+    /**
      * 标题
      */
     @TableField("title")
     private String title;
+
+    /**
+     * 正文内容url
+     */
+    @TableField("content_url")
+    private String contentUrl;
 
     /**
      * 描述
@@ -55,6 +73,12 @@ private static final long serialVersionUID=1L;
      */
     @TableField("user_no")
     private String userNo;
+
+    /**
+     * 项目编号
+     */
+    @TableField("project_no")
+    private String projectNo;
 
     /**
      * 数据状态：1有效，0无效
@@ -130,12 +154,36 @@ private static final long serialVersionUID=1L;
         this.picUrl = picUrl;
     }
 
+    public String getPicUrl1() {
+        return picUrl1;
+    }
+
+    public void setPicUrl1(String picUrl1) {
+        this.picUrl1 = picUrl1;
+    }
+
+    public String getPicUrl2() {
+        return picUrl2;
+    }
+
+    public void setPicUrl2(String picUrl2) {
+        this.picUrl2 = picUrl2;
+    }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContentUrl() {
+        return contentUrl;
+    }
+
+    public void setContentUrl(String contentUrl) {
+        this.contentUrl = contentUrl;
     }
 
     public String getDescription() {
@@ -152,6 +200,14 @@ private static final long serialVersionUID=1L;
 
     public void setUserNo(String userNo) {
         this.userNo = userNo;
+    }
+
+    public String getProjectNo() {
+        return projectNo;
+    }
+
+    public void setProjectNo(String projectNo) {
+        this.projectNo = projectNo;
     }
 
     public Integer getDataState() {
@@ -229,9 +285,13 @@ private static final long serialVersionUID=1L;
         "id=" + id +
         ", productNo=" + productNo +
         ", picUrl=" + picUrl +
+        ", picUrl1=" + picUrl1 +
+        ", picUrl2=" + picUrl2 +
         ", title=" + title +
+        ", contentUrl=" + contentUrl +
         ", description=" + description +
         ", userNo=" + userNo +
+        ", projectNo=" + projectNo +
         ", dataState=" + dataState +
         ", remark=" + remark +
         ", createEmpId=" + createEmpId +

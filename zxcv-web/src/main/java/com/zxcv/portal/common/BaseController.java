@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +16,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.zxcv.portal.utils.FastDFSClientWrapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSONObject;
@@ -51,6 +54,30 @@ public class BaseController {
     @Autowired
     private HttpSession session;
 
+    @Autowired
+    private FastDFSClientWrapper fastDFSClientWrapper;
+    @Value("${fdfs.fdsurl}")
+    private String fdsUrl;
+
+    /**
+     * 上传fastdfs富文本 文件
+     * @param content
+     * @return
+     * @throws UnsupportedEncodingException
+     * 2019年11月10日 wangfei
+     */
+    protected String uploadNoticeToFastDFS(String content,String type) throws UnsupportedEncodingException{
+        try
+        {
+            content = URLEncoder.encode(content, "UTF-8");
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }
+        String address = fastDFSClientWrapper.uploadFile(content, type);
+        return fdsUrl +"/"+ address;
+    }
     /**
      * 返回jqgrid格式数据
      *

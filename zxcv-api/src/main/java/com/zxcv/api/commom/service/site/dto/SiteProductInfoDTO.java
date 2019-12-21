@@ -4,17 +4,17 @@ import java.util.Date;
 import com.zxcv.api.commom.bean.BaiscDTO;
 
   /**
-    * 产品表 DTO类
+    * 用户产品表 DTO类
     * Copyright: Copyright (c) ${year}
     * @ClassName: SiteProductInfoDTO.java
     * @Description:
     * @version: v1.0.0
     * @author: zxcv
-    * @date: 2019-12-08
+    * @date: 2019-12-21
     * Modification History:
     * Date             Author          Version            Description
     * ---------------------------------------------------------*
-    * 2019-12-08         zxcv         v1.0.0               创建
+    * 2019-12-21         zxcv         v1.0.0               创建
     */
 
 public class SiteProductInfoDTO extends BaiscDTO {
@@ -38,9 +38,29 @@ private static final long serialVersionUID=1L;
     private String picUrl;
 
     /**
+     * 封面图url
+     */
+    private String picUrl1;
+
+    /**
+     * 封面图url
+     */
+    private String picUrl2;
+
+    /**
      * 标题
      */
     private String title;
+
+    /**
+    * 内容base64
+    */
+    private String content;
+
+    /**
+     * 正文内容url
+     */
+    private String contentUrl;
 
     /**
      * 描述
@@ -51,6 +71,11 @@ private static final long serialVersionUID=1L;
      * 用户编号
      */
     private String userNo;
+
+    /**
+     * 项目编号
+     */
+    private String projectNo;
 
     /**
      * 数据状态：1有效，0无效
@@ -93,7 +118,15 @@ private static final long serialVersionUID=1L;
     private Date modifyTime;
 
 
-    public Long getId() {
+    public String getContent() {
+      return content;
+    }
+
+    public void setContent(String content) {
+      this.content = content;
+    }
+
+      public Long getId() {
         return id;
     }
 
@@ -117,12 +150,36 @@ private static final long serialVersionUID=1L;
         this.picUrl = picUrl;
     }
 
+    public String getPicUrl1() {
+        return picUrl1;
+    }
+
+    public void setPicUrl1(String picUrl1) {
+        this.picUrl1 = picUrl1;
+    }
+
+    public String getPicUrl2() {
+        return picUrl2;
+    }
+
+    public void setPicUrl2(String picUrl2) {
+        this.picUrl2 = picUrl2;
+    }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContentUrl() {
+        return contentUrl;
+    }
+
+    public void setContentUrl(String contentUrl) {
+        this.contentUrl = contentUrl;
     }
 
     public String getDescription() {
@@ -139,6 +196,14 @@ private static final long serialVersionUID=1L;
 
     public void setUserNo(String userNo) {
         this.userNo = userNo;
+    }
+
+    public String getProjectNo() {
+        return projectNo;
+    }
+
+    public void setProjectNo(String projectNo) {
+        this.projectNo = projectNo;
     }
 
     public Integer getDataState() {
@@ -212,9 +277,13 @@ private static final long serialVersionUID=1L;
         "id=" + id +
         ", productNo=" + productNo +
         ", picUrl=" + picUrl +
+        ", picUrl1=" + picUrl1 +
+        ", picUrl2=" + picUrl2 +
         ", title=" + title +
+        ", contentUrl=" + contentUrl +
         ", description=" + description +
         ", userNo=" + userNo +
+        ", projectNo=" + projectNo +
         ", dataState=" + dataState +
         ", remark=" + remark +
         ", createEmpId=" + createEmpId +

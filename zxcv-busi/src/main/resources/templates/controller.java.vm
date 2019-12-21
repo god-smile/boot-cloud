@@ -57,7 +57,7 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
 #end
 #set($serviceName ="${table.serviceName.substring(0,1).toLowerCase()}${table.serviceName.substring(1)}")
- private static final Logger logger = LoggerFactory.getLogger(${table.controllerName}.class);
+    private static final Logger logger = LoggerFactory.getLogger(${table.controllerName}.class);
 
     @Autowired
     private ${table.ServiceName} ${serviceName};
@@ -66,7 +66,6 @@ public class ${table.controllerName} {
     @ApiOperation("新增$!{table.comment}")
     @PostMapping("/save${table.entityName}")
     public BizResultVO<Integer> save${table.entityName}(@RequestBody SaveAndModify${table.entityName}Req req) {
-        req.setCreateTime(new Date());
         logger.info("begin新增$!{table.comment}信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = ${serviceName}.save${table.entityName}(req);
         logger.info("end新增$!{table.comment}信息,结果={}", JSONObject.toJSON(result));
@@ -78,7 +77,6 @@ public class ${table.controllerName} {
     public BizResultVO<Integer> update${table.entityName}ById(@RequestBody SaveAndModify${table.entityName}Req req) {
         req.setModifyEmpId("");
         req.setModifyEmpName("");
-        req.setModifyTime(new Date());
         logger.info("begin修改$!{table.comment}信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = ${serviceName}.update${table.entityName}ById(req);
         logger.info("end修改$!{table.comment}信息,结果={}", JSONObject.toJSON(result));
