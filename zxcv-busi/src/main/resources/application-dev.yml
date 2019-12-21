@@ -39,7 +39,7 @@ logging:
   level:
     org.springframework.web: error
     io.lettuce.core.protocol: error
-  path: ./zxcv-logs/${spring.application.name}
+  path: ../zxcv-logs/${spring.application.name} #日志目录-当前根目录的外一级
   file: ${logging.path}/${spring.application.name}.log
   config: classpath:logback-spring.xml
 
