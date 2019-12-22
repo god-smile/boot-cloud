@@ -143,4 +143,28 @@ public class SysProjectInfoServiceImpl  implements SysProjectInfoService {
          logger.info("end调用service-查询项目表列表分页()方法,查询条数={}条。", pageBean.getTotal());
          return new BizResult<PageBean<SysProjectInfoDTO>>(pageBean);
      }
+
+
+    /**
+     * 根据url，查询项目表对象
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     *
+     */
+    @Override
+    public BizResult<SysProjectInfoDTO> getSysProjectInfoByUrl(QuerySysProjectInfoReq req) {
+        logger.info("begin调用项目表service层查询对象()方法,入参={}", JSONObject.toJSON(req));
+        SysProjectInfoDTO sysProjectInfoDTO = new SysProjectInfoDTO();
+        if (req == null || null == req.getIndexUrl()) {
+            throw new BizException(ErrorType.PARAMM_NULL, "url为空!");
+        }
+        SysProjectInfo obj = sysProjectInfoDao. getSysProjectInfoByUrl(req);
+        if (null != obj) {
+            BeanUtils.copyProperties(obj,sysProjectInfoDTO);
+        }
+        logger.info("end调用项目表service层查询对象方法,结果=【{}】", JSONObject.toJSON(sysProjectInfoDTO));
+        return new BizResult<SysProjectInfoDTO>(sysProjectInfoDTO);
+    }
 }

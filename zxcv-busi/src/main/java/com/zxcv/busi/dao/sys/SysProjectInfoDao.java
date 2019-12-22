@@ -65,4 +65,14 @@ public interface SysProjectInfoDao {
      * @return
      */
    IPage<SysProjectInfo>  querySysProjectInfoForPage(QuerySysProjectInfoReq req);
+
+
+    /**
+     * 根据url，查询项目表对象
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     */
+    SysProjectInfo  getSysProjectInfoByUrl(QuerySysProjectInfoReq req);
 }

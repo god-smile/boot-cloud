@@ -65,4 +65,14 @@ public interface SysProjectInfoService {
      * @return
      */
     BizResult<PageBean<SysProjectInfoDTO>>  querySysProjectInfoForPage(QuerySysProjectInfoReq req);
+
+
+    /**
+     * 根据url，查询项目表对象
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     */
+    BizResult<SysProjectInfoDTO>  getSysProjectInfoByUrl(QuerySysProjectInfoReq req);
 }

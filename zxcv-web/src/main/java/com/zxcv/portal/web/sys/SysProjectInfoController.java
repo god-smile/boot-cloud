@@ -96,5 +96,14 @@ public class SysProjectInfoController extends BaseController {
         return new BizResultVO<PageBean<SysProjectInfoDTO>>(result);
     }
 
+
+     @ApiOperation("查询项目表对象")
+     @PostMapping("/getSysProjectInfoByUrl")
+     public BizResultVO<SysProjectInfoDTO> getSysProjectInfoByUrl(@RequestBody QuerySysProjectInfoReq req) {
+         logger.info("begin查询项目表对象controller,入参={}", JSONObject.toJSON(req));
+         BizResult<SysProjectInfoDTO> result = sysProjectInfoService.getSysProjectInfoByUrl(req);
+         logger.info("end查询项目表对象controller,结果={}", JSONObject.toJSON(result));
+         return new BizResultVO<SysProjectInfoDTO>(result);
+     }
 }
 

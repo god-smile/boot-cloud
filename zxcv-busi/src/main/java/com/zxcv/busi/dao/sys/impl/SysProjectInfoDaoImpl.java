@@ -125,4 +125,23 @@ public class SysProjectInfoDaoImpl  implements SysProjectInfoDao {
 
          return pageInfo;
      }
+
+
+    /**
+     * 根据url，查询项目表对象
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     *
+     */
+    @Override
+    public SysProjectInfo getSysProjectInfoByUrl(QuerySysProjectInfoReq req) {
+        SysProjectInfo sysProjectInfoQuery = new SysProjectInfo();
+        BeanUtils.copyProperties(req, sysProjectInfoQuery);
+        QueryWrapper<SysProjectInfo> querySQL = new QueryWrapper<SysProjectInfo>();
+        querySQL.setEntity(sysProjectInfoQuery);
+        SysProjectInfo obj = sysProjectInfoMapper.selectOne(querySQL);
+        return obj;
+    }
 }
