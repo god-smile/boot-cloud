@@ -3,12 +3,7 @@ package com.zxcv.portal.web.sys;
 import com.alibaba.fastjson.JSONObject;
 import com.zxcv.api.commom.base.ErrorType;
 import com.zxcv.api.commom.bean.BizResult;
-import com.zxcv.api.commom.bean.PageBean;
 import com.zxcv.api.commom.exception.BizException;
-import com.zxcv.api.commom.service.sys.SysUserInfoService;
-import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
-import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysUserInfoReq;
-import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
 import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
 import com.zxcv.portal.utils.FastDFSClientWrapper;
@@ -22,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Date;
 
 
 /**
@@ -71,5 +65,8 @@ private static final Logger logger = LoggerFactory.getLogger(CommonController.cl
     }
 
 
+    public static void main(String[] args) {
+        System.out.println(1);
+    }
 }
 

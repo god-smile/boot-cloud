@@ -1,7 +1,8 @@
 package com.zxcv.api.commom.service.site.param.query;
 
-import java.util.Date;
 import com.zxcv.api.commom.base.BaseReq;
+
+import java.util.Date;
 
 /**
  * 用户产品表查询类
@@ -20,6 +21,15 @@ import com.zxcv.api.commom.base.BaseReq;
 public class QuerySiteProductInfoReq extends  BaseReq {
 
 private static final long serialVersionUID=1L;
+
+    /**
+     * 查询开始时间
+     */
+    private Date beginTime;
+    /**
+     * 查询结束时间
+     */
+    private Date endTime;
 
     /**
      * 主键
@@ -112,6 +122,21 @@ private static final long serialVersionUID=1L;
      */
     private Date modifyTime;
 
+    public Date getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 
     public Long getId() {
         return id;

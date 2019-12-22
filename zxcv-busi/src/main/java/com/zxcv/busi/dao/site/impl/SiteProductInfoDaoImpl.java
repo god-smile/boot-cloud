@@ -1,5 +1,7 @@
 package com.zxcv.busi.dao.site.impl;
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.zxcv.api.commom.constants.DataStatusEnum;
+import com.zxcv.busi.domain.site.SiteNewsInfo;
 import com.zxcv.busi.domain.site.SiteProductInfo;
 import com.zxcv.busi.mapper.site.SiteProductInfoMapper;
 import org.springframework.stereotype.Component;
@@ -120,8 +122,15 @@ public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
          //2.查询数据
          QueryWrapper<SiteProductInfo> queryWrapper = new QueryWrapper<SiteProductInfo>();
          queryWrapper.lambda().eq(true, SiteProductInfo::getDataState,DataStatusEnum.DATA_STATUS_VALID.getValue())
-         .eq(req.getId() != null, SiteProductInfo::getId,req.getId());
-         //TODO自定义查询条件
+         .eq(req.getId() != null, SiteProductInfo::getId,req.getId())
+         .eq(!StringUtils.isBlank(req.getProjectNo()), SiteProductInfo::getProjectNo,req.getProjectNo())
+         .eq(!StringUtils.isBlank(req.getProductNo()), SiteProductInfo::getProductNo,req.getProductNo())
+         .eq(!StringUtils.isBlank(req.getUserNo()), SiteProductInfo::getUserNo,req.getUserNo())
+         .eq(req.getId() != null, SiteProductInfo::getId,req.getId())
+         .like(!StringUtils.isBlank(req.getTitle()), SiteProductInfo::getTitle,req.getTitle())
+         .gt(req.getBeginTime() != null ,SiteProductInfo::getCreateTime,req.getBeginTime())
+         .lt(req.getEndTime() != null ,SiteProductInfo::getCreateTime,req.getEndTime());
+
          queryWrapper.lambda().orderByDesc(SiteProductInfo::getId);
 	     IPage<SiteProductInfo> pageInfo = siteProductInfoMapper.selectPage(page, queryWrapper);
 

@@ -50,10 +50,10 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox-swagger-version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>fastjson</artifactId>-->
+        <!--</dependency>-->
         <!-- spring session-->
         <dependency>
             <groupId>org.springframework.session</groupId>
