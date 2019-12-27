@@ -1,10 +1,11 @@
 package com.zxcv.busi.dao.sys;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.zxcv.busi.domain.sys.SysProjectInfo;
-import com.zxcv.api.commom.service.sys.dto.SysProjectInfoDTO;
-import com.zxcv.api.commom.service.sys.param.query.QuerySysProjectInfoReq;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysProjectInfoReq;
+import com.zxcv.api.commom.service.sys.param.query.QuerySysProjectInfoReq;
+import com.zxcv.busi.domain.sys.SysProjectInfo;
+
+import java.util.List;
 
 /**
  * 项目表 Dao接口
@@ -75,4 +76,11 @@ public interface SysProjectInfoDao {
      * @return
      */
     SysProjectInfo  getSysProjectInfoByUrl(QuerySysProjectInfoReq req);
+
+    /**
+     * 根据用户编号查询项目
+     * @param userNo
+     * @return
+     */
+    List<SysProjectInfo> getSysProjectInfoByUserNo(String userNo);
 }

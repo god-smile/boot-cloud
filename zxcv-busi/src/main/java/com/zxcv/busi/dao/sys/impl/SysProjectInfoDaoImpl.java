@@ -14,6 +14,8 @@ import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysProjectInfoReq
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * 项目表 服务实现类
  * Copyright: Copyright (c)
@@ -143,5 +145,14 @@ public class SysProjectInfoDaoImpl  implements SysProjectInfoDao {
         querySQL.setEntity(sysProjectInfoQuery);
         SysProjectInfo obj = sysProjectInfoMapper.selectOne(querySQL);
         return obj;
+    }
+
+    @Override
+    public List<SysProjectInfo> getSysProjectInfoByUserNo(String userNo) {
+        QueryWrapper<SysProjectInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(true, SysProjectInfo::getDataState,DataStatusEnum.DATA_STATUS_VALID.getValue())
+                .eq(true, SysProjectInfo::getUserNo,userNo);
+        queryWrapper.lambda().select(SysProjectInfo::getProjectNo, SysProjectInfo::getProjectNo);
+        return sysProjectInfoMapper.selectList(queryWrapper);
     }
 }

@@ -3,8 +3,11 @@ package com.zxcv.api.commom.service.sys;
 import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
 import com.zxcv.api.commom.service.sys.dto.SysProjectInfoDTO;
-import com.zxcv.api.commom.service.sys.param.query.QuerySysProjectInfoReq;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysProjectInfoReq;
+import com.zxcv.api.commom.service.sys.param.query.ProjectReq;
+import com.zxcv.api.commom.service.sys.param.query.QuerySysProjectInfoReq;
+
+import java.util.List;
 
 /**
  * 项目表 Service服务类
@@ -75,4 +78,11 @@ public interface SysProjectInfoService {
      * @return
      */
     BizResult<SysProjectInfoDTO>  getSysProjectInfoByUrl(QuerySysProjectInfoReq req);
+
+    /**
+     * 根据用户编号查询用户下的项目
+     * @param req
+     * @return
+     */
+    BizResult<List<SysProjectInfoDTO>> getSysProjectInfoByUserNo(ProjectReq req);
 }

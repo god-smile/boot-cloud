@@ -54,6 +54,7 @@ public class SiteProductInfoController extends BaseController {
     @PostMapping("/saveSiteProductInfo")
     public BizResultVO<Integer> saveSiteProductInfo(@RequestBody SaveAndModifySiteProductInfoReq req) {
         logger.info("begin新增用户产品表信息,入参={}", JSONObject.toJSON(req));
+        req.setUserNo("U10001");
         if(!StringUtils.isBlank(req.getContent())) {
             String address;
             try {

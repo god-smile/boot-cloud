@@ -19,7 +19,8 @@ public enum NoPrefixEnum implements IEnum<String>{
 
     USER_NO("U", "用户编号"),
     PROJECT_NO("PJ", "项目编号"),
-    NEWS_NO("NW", "新闻编号")
+    NEWS_NO("NW", "新闻编号"),
+    PRODUCT_NO("PD", "产品编号"),
 
 
     ;

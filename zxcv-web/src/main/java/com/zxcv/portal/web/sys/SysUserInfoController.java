@@ -1,27 +1,32 @@
 package com.zxcv.portal.web.sys;
 
-import java.util.Date;
-import org.springframework.web.bind.annotation.RequestMapping;
-import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RestController;
-import com.zxcv.portal.common.BaseController;
 import com.alibaba.fastjson.JSONObject;
 import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
+import com.zxcv.api.commom.service.sys.SysProjectInfoService;
 import com.zxcv.api.commom.service.sys.SysUserInfoService;
+import com.zxcv.api.commom.service.sys.dto.SysProjectInfoDTO;
 import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
-import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysUserInfoReq;
+import com.zxcv.api.commom.service.sys.param.query.ProjectReq;
+import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
+import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.List;
 
 
- /**
+/**
   * 用户表 前端控制器
   * Copyright: Copyright (c) ${year}
   * @ClassName: SysUserInfoController.java
@@ -42,6 +47,8 @@ public class SysUserInfoController extends BaseController {
 
     @Autowired
     private SysUserInfoService sysUserInfoService;
+    @Autowired
+    private SysProjectInfoService sysProjectInfoService;
 
 
     @ApiOperation("新增用户表")
@@ -96,6 +103,16 @@ public class SysUserInfoController extends BaseController {
         logger.info("end分页查询用户表controller,结果...");
         return new BizResultVO<PageBean<SysUserInfoDTO>>(result);
     }
+
+    @ApiOperation("根据用户编号查询用户下的项目")
+    @PostMapping("/getSysProjectInfoByUserNo")
+    public BizResultVO<List<SysProjectInfoDTO>> getSysProjectInfoByUserNo(@RequestBody ProjectReq req) {
+        logger.info("begin-根据用户编号查询用户下的项目,入参={}", JSONObject.toJSON(req));
+        BizResult<List<SysProjectInfoDTO>> result = sysProjectInfoService.getSysProjectInfoByUserNo(req);
+        logger.info("end根据用户编号查询用户下的项目controller,结果={}", JSONObject.toJSON(result));
+        return new BizResultVO<List<SysProjectInfoDTO>>(result);
+    }
+
 
 }
 

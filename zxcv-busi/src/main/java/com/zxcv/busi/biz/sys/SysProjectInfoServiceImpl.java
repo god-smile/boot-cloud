@@ -1,24 +1,28 @@
 package com.zxcv.busi.biz.sys;
-import com.zxcv.busi.domain.sys.SysProjectInfo;
-import com.zxcv.busi.dao.sys.SysProjectInfoDao;
-import com.zxcv.api.commom.service.sys.SysProjectInfoService;
-import org.springframework.stereotype.Service;
+import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.zxcv.api.commom.base.ErrorType;
 import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
 import com.zxcv.api.commom.exception.BizException;
-import com.alibaba.dubbo.common.utils.CollectionUtils;
-
+import com.zxcv.api.commom.service.sys.SysProjectInfoService;
 import com.zxcv.api.commom.service.sys.dto.SysProjectInfoDTO;
-import com.zxcv.api.commom.service.sys.param.query.QuerySysProjectInfoReq;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysProjectInfoReq;
+import com.zxcv.api.commom.service.sys.param.query.ProjectReq;
+import com.zxcv.api.commom.service.sys.param.query.QuerySysProjectInfoReq;
+import com.zxcv.busi.dao.sys.SysProjectInfoDao;
+import com.zxcv.busi.domain.sys.SysProjectInfo;
+import com.zxcv.commom.utils.ListCopyUtil;
 import com.zxcv.commom.utils.pagepager.PageBeanUtil;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 项目表 服务实现类
@@ -166,5 +170,15 @@ public class SysProjectInfoServiceImpl  implements SysProjectInfoService {
         }
         logger.info("end调用项目表service层查询对象方法,结果=【{}】", JSONObject.toJSON(sysProjectInfoDTO));
         return new BizResult<SysProjectInfoDTO>(sysProjectInfoDTO);
+    }
+
+    @Override
+    public BizResult<List<SysProjectInfoDTO>> getSysProjectInfoByUserNo(ProjectReq req) {
+        List<SysProjectInfoDTO> dtos = new ArrayList<>();
+        List<SysProjectInfo> list = sysProjectInfoDao.getSysProjectInfoByUserNo(req.getUserNo());
+        if(CollectionUtils.isNotEmpty(list)){
+            ListCopyUtil.listCopyProperties(list,dtos,SysProjectInfoDTO.class);
+        }
+        return new BizResult<List<SysProjectInfoDTO>>(dtos);
     }
 }

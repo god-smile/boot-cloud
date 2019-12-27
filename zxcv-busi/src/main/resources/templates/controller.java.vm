@@ -109,7 +109,7 @@ public class ${table.controllerName} {
     public BizResultVO<PageBean<${table.entityName}DTO>> query${table.entityName}ForPage(@RequestBody Query${table.entityName}Req req) {
         logger.info("begin分页-查询$!{table.comment}controller,入参={}", JSONObject.toJSON(req));
         BizResult<PageBean<${table.entityName}DTO>> result = ${serviceName}.query${table.entityName}ForPage(req);
-        logger.info("end分页查询$!{table.comment}controller,结果...");
+        logger.info("end分页查询$!{table.comment}controller,结果={}", JSONObject.toJSON(result));
         return new BizResultVO<PageBean<${table.entityName}DTO>>(result);
     }
 

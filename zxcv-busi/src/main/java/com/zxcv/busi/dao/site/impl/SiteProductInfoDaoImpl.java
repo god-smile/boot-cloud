@@ -1,9 +1,11 @@
 package com.zxcv.busi.dao.site.impl;
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.zxcv.api.commom.constants.DataStatusEnum;
+import com.zxcv.api.commom.constants.NoPrefixEnum;
 import com.zxcv.busi.domain.site.SiteNewsInfo;
 import com.zxcv.busi.domain.site.SiteProductInfo;
 import com.zxcv.busi.mapper.site.SiteProductInfoMapper;
+import com.zxcv.commom.utils.SequenceUtil;
 import org.springframework.stereotype.Component;
 import com.zxcv.busi.dao.site.SiteProductInfoDao;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -48,6 +50,7 @@ public class SiteProductInfoDaoImpl  implements SiteProductInfoDao {
          SiteProductInfo siteProductInfo = new SiteProductInfo();
          BeanUtils.copyProperties(req, siteProductInfo);
          siteProductInfo.setCreateTime(new Date());
+         siteProductInfo.setProductNo(SequenceUtil.getNextId(NoPrefixEnum.PRODUCT_NO.getValue()));
          int insertCount = siteProductInfoMapper.insert(siteProductInfo);
          return insertCount;
      }
