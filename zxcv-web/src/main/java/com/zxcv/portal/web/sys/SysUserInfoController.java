@@ -99,7 +99,14 @@ public class SysUserInfoController extends BaseController {
         return new BizResultVO<PageBean<SysUserInfoDTO>>(result);
     }
 
-
+    @ApiOperation("用户登录")
+    @PostMapping("/userLogin")
+    public BizResultVO<SysUserInfoDTO> userLogin(@RequestBody QuerySysUserInfoReq req) {
+        logger.info("begin查询用户表对象controller,入参={}", JSONObject.toJSON(req));
+        BizResult<SysUserInfoDTO> result = sysUserInfoService.userLogin(req);
+        logger.info("end查询用户表对象controller,结果={}", JSONObject.toJSON(result));
+        return new BizResultVO<SysUserInfoDTO>(result);
+    }
 
 }
 

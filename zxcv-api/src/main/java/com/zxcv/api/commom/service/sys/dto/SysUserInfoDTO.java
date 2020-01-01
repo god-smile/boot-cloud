@@ -140,6 +140,19 @@ public class SysUserInfoDTO extends BaiscDTO {
     private Date modifyTime;
 
 
+    /**
+     * 登录入口
+     */
+    private String entranceUrl;
+
+    public String getEntranceUrl() {
+        return entranceUrl;
+    }
+
+    public void setEntranceUrl(String entranceUrl) {
+        this.entranceUrl = entranceUrl;
+    }
+
     public Long getId() {
         return id;
     }

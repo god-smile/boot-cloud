@@ -2,10 +2,17 @@ package com.zxcv.api.commom.base;
 
 public enum ErrorType implements ErrorCode {
 
-    AUTH_PASS_ERROR("2000", "账号密码不匹配"),
-    AUTH_LOGIN_ENDTIME("2001", "账号已失效!"),
-    AUTH_IMGCODE_ERROR("2002", "验证码错误"),
-    AUTH_TOKEN_NOT_EXISTS("2003", "授权令牌不存在或已失效"),
+    AUTH_PASS_ERROR("2000", "用户名或密码不正确"),
+    AUTH_LOGIN_FREEZED("2001", "账号被冻结!"),
+    AUTH_LOGIN_ENDTIME("2002", "账号已过期!"),
+
+    AUTH_MULTIPLE_USER("2007","账号重复"),
+
+    AUTH_TOKEN_NOT_EXISTS("2003", "验证码错误"),
+
+
+    AUTH_PROJECT_EMPTY("2007","该账号未关联项目"),
+
     AUTH_TOKEN_ILLEGAL("2004", "授权令牌不合法"),
     AUTH_TOKEN_AUTH_FAIL("2005", "无此权限"),
     AUTH_PASS_WRONG_NUM_OVER("2006","密码输错次数超限,"),

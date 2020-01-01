@@ -17,6 +17,9 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
  */
 public enum DataStatusEnum implements IEnum<Integer>{
 
+    USER_LEVEL_USER(1, "普通用户"),
+    USER_LEVEL_ADMIN(2, "管理员"),
+
     DATA_STATUS_VALID(1, "数据有效"),
     DATA_STATUS_NO_VALID(0, "数据无效"),
     DATA_STATUS_FROZEN(2, "冻结"),

@@ -65,4 +65,14 @@ public interface SysUserInfoService {
      * @return
      */
     BizResult<PageBean<SysUserInfoDTO>>  querySysUserInfoForPage(QuerySysUserInfoReq req);
+
+
+    /**
+     * 登录
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     */
+    BizResult<SysUserInfoDTO>  userLogin(QuerySysUserInfoReq req);
 }

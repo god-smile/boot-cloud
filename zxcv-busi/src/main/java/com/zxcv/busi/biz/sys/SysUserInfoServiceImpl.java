@@ -1,4 +1,6 @@
 package com.zxcv.busi.biz.sys;
+import com.zxcv.busi.dao.sys.SysProjectInfoDao;
+import com.zxcv.busi.domain.sys.SysProjectInfo;
 import com.zxcv.busi.domain.sys.SysUserInfo;
 import com.zxcv.busi.dao.sys.SysUserInfoDao;
 import com.zxcv.api.commom.service.sys.SysUserInfoService;
@@ -20,6 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * 用户表 服务实现类
  * Copyright: Copyright (c)
@@ -40,6 +45,9 @@ public class SysUserInfoServiceImpl  implements SysUserInfoService {
 
     @Autowired
     private SysUserInfoDao sysUserInfoDao;
+
+    @Autowired
+    private SysProjectInfoDao sysProjectInfoDao;
 
      /**
       * 新增用户表
@@ -143,4 +151,61 @@ public class SysUserInfoServiceImpl  implements SysUserInfoService {
          logger.info("end调用service-查询用户表列表分页()方法,查询条数={}条。", pageBean.getTotal());
          return new BizResult<PageBean<SysUserInfoDTO>>(pageBean);
      }
+
+
+    /**
+     * 用户登录
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     *
+     */
+    @Override
+    public BizResult<SysUserInfoDTO> userLogin(QuerySysUserInfoReq req) {
+        logger.info("begin调用用户表service层查询对象()方法,入参={}", JSONObject.toJSON(req));
+        SysUserInfoDTO sysUserInfoDTO = new SysUserInfoDTO();
+        if (req == null || null == req.getUserName()) {
+            throw new BizException(ErrorType.PARAMM_NULL, "用户名为空!");
+        }
+        if (null == req.getPassword()) {
+            throw new BizException(ErrorType.PARAMM_NULL, "密码为空!");
+        }
+        List<SysUserInfo> userList = sysUserInfoDao. selectSysUserInfoByUserName(req);
+        if (null == userList || userList.isEmpty()) {
+            // 没有 该用户名对应的用户 或 密码不对。提示 “用户名或密码不正确”
+            throw new BizException(ErrorType.AUTH_PASS_ERROR, "用户名或密码不正确");
+        }
+        if (userList.size() > 1) {
+            // 用户名匹配到多条记录
+            throw new BizException(ErrorType.AUTH_MULTIPLE_USER, "账号匹配出错");
+        }
+        SysUserInfo obj = userList.get(0);
+        if (null != obj ) {
+            // 判断 用户 是否被冻结， 是否过了登录期限
+            if (obj.getUserState() == 0) {
+                throw new BizException(ErrorType.AUTH_LOGIN_FREEZED, "账号被冻结!");
+            }
+            if (obj.getBeginTime() != null && obj.getEndTime() != null) {
+                Date now = new Date();
+                if (obj.getBeginTime().compareTo(now) > 0 || obj.getEndTime().compareTo(now) < 0) {
+                    throw new BizException(ErrorType.AUTH_LOGIN_ENDTIME, "账号已过期!");
+                }
+            }
+
+            // 根据 用户编号 查询 项目表，根据 id 排序，取 第一个
+            List<SysProjectInfo> list = sysProjectInfoDao.getSysProjectInfoByUserNo(obj.getUserNo());
+            if (list == null || list.isEmpty()) {
+                throw new BizException(ErrorType.AUTH_PROJECT_EMPTY, "该账号未关联项目!");
+            }
+
+            BeanUtils.copyProperties(obj,sysUserInfoDTO);
+            sysUserInfoDTO.setEntranceUrl(list.get(0).getIndexUrl());
+        }else {
+            // 没有 该用户名对应的用户 或 密码不对。提示 “用户名或密码不正确”
+            throw new BizException(ErrorType.AUTH_PASS_ERROR, "用户名或密码不正确");
+        }
+        logger.info("end调用用户表service层查询对象方法,结果=【{}】", JSONObject.toJSON(sysUserInfoDTO));
+        return new BizResult<SysUserInfoDTO>(sysUserInfoDTO);
+    }
 }

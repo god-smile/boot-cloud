@@ -6,6 +6,8 @@ import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
 import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysUserInfoReq;
 
+import java.util.List;
+
 /**
  * 用户表 Dao接口
  * Copyright: Copyright (c) ${year}
@@ -65,4 +67,14 @@ public interface SysUserInfoDao {
      * @return
      */
    IPage<SysUserInfo>  querySysUserInfoForPage(QuerySysUserInfoReq req);
+
+
+    /**
+     * 查询用户表对象
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     */
+    List<SysUserInfo> selectSysUserInfoByUserName(QuerySysUserInfoReq req);
 }
