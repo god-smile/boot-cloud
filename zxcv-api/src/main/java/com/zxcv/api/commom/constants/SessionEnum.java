@@ -15,6 +15,14 @@ package com.zxcv.api.commom.constants;
  */
 public enum SessionEnum {
 
+    USER_ID("userId"),
+    USER_NAME("userName"),
+    USER_NO("userNo"),
+    PROJECT_NO("projectNo"),
+    LOGIN_URL("loginUrl"),
+    INDEX_URL("indexUrl"),
+
+
     //小程序用户对象
     USER_MINI_INFO("login:usermini:info"),
     //user 对象
