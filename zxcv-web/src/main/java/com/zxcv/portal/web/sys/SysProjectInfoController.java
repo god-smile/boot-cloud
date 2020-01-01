@@ -1,6 +1,9 @@
 package com.zxcv.portal.web.sys;
 
 import java.util.Date;
+import java.util.List;
+
+import com.zxcv.api.commom.service.sys.param.query.ProjectReq;
 import org.springframework.web.bind.annotation.RequestMapping;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RestController;
@@ -96,14 +99,13 @@ public class SysProjectInfoController extends BaseController {
         return new BizResultVO<PageBean<SysProjectInfoDTO>>(result);
     }
 
-
-     @ApiOperation("查询项目表对象")
-     @PostMapping("/getSysProjectInfoByUrl")
-     public BizResultVO<SysProjectInfoDTO> getSysProjectInfoByUrl(@RequestBody QuerySysProjectInfoReq req) {
-         logger.info("begin查询项目表对象controller,入参={}", JSONObject.toJSON(req));
-         BizResult<SysProjectInfoDTO> result = sysProjectInfoService.getSysProjectInfoByUrl(req);
-         logger.info("end查询项目表对象controller,结果={}", JSONObject.toJSON(result));
-         return new BizResultVO<SysProjectInfoDTO>(result);
+     @ApiOperation("根据用户编号查询用户下的项目")
+     @PostMapping("/getSysProjectInfoByUserNo")
+     public BizResultVO<List<SysProjectInfoDTO>> getSysProjectInfoByUserNo(@RequestBody ProjectReq req) {
+         logger.info("begin-根据用户编号查询用户下的项目,入参={}", JSONObject.toJSON(req));
+         BizResult<List<SysProjectInfoDTO>> result = sysProjectInfoService.getSysProjectInfoByUserNo(req);
+         logger.info("end根据用户编号查询用户下的项目controller,结果={}", JSONObject.toJSON(result));
+         return new BizResultVO<List<SysProjectInfoDTO>>(result);
      }
 }
 

@@ -5,10 +5,8 @@ import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
 import com.zxcv.api.commom.service.sys.SysProjectInfoService;
 import com.zxcv.api.commom.service.sys.SysUserInfoService;
-import com.zxcv.api.commom.service.sys.dto.SysProjectInfoDTO;
 import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysUserInfoReq;
-import com.zxcv.api.commom.service.sys.param.query.ProjectReq;
 import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
 import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
@@ -47,9 +45,6 @@ public class SysUserInfoController extends BaseController {
 
     @Autowired
     private SysUserInfoService sysUserInfoService;
-    @Autowired
-    private SysProjectInfoService sysProjectInfoService;
-
 
     @ApiOperation("新增用户表")
     @PostMapping("/saveSysUserInfo")
@@ -104,14 +99,6 @@ public class SysUserInfoController extends BaseController {
         return new BizResultVO<PageBean<SysUserInfoDTO>>(result);
     }
 
-    @ApiOperation("根据用户编号查询用户下的项目")
-    @PostMapping("/getSysProjectInfoByUserNo")
-    public BizResultVO<List<SysProjectInfoDTO>> getSysProjectInfoByUserNo(@RequestBody ProjectReq req) {
-        logger.info("begin-根据用户编号查询用户下的项目,入参={}", JSONObject.toJSON(req));
-        BizResult<List<SysProjectInfoDTO>> result = sysProjectInfoService.getSysProjectInfoByUserNo(req);
-        logger.info("end根据用户编号查询用户下的项目controller,结果={}", JSONObject.toJSON(result));
-        return new BizResultVO<List<SysProjectInfoDTO>>(result);
-    }
 
 
 }

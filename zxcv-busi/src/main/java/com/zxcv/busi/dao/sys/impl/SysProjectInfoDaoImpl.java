@@ -152,7 +152,7 @@ public class SysProjectInfoDaoImpl  implements SysProjectInfoDao {
         QueryWrapper<SysProjectInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(true, SysProjectInfo::getDataState,DataStatusEnum.DATA_STATUS_VALID.getValue())
                 .eq(true, SysProjectInfo::getUserNo,userNo);
-        queryWrapper.lambda().select(SysProjectInfo::getProjectNo, SysProjectInfo::getProjectNo);
+        queryWrapper.lambda().select(SysProjectInfo::getProjectNo, SysProjectInfo::getProjectName);
         return sysProjectInfoMapper.selectList(queryWrapper);
     }
 }
