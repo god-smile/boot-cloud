@@ -1,5 +1,6 @@
 package com.zxcv.portal.web.sys;
 
+import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.zxcv.api.commom.base.ErrorType;
 import com.zxcv.api.commom.bean.BizResult;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -49,19 +52,48 @@ private static final Logger logger = LoggerFactory.getLogger(CommonController.cl
     @ResponseBody
     public BizResultVO<String> uploadPicture(
             @RequestParam(required = false, name = "pictureFile") MultipartFile pictureFile) throws IOException {
-        String result = "";
-        if (pictureFile != null) {
-            try {
-                String url = fastDFSClientWrapper.uploadFile(pictureFile);
-                result = fdsUrl +"/"+ url;
-            } catch (Exception e) {
-                logger.info(JSONObject.toJSONString(e));
-                throw new BizException(ErrorType.BIZ_ERROR,"上传图片失败！");
-            }
-
+        if(null == (pictureFile)){
+            throw  new BizException(ErrorType.PARAMM_NULL,"图片文件");
         }
+        String result = "";
+        try {
+            String url = fastDFSClientWrapper.uploadFile(pictureFile);
+            result = fdsUrl +"/"+ url;
+        } catch (Exception e) {
+            logger.info(JSONObject.toJSONString(e));
+            throw new BizException(ErrorType.BIZ_ERROR,"上传图片失败！");
+        }
+
         logger.info("上传图片返回地址：",result);
         return new BizResultVO<>(new BizResult<>(result));
+    }
+
+    @ApiOperation("批量上传图片")
+    @PostMapping("/uploadPictures")
+    @ResponseBody
+    public BizResultVO<List<String>> uploadPictures(
+            @RequestParam(required = false, name = "pictureFiles") List<MultipartFile> pictureFiles) throws IOException {
+        List<String> results = new ArrayList<>();
+        if(CollectionUtils.isEmpty(pictureFiles)){
+            throw  new BizException(ErrorType.PARAMM_NULL,"图片文件");
+        }
+        for(MultipartFile pictureFile: pictureFiles) {
+            String result = "";
+            if (pictureFile != null) {
+                try {
+                    String url = fastDFSClientWrapper.uploadFile(pictureFile);
+                    result = fdsUrl +"/"+ url;
+                } catch (Exception e) {
+                    logger.info(JSONObject.toJSONString(e));
+                    throw new BizException(ErrorType.BIZ_ERROR,"上传图片失败！");
+                }
+
+            }
+            results.add(result);
+            logger.info("上传图片返回地址：",result);
+        }
+
+        return new BizResultVO<>(new BizResult<>(results));
     }
 
 
