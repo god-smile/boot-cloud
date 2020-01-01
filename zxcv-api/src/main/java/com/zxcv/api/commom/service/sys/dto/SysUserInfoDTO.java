@@ -146,15 +146,9 @@ public class SysUserInfoDTO extends BaiscDTO {
     private String projectNo;
 
     /**
-     * 登录入口
-     */
-    private String loginUrl;
-
-    /**
-     * 跳转路径
+     * 前端路径
      */
     private String indexUrl;
-
 
 
     public String getIndexUrl() {
@@ -163,14 +157,6 @@ public class SysUserInfoDTO extends BaiscDTO {
 
     public void setIndexUrl(String indexUrl) {
         this.indexUrl = indexUrl;
-    }
-
-    public String getLoginUrl() {
-        return loginUrl;
-    }
-
-    public void setLoginUrl(String loginUrl) {
-        this.loginUrl = loginUrl;
     }
 
     public String getProjectNo() {
@@ -392,7 +378,6 @@ public class SysUserInfoDTO extends BaiscDTO {
                 ", modifyEmpName='" + modifyEmpName + '\'' +
                 ", modifyTime=" + modifyTime +
                 ", projectNo='" + projectNo + '\'' +
-                ", loginUrl='" + loginUrl + '\'' +
                 ", indexUrl='" + indexUrl + '\'' +
                 '}';
     }

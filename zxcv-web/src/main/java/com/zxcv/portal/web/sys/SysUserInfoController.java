@@ -120,7 +120,6 @@ public class SysUserInfoController extends BaseController {
         request.getSession().setAttribute(SessionEnum.USER_NO.key(), result.getData().getUserNo());
         request.getSession().setAttribute(SessionEnum.PROJECT_NO.key(), result.getData().getProjectNo());
 
-        request.getSession().setAttribute(SessionEnum.LOGIN_URL.key(), result.getData().getLoginUrl());
         request.getSession().setAttribute(SessionEnum.INDEX_URL.key(), result.getData().getIndexUrl());*/
 
         logger.info("end查询用户表对象controller,结果={}", JSONObject.toJSON(result));
@@ -133,12 +132,11 @@ public class SysUserInfoController extends BaseController {
     public BizResultVO<SysUserInfoDTO> logout() {
         BizResult<SysUserInfoDTO> result = new BizResult<SysUserInfoDTO>();
 
-        request.getSession().removeAttribute(SessionEnum.USER_NO.key());
+        /*request.getSession().removeAttribute(SessionEnum.USER_NO.key());
         request.getSession().removeAttribute(SessionEnum.USER_NAME.key());
         request.getSession().removeAttribute(SessionEnum.USER_NO.key());
         request.getSession().removeAttribute(SessionEnum.PROJECT_NO.key());
-        request.getSession().removeAttribute(SessionEnum.LOGIN_URL.key());
-        request.getSession().removeAttribute(SessionEnum.INDEX_URL.key());
+        request.getSession().removeAttribute(SessionEnum.INDEX_URL.key());*/
 
         result.setErrorInfo(ErrorType.BIZ_SUCCESS, "清理成功");
         return new BizResultVO<SysUserInfoDTO>(result);

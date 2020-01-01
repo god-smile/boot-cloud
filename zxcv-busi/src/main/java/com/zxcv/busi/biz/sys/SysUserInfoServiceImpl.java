@@ -1,5 +1,4 @@
 package com.zxcv.busi.biz.sys;
-import com.zxcv.api.commom.constants.ConstantEnum;
 import com.zxcv.busi.dao.sys.SysProjectInfoDao;
 import com.zxcv.busi.domain.sys.SysProjectInfo;
 import com.zxcv.busi.domain.sys.SysUserInfo;
@@ -202,8 +201,7 @@ public class SysUserInfoServiceImpl  implements SysUserInfoService {
 
             BeanUtils.copyProperties(obj,sysUserInfoDTO);
             sysUserInfoDTO.setProjectNo(list.get(0).getProjectNo());
-            sysUserInfoDTO.setLoginUrl(list.get(0).getIndexUrl());
-            sysUserInfoDTO.setIndexUrl(ConstantEnum.INDEX_URL.key());
+            sysUserInfoDTO.setIndexUrl(list.get(0).getIndexUrl());
         }else {
             // 没有 该用户名对应的用户 或 密码不对。提示 “用户名或密码不正确”
             throw new BizException(ErrorType.AUTH_PASS_ERROR, "用户名或密码不正确");

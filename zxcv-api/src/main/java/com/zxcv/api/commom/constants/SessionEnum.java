@@ -19,7 +19,6 @@ public enum SessionEnum {
     USER_NAME("userName"),
     USER_NO("userNo"),
     PROJECT_NO("projectNo"),
-    LOGIN_URL("loginUrl"),
     INDEX_URL("indexUrl"),
 
 
