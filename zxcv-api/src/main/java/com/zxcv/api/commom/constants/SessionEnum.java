@@ -27,7 +27,7 @@ public enum SessionEnum {
     //user 对象
     USER_INFO("login:user:info"),
     /**登陆用户token信息.*/
-    LOGIN_USER_TOKEN("login:user:TOKEN");
+    LOGIN_USER_TOKEN("login:user:token");
 
 
 

@@ -1,8 +1,8 @@
 package com.zxcv.api.commom.service.sys.dto;
 
-import java.util.Date;
-
 import com.zxcv.api.commom.bean.BaiscDTO;
+
+import java.util.Date;
 
 /**
  * 用户表 DTO类
@@ -150,6 +150,18 @@ public class SysUserInfoDTO extends BaiscDTO {
      */
     private String indexUrl;
 
+    /**
+     * token
+     */
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public String getIndexUrl() {
         return indexUrl;

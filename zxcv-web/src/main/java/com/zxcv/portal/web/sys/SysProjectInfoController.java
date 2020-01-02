@@ -51,6 +51,8 @@ public class SysProjectInfoController extends BaseController {
     @PostMapping("/saveSysProjectInfo")
     public BizResultVO<Integer> saveSysProjectInfo(@RequestBody SaveAndModifySysProjectInfoReq req) {
         req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增项目表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysProjectInfoService.saveSysProjectInfo(req);
         logger.info("end新增项目表信息,结果={}", JSONObject.toJSON(result));
@@ -60,8 +62,8 @@ public class SysProjectInfoController extends BaseController {
     @ApiOperation("修改项目表")
     @PostMapping("/updateSysProjectInfoById")
     public BizResultVO<Integer> updateSysProjectInfoById(@RequestBody SaveAndModifySysProjectInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin修改项目表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysProjectInfoService.updateSysProjectInfoById(req);
@@ -72,8 +74,8 @@ public class SysProjectInfoController extends BaseController {
     @ApiOperation("删除项目表")
     @PostMapping("/deleteSysProjectInfo")
     public BizResultVO<Integer> deleteSysProjectInfo(@RequestBody SaveAndModifySysProjectInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin删除项目表controller,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysProjectInfoService.deleteSysProjectInfo(req);

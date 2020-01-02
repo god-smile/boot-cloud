@@ -8,7 +8,7 @@ public enum ErrorType implements ErrorCode {
 
     AUTH_MULTIPLE_USER("2007","账号重复"),
 
-    AUTH_TOKEN_NOT_EXISTS("2003", "验证码错误"),
+    AUTH_TOKEN_NOT_EXISTS("2003", "登录失效，请重新登录"),
 
 
     AUTH_PROJECT_EMPTY("2007","该账号未关联项目"),
@@ -18,7 +18,7 @@ public enum ErrorType implements ErrorCode {
     AUTH_PASS_WRONG_NUM_OVER("2006","密码输错次数超限,"),
     AUTH_RES_EMPTY("2007","账号无有效资源"),
     AUTH_ORG_EMPTY("2008","账号无有效在组织"),
-    AUTH_PL_NOS_EMPTY("2010","用户没有关联停车场"),
+//    AUTH_PL_NOS_EMPTY("2010","用户没有关联停车场"),
     AUTH_STATE_ILLEGALITY("2009","账号状态异常"),
     SYSTEM_ERROR("1000", "抱歉，服务暂时不可用，请稍后重试。"),
     APP_ERROR("1001", "应用错误"),
@@ -28,31 +28,31 @@ public enum ErrorType implements ErrorCode {
     OBJECT_BELONG_ERROR("1005", "对象归属错误:[%s]"),
     RESOURCE_NOT_EXISTS("1006", "访问的资源不存在"),
     PARAM_NOT_VALID("1007", "参数校验失败:%s"),
-    CREATE_PAY_ORDER_FAIL("1008","生成支付单信息失败"),
-    CREATE_SIGIN_FAIL("1009","支付单签名失败"),
-    CACHE_NOT_EXISTS("1010","在缓存中不存在[%s]"),
-    SEND_MESSAGE_ERROR("1011","发送验证码失败"),
-    URL_NOT_FOUND("1028","请求路径不存在"),
-    /***验证码不匹配*/
-    SEND_VERIFI_CODE_ERROR("1012","验证码不匹配"),
-    /**验证码失效*/
-    SEND_VERIFI_CODE_LESS("1013","验证码失效"),
-    PARK_LOT_NOT_EXISTS("1014","停车场记录不存在：%s"),
-    PARK_SEND_FAIL("1015","通知失败"),
+//    CREATE_PAY_ORDER_FAIL("1008","生成支付单信息失败"),
+//    CREATE_SIGIN_FAIL("1009","支付单签名失败"),
+//    CACHE_NOT_EXISTS("1010","在缓存中不存在[%s]"),
+//    SEND_MESSAGE_ERROR("1011","发送验证码失败"),
+//    URL_NOT_FOUND("1028","请求路径不存在"),
+//    /***验证码不匹配*/
+//    SEND_VERIFI_CODE_ERROR("1012","验证码不匹配"),
+//    /**验证码失效*/
+//    SEND_VERIFI_CODE_LESS("1013","验证码失效"),
+//    PARK_LOT_NOT_EXISTS("1014","停车场记录不存在：%s"),
+//    PARK_SEND_FAIL("1015","通知失败"),
     PASS_NOT_MATCH("1016","两次密码不一致"),
-    CUST_INFO_HAS_EXISTS("1017","客户已存在"),
-    UPDATE_ROLE_ORGID_ERROR("1017","跟新角色组织Id失败"),
-    ADD_ROLE_ORG("1018","请在用户菜单 为用户分配组织，然后为用户分配角色"),
-    ONLY_UPLOAD_EXCLE("1019","只能上传xlsx或者lsx格式文件"),
-    NO_DATA_FOR_EXCLE("1020","请在excle添加数据后上传"),
-    SAVE_EXCLE_FAIL("1021","批量导入excle失败"),
-    EXCLE_COLM_ERROR("1022","excle模板错误"),
+//    CUST_INFO_HAS_EXISTS("1017","客户已存在"),
+//    UPDATE_ROLE_ORGID_ERROR("1017","跟新角色组织Id失败"),
+//    ADD_ROLE_ORG("1018","请在用户菜单 为用户分配组织，然后为用户分配角色"),
+//    ONLY_UPLOAD_EXCLE("1019","只能上传xlsx或者lsx格式文件"),
+//    NO_DATA_FOR_EXCLE("1020","请在excle添加数据后上传"),
+//    SAVE_EXCLE_FAIL("1021","批量导入excle失败"),
+//    EXCLE_COLM_ERROR("1022","excle模板错误"),
     SYSTEM_UPDATING("1023","抱歉，服务正在升级，请稍后重试！"),
-    INTERFACE_NOT_SUPPORT("1024","抱歉，该功能已经更新，请升级至最新版本。"),
-    CALL_THIRD_SERVICE_EXCEPTION("1025","调用第三方服务异常"),
-    NOT_SUPPORT("1026","该接口暂不支持"),
-    RESPONSE_NULL("1027","响应信息为空"),
-    OBJECT_EXISTS("1028", "该角色已存在"),
+//    INTERFACE_NOT_SUPPORT("1024","抱歉，该功能已经更新，请升级至最新版本。"),
+//    CALL_THIRD_SERVICE_EXCEPTION("1025","调用第三方服务异常"),
+//    NOT_SUPPORT("1026","该接口暂不支持"),
+//    RESPONSE_NULL("1027","响应信息为空"),
+//    OBJECT_EXISTS("1028", "该角色已存在"),
 
 
 

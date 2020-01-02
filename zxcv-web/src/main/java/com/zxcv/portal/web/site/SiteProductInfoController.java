@@ -53,6 +53,9 @@ public class SiteProductInfoController extends BaseController {
     @ApiOperation("新增用户产品表")
     @PostMapping("/saveSiteProductInfo")
     public BizResultVO<Integer> saveSiteProductInfo(@RequestBody SaveAndModifySiteProductInfoReq req) {
+        req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增用户产品表信息,入参={}", JSONObject.toJSON(req));
         req.setUserNo("U10001");
         if(!StringUtils.isBlank(req.getContent())) {
@@ -74,8 +77,8 @@ public class SiteProductInfoController extends BaseController {
     @ApiOperation("修改用户产品表")
     @PostMapping("/updateSiteProductInfoById")
     public BizResultVO<Integer> updateSiteProductInfoById(@RequestBody SaveAndModifySiteProductInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin修改用户产品表信息,入参={}", JSONObject.toJSON(req));
         if(!StringUtils.isBlank(req.getContent())){
@@ -97,8 +100,8 @@ public class SiteProductInfoController extends BaseController {
     @ApiOperation("删除用户产品表")
     @PostMapping("/deleteSiteProductInfo")
     public BizResultVO<Integer> deleteSiteProductInfo(@RequestBody SaveAndModifySiteProductInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin删除用户产品表controller,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = siteProductInfoService.deleteSiteProductInfo(req);

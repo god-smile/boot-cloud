@@ -66,6 +66,9 @@ public class ${table.controllerName} {
     @ApiOperation("新增$!{table.comment}")
     @PostMapping("/save${table.entityName}")
     public BizResultVO<Integer> save${table.entityName}(@RequestBody SaveAndModify${table.entityName}Req req) {
+        req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增$!{table.comment}信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = ${serviceName}.save${table.entityName}(req);
         logger.info("end新增$!{table.comment}信息,结果={}", JSONObject.toJSON(result));
@@ -75,8 +78,9 @@ public class ${table.controllerName} {
     @ApiOperation("修改$!{table.comment}")
     @PostMapping("/update${table.entityName}ById")
     public BizResultVO<Integer> update${table.entityName}ById(@RequestBody SaveAndModify${table.entityName}Req req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
+        req.setModifyTime(new Date());
         logger.info("begin修改$!{table.comment}信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = ${serviceName}.update${table.entityName}ById(req);
         logger.info("end修改$!{table.comment}信息,结果={}", JSONObject.toJSON(result));
@@ -86,8 +90,8 @@ public class ${table.controllerName} {
     @ApiOperation("删除$!{table.comment}")
     @PostMapping("/delete${table.entityName}")
     public BizResultVO<Integer> delete${table.entityName}(@RequestBody SaveAndModify${table.entityName}Req req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin删除$!{table.comment}controller,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = ${serviceName}.delete${table.entityName}(req);

@@ -48,6 +48,8 @@ public class SysAttachmentInfoController extends BaseController {
     @PostMapping("/saveSysAttachmentInfo")
     public BizResultVO<Integer> saveSysAttachmentInfo(@RequestBody SaveAndModifySysAttachmentInfoReq req) {
         req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增合同附件信息表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysAttachmentInfoService.saveSysAttachmentInfo(req);
         logger.info("end新增合同附件信息表信息,结果={}", JSONObject.toJSON(result));
@@ -57,8 +59,8 @@ public class SysAttachmentInfoController extends BaseController {
     @ApiOperation("修改合同附件信息表")
     @PostMapping("/updateSysAttachmentInfoById")
     public BizResultVO<Integer> updateSysAttachmentInfoById(@RequestBody SaveAndModifySysAttachmentInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin修改合同附件信息表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysAttachmentInfoService.updateSysAttachmentInfoById(req);
@@ -69,8 +71,8 @@ public class SysAttachmentInfoController extends BaseController {
     @ApiOperation("删除合同附件信息表")
     @PostMapping("/deleteSysAttachmentInfo")
     public BizResultVO<Integer> deleteSysAttachmentInfo(@RequestBody SaveAndModifySysAttachmentInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin删除合同附件信息表controller,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysAttachmentInfoService.deleteSysAttachmentInfo(req);

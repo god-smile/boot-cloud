@@ -1,13 +1,11 @@
 package com.zxcv.portal.config.interceptor;
 
-import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.alibaba.fastjson.JSONObject;
+import com.zxcv.api.commom.base.ErrorType;
+import com.zxcv.api.commom.base.Result;
+import com.zxcv.api.commom.constants.SessionEnum;
+import com.zxcv.api.commom.exception.BizException;
+import com.zxcv.commom.annotation.NoAuth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
@@ -16,11 +14,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.alibaba.fastjson.JSONObject;
-import com.zxcv.api.commom.base.ErrorType;
-import com.zxcv.api.commom.base.Result;
-import com.zxcv.api.commom.constants.SessionEnum;
-import com.zxcv.commom.annotation.NoAuth;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Copyright: Copyright (c) 2019  zteits
@@ -64,8 +63,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             Object object = session.getAttribute(SessionEnum.USER_INFO.key());
             if (null == object) {
                 log.info("===权限校验,用户未登陆!");
-                setErrorResult(response, ErrorType.AUTH_TOKEN_NOT_EXISTS);
-                return false;
+//                setErrorResult(response, ErrorType.AUTH_TOKEN_NOT_EXISTS);
+//                return false;
+                throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
             }
         }
 

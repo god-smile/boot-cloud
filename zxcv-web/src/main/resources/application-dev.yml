@@ -1,22 +1,32 @@
 spring:
+#  redis:
+#    cluster:
+#      nodes:
+#      - 47.94.158.36:7011
+#      - 47.94.158.36:7012
+#      - 47.94.158.36:7013
+#      - 47.94.158.36:7014
+#      - 47.94.158.36:7015
+#      - 47.94.158.36:7016
+#    password: zxcv@redis
+#    max-redirects: 3  # 获取失败 最大重定向次数
+#    #连接超时时间（毫秒）
+#    timeout: 10000
+#    lettuce:
+#      max-active: 500
+#      max-idle: 1000
+#      min-idle: 100
+#      max-wait: -1
   redis:
-    cluster:
-      nodes:
-      - 47.94.158.36:7011
-      - 47.94.158.36:7012
-      - 47.94.158.36:7013
-      - 47.94.158.36:7014
-      - 47.94.158.36:7015
-      - 47.94.158.36:7016
+    host: 182.92.118.137
+    database: 0
+    port: 6379
     password: zxcv@redis
-    max-redirects: 3  # 获取失败 最大重定向次数
     #连接超时时间（毫秒）
-    timeout: 50000
+    timeout: 10000
     lettuce:
-      max-active: 500
-      max-idle: 1000
-      min-idle: 100
-      max-wait: -1
+      pool:
+        max-wait: -1ms
 
 
 

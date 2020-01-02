@@ -48,6 +48,8 @@ public class SysProjectItemController extends BaseController {
     @PostMapping("/saveSysProjectItem")
     public BizResultVO<Integer> saveSysProjectItem(@RequestBody SaveAndModifySysProjectItemReq req) {
         req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增项目类别信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysProjectItemService.saveSysProjectItem(req);
         logger.info("end新增项目类别信息,结果={}", JSONObject.toJSON(result));
@@ -57,8 +59,8 @@ public class SysProjectItemController extends BaseController {
     @ApiOperation("修改项目类别")
     @PostMapping("/updateSysProjectItemById")
     public BizResultVO<Integer> updateSysProjectItemById(@RequestBody SaveAndModifySysProjectItemReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin修改项目类别信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysProjectItemService.updateSysProjectItemById(req);
@@ -69,8 +71,8 @@ public class SysProjectItemController extends BaseController {
     @ApiOperation("删除项目类别")
     @PostMapping("/deleteSysProjectItem")
     public BizResultVO<Integer> deleteSysProjectItem(@RequestBody SaveAndModifySysProjectItemReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin删除项目类别controller,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysProjectItemService.deleteSysProjectItem(req);

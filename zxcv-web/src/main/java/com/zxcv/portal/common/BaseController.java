@@ -1,5 +1,22 @@
 package com.zxcv.portal.common;
 
+import com.alibaba.fastjson.JSONObject;
+import com.zxcv.api.commom.base.ErrorType;
+import com.zxcv.api.commom.bean.BizResult;
+import com.zxcv.api.commom.bean.PageBean;
+import com.zxcv.api.commom.constants.SessionEnum;
+import com.zxcv.api.commom.exception.BizException;
+import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
+import com.zxcv.portal.common.vo.BizResultVO;
+import com.zxcv.portal.common.vo.EasyUIDataGridVO;
+import com.zxcv.portal.utils.FastDFSClientWrapper;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.CollectionUtils;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -12,27 +29,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.zxcv.portal.utils.FastDFSClientWrapper;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.util.CollectionUtils;
-
-import com.alibaba.fastjson.JSONObject;
-import com.zxcv.api.commom.base.ErrorType;
-import com.zxcv.api.commom.bean.BizResult;
-import com.zxcv.api.commom.bean.PageBean;
-import com.zxcv.api.commom.constants.SessionEnum;
-import com.zxcv.api.commom.exception.BizException;
-import com.zxcv.api.commom.service.sys.dto.AuthUserInfo;
-import com.zxcv.api.commom.service.sys.dto.AuthUserInfoRes;
-import com.zxcv.api.commom.service.sys.dto.LoginOathRes;
-import com.zxcv.portal.common.vo.BizResultVO;
-import com.zxcv.portal.common.vo.EasyUIDataGridVO;
 
 
 /**
@@ -344,29 +340,53 @@ public class BaseController {
 
 
     /**
-     * 获取登陆token
-     *
-     * @return 2019年6月23日 wangfs
+     * 获取当前登录信息
+     * @return
      */
-    public LoginOathRes getLoginOath() {
-        LoginOathRes loginOathRes = (LoginOathRes) session.getAttribute(SessionEnum.LOGIN_USER_TOKEN.key());
-        return loginOathRes;
+    public SysUserInfoDTO getLoginUserInfo() {
+        SysUserInfoDTO sysUserInfoDTO = (SysUserInfoDTO) session.getAttribute(SessionEnum.USER_INFO.key());
+        if(sysUserInfoDTO == null){
+            throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
+        }
+        return sysUserInfoDTO;
     }
 
     /**
-     * 获取登陆用户信息
-     *
-     * @return 2019年6月23日 wangfs
+     * 获取当前登录人名称
+     * @return
      */
-    public AuthUserInfo getUserInfo() {
-        AuthUserInfoRes userInfoRes = (AuthUserInfoRes) session.getAttribute(SessionEnum.USER_INFO.key());
-        if(null !=userInfoRes){
-            AuthUserInfo authUserInfo = userInfoRes.getAuthUserInfo();
-            authUserInfo.setPlNos(authUserInfo.getPlNos());
-            return authUserInfo;
+    public String getLoginUserName() {
+        SysUserInfoDTO sysUserInfoDTO = (SysUserInfoDTO) session.getAttribute(SessionEnum.USER_INFO.key());
+        if(sysUserInfoDTO == null){
+            throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
         }
-        return null;
+        return sysUserInfoDTO.getUserName();
     }
+
+    /**
+     * 获取当前登录人ID
+     * @return
+     */
+    public String getLoginUserNo() {
+        SysUserInfoDTO sysUserInfoDTO = (SysUserInfoDTO) session.getAttribute(SessionEnum.USER_INFO.key());
+        if(sysUserInfoDTO == null){
+            throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
+        }
+        return sysUserInfoDTO.getUserNo();
+    }
+    /**
+     * 获取当前登录人登录token
+     * @return
+     */
+    public String getLoginToken() {
+        SysUserInfoDTO sysUserInfoDTO = (SysUserInfoDTO) session.getAttribute(SessionEnum.USER_INFO.key());
+        if(sysUserInfoDTO == null){
+            throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
+        }
+        return sysUserInfoDTO.getToken();
+    }
+
+
     public static <T> void  nullToEmpty(T bean) {
         Field[] field = bean.getClass().getDeclaredFields();
         for (int j = 0; j < field.length; j++) {     //遍历所有属性

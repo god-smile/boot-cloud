@@ -48,6 +48,8 @@ public class SysContractInfoController extends BaseController {
     @PostMapping("/saveSysContractInfo")
     public BizResultVO<Integer> saveSysContractInfo(@RequestBody SaveAndModifySysContractInfoReq req) {
         req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增用户合同信息表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysContractInfoService.saveSysContractInfo(req);
         logger.info("end新增用户合同信息表信息,结果={}", JSONObject.toJSON(result));
@@ -57,8 +59,8 @@ public class SysContractInfoController extends BaseController {
     @ApiOperation("修改用户合同信息表")
     @PostMapping("/updateSysContractInfoById")
     public BizResultVO<Integer> updateSysContractInfoById(@RequestBody SaveAndModifySysContractInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin修改用户合同信息表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysContractInfoService.updateSysContractInfoById(req);
@@ -69,8 +71,8 @@ public class SysContractInfoController extends BaseController {
     @ApiOperation("删除用户合同信息表")
     @PostMapping("/deleteSysContractInfo")
     public BizResultVO<Integer> deleteSysContractInfo(@RequestBody SaveAndModifySysContractInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin删除用户合同信息表controller,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysContractInfoService.deleteSysContractInfo(req);

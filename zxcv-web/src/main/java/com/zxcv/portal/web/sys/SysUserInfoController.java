@@ -57,8 +57,9 @@ public class SysUserInfoController extends BaseController {
     @ApiOperation("新增用户表")
     @PostMapping("/saveSysUserInfo")
     public BizResultVO<Integer> saveSysUserInfo(@RequestBody SaveAndModifySysUserInfoReq req) {
-        req.setCreateEmpId("");
         req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增用户表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysUserInfoService.saveSysUserInfo(req);
         logger.info("end新增用户表信息,结果={}", JSONObject.toJSON(result));
@@ -68,8 +69,8 @@ public class SysUserInfoController extends BaseController {
     @ApiOperation("修改用户表")
     @PostMapping("/updateSysUserInfoById")
     public BizResultVO<Integer> updateSysUserInfoById(@RequestBody SaveAndModifySysUserInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin修改用户表信息,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysUserInfoService.updateSysUserInfoById(req);
@@ -80,8 +81,8 @@ public class SysUserInfoController extends BaseController {
     @ApiOperation("删除用户表")
     @PostMapping("/deleteSysUserInfo")
     public BizResultVO<Integer> deleteSysUserInfo(@RequestBody SaveAndModifySysUserInfoReq req) {
-        req.setModifyEmpId("");
-        req.setModifyEmpName("");
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
         req.setModifyTime(new Date());
         logger.info("begin删除用户表controller,入参={}", JSONObject.toJSON(req));
         BizResult<Integer> result = sysUserInfoService.deleteSysUserInfo(req);
@@ -103,43 +104,10 @@ public class SysUserInfoController extends BaseController {
     public BizResultVO<PageBean<SysUserInfoDTO>> querySysUserInfoForPage(@RequestBody QuerySysUserInfoReq req) {
         logger.info("begin分页-查询用户表controller,入参={}", JSONObject.toJSON(req));
         BizResult<PageBean<SysUserInfoDTO>> result = sysUserInfoService.querySysUserInfoForPage(req);
-        logger.info("end分页查询用户表controller,结果...");
+        logger.info("end分页查询用户表controller,结果={}", JSONObject.toJSON(result));
         return new BizResultVO<PageBean<SysUserInfoDTO>>(result);
     }
 
-    @ApiOperation("用户登录")
-    @PostMapping("/userLogin")
-    public BizResultVO<SysUserInfoDTO> userLogin(@RequestBody QuerySysUserInfoReq req) {
-        logger.info("begin查询用户表对象controller,入参={}", JSONObject.toJSON(req));
-        BizResult<SysUserInfoDTO> result = sysUserInfoService.userLogin(req);
 
-        // 放开注释，下面的日志能正常打印，会抛redis 的异常 到前端
-
-        /*request.getSession().setAttribute(SessionEnum.USER_ID.key(), result.getData().getId());
-        request.getSession().setAttribute(SessionEnum.USER_NAME.key(), result.getData().getUserName());
-        request.getSession().setAttribute(SessionEnum.USER_NO.key(), result.getData().getUserNo());
-        request.getSession().setAttribute(SessionEnum.PROJECT_NO.key(), result.getData().getProjectNo());
-
-        request.getSession().setAttribute(SessionEnum.INDEX_URL.key(), result.getData().getIndexUrl());*/
-
-        logger.info("end查询用户表对象controller,结果={}", JSONObject.toJSON(result));
-        return new BizResultVO<SysUserInfoDTO>(result);
-    }
-
-
-    @ApiOperation("用户退出登录")
-    @PostMapping("/logout")
-    public BizResultVO<SysUserInfoDTO> logout() {
-        BizResult<SysUserInfoDTO> result = new BizResult<SysUserInfoDTO>();
-
-        /*request.getSession().removeAttribute(SessionEnum.USER_NO.key());
-        request.getSession().removeAttribute(SessionEnum.USER_NAME.key());
-        request.getSession().removeAttribute(SessionEnum.USER_NO.key());
-        request.getSession().removeAttribute(SessionEnum.PROJECT_NO.key());
-        request.getSession().removeAttribute(SessionEnum.INDEX_URL.key());*/
-
-        result.setErrorInfo(ErrorType.BIZ_SUCCESS, "清理成功");
-        return new BizResultVO<SysUserInfoDTO>(result);
-    }
 }
 

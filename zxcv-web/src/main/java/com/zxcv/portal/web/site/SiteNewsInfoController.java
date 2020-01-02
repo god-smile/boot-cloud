@@ -54,9 +54,9 @@ public class SiteNewsInfoController extends BaseController {
 	@ApiOperation("新增新闻表")
 	@PostMapping("/saveSiteNewsInfo")
 	public BizResultVO<Integer> saveSiteNewsInfo(@RequestBody SaveAndModifySiteNewsInfoReq req) {
-	    req.setCreateEmpId("1");
-	    req.setCreateEmpName("");
         req.setCreateTime(new Date());
+        req.setCreateEmpId(getLoginUserNo());
+        req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增新闻表信息,入参={}", JSONObject.toJSON(req));
         String address;
         try {
@@ -75,9 +75,9 @@ public class SiteNewsInfoController extends BaseController {
 	@ApiOperation("修改新闻表")
 	@PostMapping("/updateSiteNewsInfoById")
 	public BizResultVO<Integer> updateSiteNewsInfoById(@RequestBody SaveAndModifySiteNewsInfoReq req) {
-		req.setModifyEmpId("");
-		req.setModifyEmpName("");
-		req.setModifyTime(new Date());
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
+        req.setModifyTime(new Date());
 		logger.info("begin修改新闻表信息,入参={}", JSONObject.toJSON(req));
         String address;
         try {
@@ -96,9 +96,9 @@ public class SiteNewsInfoController extends BaseController {
 	@ApiOperation("删除新闻表")
 	@PostMapping("/deleteSiteNewsInfo")
 	public BizResultVO<Integer> deleteSiteNewsInfo(@RequestBody SaveAndModifySiteNewsInfoReq req) {
-		req.setModifyEmpId("");
-		req.setModifyEmpName("");
-		req.setModifyTime(new Date());
+        req.setModifyEmpId(getLoginUserNo());
+        req.setModifyEmpName(getLoginUserName());
+        req.setModifyTime(new Date());
 		logger.info("begin删除新闻表controller,入参={}", JSONObject.toJSON(req));
 		BizResult<Integer> result = siteNewsInfoService.deleteSiteNewsInfo(req);
 		logger.info("end删除新闻表 controller,结果={}", JSONObject.toJSON(result));

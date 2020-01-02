@@ -1,9 +1,9 @@
 package com.zxcv.portal.config;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.zxcv.portal.config.interceptor.AuthInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -13,10 +13,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.support.config.FastJsonConfig;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.zxcv.portal.config.interceptor.AuthInterceptor;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author atao
@@ -39,12 +38,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/swagger-ui.html/**")
-                .excludePathPatterns("/oAuth/**")
+//                .excludePathPatterns("/oAuth/**")
+                .excludePathPatterns("/sysAuth/**")
                 .excludePathPatterns("/swagger-resources/**")
                 .excludePathPatterns("/v2/**")
                 .excludePathPatterns("/img/**")
                 .excludePathPatterns("/webjars/**")
-                .excludePathPatterns("/**")
+//                .excludePathPatterns("/**")
         ;
     }
 
