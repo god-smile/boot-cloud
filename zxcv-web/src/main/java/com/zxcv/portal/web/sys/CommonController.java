@@ -1,6 +1,5 @@
 package com.zxcv.portal.web.sys;
 
-import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.zxcv.api.commom.base.ErrorType;
 import com.zxcv.api.commom.bean.BizResult;
@@ -72,9 +71,9 @@ private static final Logger logger = LoggerFactory.getLogger(CommonController.cl
     @PostMapping("/uploadPictures")
     @ResponseBody
     public BizResultVO<List<String>> uploadPictures(
-            @RequestParam(required = false, name = "pictureFiles") List<MultipartFile> pictureFiles) throws IOException {
+            @RequestParam(required = false, name = "pictureFiles") MultipartFile[] pictureFiles) throws IOException {
         List<String> results = new ArrayList<>();
-        if(CollectionUtils.isEmpty(pictureFiles)){
+        if(null == (pictureFiles)){
             throw  new BizException(ErrorType.PARAMM_NULL,"图片文件");
         }
         for(MultipartFile pictureFile: pictureFiles) {

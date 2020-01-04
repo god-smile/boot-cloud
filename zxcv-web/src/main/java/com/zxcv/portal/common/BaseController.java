@@ -63,6 +63,9 @@ public class BaseController {
      * 2019年11月10日 wangfei
      */
     protected String uploadNoticeToFastDFS(String content,String type) throws UnsupportedEncodingException{
+        if("<p><br></p>".equals(content)){//防止传递富文本空串内容
+            return "";
+        }
         try
         {
             content = URLEncoder.encode(content, "UTF-8");

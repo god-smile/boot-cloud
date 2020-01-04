@@ -7,7 +7,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
 
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 10  * 60 )//设置登录失效时间 10分钟
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 35*60 )//设置登录失效时间 35分钟
 public class HttpSessionConfig {
 
     @Bean

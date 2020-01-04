@@ -57,7 +57,7 @@ public class SiteProductInfoController extends BaseController {
         req.setCreateEmpId(getLoginUserNo());
         req.setCreateEmpName(getLoginUserName());
         logger.info("begin新增用户产品表信息,入参={}", JSONObject.toJSON(req));
-        req.setUserNo("U10001");
+        req.setUserNo(getLoginUserNo());
         if(!StringUtils.isBlank(req.getContent())) {
             String address;
             try {
