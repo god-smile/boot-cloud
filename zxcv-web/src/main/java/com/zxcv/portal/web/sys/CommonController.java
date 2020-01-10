@@ -45,7 +45,6 @@ private static final Logger logger = LoggerFactory.getLogger(CommonController.cl
     @Value("${fdfs.fdsurl}")
     private String fdsUrl;
 
-
     @ApiOperation("上传图片")
     @PostMapping("/uploadPicture")
     @ResponseBody
