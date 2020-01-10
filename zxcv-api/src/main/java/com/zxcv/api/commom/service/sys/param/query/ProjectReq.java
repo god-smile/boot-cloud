@@ -20,7 +20,6 @@ public class ProjectReq extends  BaseReq {
 
 private static final long serialVersionUID=1L;
 
-
     /**
      * 用户编号
      */
