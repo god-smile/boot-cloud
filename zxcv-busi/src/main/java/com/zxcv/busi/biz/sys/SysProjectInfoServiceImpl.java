@@ -158,7 +158,7 @@ public class SysProjectInfoServiceImpl  implements SysProjectInfoService {
      *
      */
     @Override
-    public BizResult<SysProjectInfoDTO> getSysProjectInfoByUrl(QuerySysProjectInfoReq req) {
+    public BizResult<SysProjectInfoDTO> getSysProjectInfoByUrl(ProjectReq req) {
         logger.info("begin调用项目表service层查询对象()方法,入参={}", JSONObject.toJSON(req));
         SysProjectInfoDTO sysProjectInfoDTO = new SysProjectInfoDTO();
         if (req == null || null == req.getIndexUrl()) {

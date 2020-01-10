@@ -2,6 +2,7 @@ package com.zxcv.busi.dao.sys;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysProjectInfoReq;
+import com.zxcv.api.commom.service.sys.param.query.ProjectReq;
 import com.zxcv.api.commom.service.sys.param.query.QuerySysProjectInfoReq;
 import com.zxcv.busi.domain.sys.SysProjectInfo;
 
@@ -75,7 +76,7 @@ public interface SysProjectInfoDao {
      * @param req
      * @return
      */
-    SysProjectInfo  getSysProjectInfoByUrl(QuerySysProjectInfoReq req);
+    SysProjectInfo  getSysProjectInfoByUrl(ProjectReq req);
 
     /**
      * 根据用户编号查询项目

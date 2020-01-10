@@ -77,7 +77,7 @@ public interface SysProjectInfoService {
      * @param req
      * @return
      */
-    BizResult<SysProjectInfoDTO>  getSysProjectInfoByUrl(QuerySysProjectInfoReq req);
+    BizResult<SysProjectInfoDTO>  getSysProjectInfoByUrl(ProjectReq req);
 
     /**
      * 根据用户编号查询用户下的项目

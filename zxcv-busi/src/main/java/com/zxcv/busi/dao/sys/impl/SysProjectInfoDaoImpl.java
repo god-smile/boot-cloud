@@ -1,5 +1,6 @@
 package com.zxcv.busi.dao.sys.impl;
 import com.zxcv.api.commom.constants.DataStatusEnum;
+import com.zxcv.api.commom.service.sys.param.query.ProjectReq;
 import com.zxcv.busi.domain.sys.SysProjectInfo;
 import com.zxcv.busi.mapper.sys.SysProjectInfoMapper;
 import org.springframework.stereotype.Component;
@@ -138,7 +139,7 @@ public class SysProjectInfoDaoImpl  implements SysProjectInfoDao {
      *
      */
     @Override
-    public SysProjectInfo getSysProjectInfoByUrl(QuerySysProjectInfoReq req) {
+    public SysProjectInfo getSysProjectInfoByUrl(ProjectReq req) {
         SysProjectInfo sysProjectInfoQuery = new SysProjectInfo();
         BeanUtils.copyProperties(req, sysProjectInfoQuery);
         QueryWrapper<SysProjectInfo> querySQL = new QueryWrapper<SysProjectInfo>();
