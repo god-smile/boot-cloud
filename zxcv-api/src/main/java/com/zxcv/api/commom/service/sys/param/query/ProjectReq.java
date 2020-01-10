@@ -26,11 +26,26 @@ private static final long serialVersionUID=1L;
      */
     private String userNo;
 
+    /**
+     * 项目入口地址
+     */
+    private String indexUrl;
+
     public String getUserNo() {
         return userNo;
     }
 
     public void setUserNo(String userNo) {
         this.userNo = userNo;
+    }
+
+    public String getIndexUrl()
+    {
+        return indexUrl;
+    }
+
+    public void setIndexUrl(String indexUrl)
+    {
+        this.indexUrl = indexUrl;
     }
 }

@@ -75,6 +75,7 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
          if (req == null || null == req.getId()) {
              throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
          }
+         req.set
          int updateCount = siteNewsInfoDao.updateSiteNewsInfoById(req);
          logger.info("end调用新闻表service层update()方法,修改条数=【{}】条。", updateCount);
          return new BizResult<Integer>(updateCount);
