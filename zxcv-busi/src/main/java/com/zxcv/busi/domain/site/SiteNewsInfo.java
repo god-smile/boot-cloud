@@ -1,12 +1,13 @@
 package com.zxcv.busi.domain.site;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -14,7 +15,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zxcv
- * @since 2019-12-08
+ * @since 2020-01-11
  */
 public class SiteNewsInfo extends Model<SiteNewsInfo> {
 
@@ -67,6 +68,12 @@ private static final long serialVersionUID=1L;
      */
     @TableField("content")
     private String content;
+
+    /**
+     * 阅读量
+     */
+    @TableField("read_num")
+    private Integer readNum;
 
     /**
      * 项目编号
@@ -188,6 +195,14 @@ private static final long serialVersionUID=1L;
         this.content = content;
     }
 
+    public Integer getReadNum() {
+        return readNum;
+    }
+
+    public void setReadNum(Integer readNum) {
+        this.readNum = readNum;
+    }
+
     public String getProjectNo() {
         return projectNo;
     }
@@ -276,6 +291,7 @@ private static final long serialVersionUID=1L;
         ", beginTime=" + beginTime +
         ", endTime=" + endTime +
         ", content=" + content +
+        ", readNum=" + readNum +
         ", projectNo=" + projectNo +
         ", dataState=" + dataState +
         ", remark=" + remark +

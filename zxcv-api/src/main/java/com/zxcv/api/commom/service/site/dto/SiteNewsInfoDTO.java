@@ -1,7 +1,8 @@
 package com.zxcv.api.commom.service.site.dto;
 
-import java.util.Date;
 import com.zxcv.api.commom.bean.BaiscDTO;
+
+import java.util.Date;
 
   /**
     * 新闻表 DTO类
@@ -46,6 +47,11 @@ private static final long serialVersionUID=1L;
      * 描述
      */
     private String description;
+
+    /**
+     * 阅读量
+     */
+    private Integer readNum;
 
     /**
      * 开始时间
@@ -107,8 +113,15 @@ private static final long serialVersionUID=1L;
      */
     private Date modifyTime;
 
+    public Integer getReadNum() {
+        return readNum;
+    }
 
-    public Long getId() {
+    public void setReadNum(Integer readNum) {
+        this.readNum = readNum;
+    }
+
+      public Long getId() {
         return id;
     }
 

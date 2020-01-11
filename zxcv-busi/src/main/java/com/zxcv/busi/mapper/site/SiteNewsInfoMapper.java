@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author zxcv
- * @since 2019-12-08
+ * @since 2020-01-11
  */
 public interface SiteNewsInfoMapper extends BaseMapper<SiteNewsInfo> {
 

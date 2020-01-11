@@ -42,7 +42,7 @@ public class Generator {
 //  private static final String absolutePath = "D://workspace_private/works/boot-cloud/";//更改1
 
     public static void main(String[] args) {
-        String[] tableNames = new String[]{"site_product_info"};
+        String[] tableNames = new String[]{"site_news_info"};
         String[] modules = new String[]{"zxcv-busi"};//项目模块名，需自定义
         for (String module : modules) {
             moduleGenerator(module, tableNames);
@@ -176,12 +176,12 @@ public class Generator {
     }
 
     private static DataSourceConfig getDataSourceConfig() {
-        String dbUrl = "jdbc:mysql://182.92.118.137:3306/zxcv?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
+        String dbUrl = "jdbc:mysql://182.92.118.137:8002/zxcv?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true";
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)
             .setDriverName(Driver.class.getName())
             .setUsername("root")
-            .setPassword("123qwe")
+            .setPassword("zxcv%^&anje")
             .setUrl(dbUrl);
         return dataSourceConfig;
     }

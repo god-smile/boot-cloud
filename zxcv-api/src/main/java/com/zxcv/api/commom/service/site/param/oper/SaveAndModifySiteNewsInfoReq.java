@@ -1,7 +1,8 @@
 package com.zxcv.api.commom.service.site.param.oper;
 
-import java.util.Date;
 import com.zxcv.api.commom.base.BaseReq;
+
+import java.util.Date;
 
 /**
  * 新闻表查询类
@@ -46,6 +47,11 @@ public class SaveAndModifySiteNewsInfoReq extends  BaseReq {
      * 描述
      */
     private String description;
+
+    /**
+     * 阅读量
+     */
+    private Integer readNum;
 
     /**
      * 开始时间
@@ -255,6 +261,14 @@ public class SaveAndModifySiteNewsInfoReq extends  BaseReq {
         this.modifyTime = modifyTime;
     }
 
+
+    public Integer getReadNum() {
+        return readNum;
+    }
+
+    public void setReadNum(Integer readNum) {
+        this.readNum = readNum;
+    }
 
     @Override
     public String toString() {

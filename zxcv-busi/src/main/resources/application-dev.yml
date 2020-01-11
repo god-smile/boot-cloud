@@ -55,9 +55,9 @@ logging:
 
 
 druid:
-  url: jdbc:mysql://182.92.118.137:3306/zxcv?useUnicode=true&characterEncoding=UTF-8
+  url: jdbc:mysql://182.92.118.137:8002/zxcv?useUnicode=true&characterEncoding=UTF-8
   username: root
-  password: 123qwe
+  password: zxcv%^&anje
   driverClass: com.mysql.jdbc.Driver
   type: com.alibaba.druid.pool.DruidDataSource
   ## 初始化连接池的连接数量 大小，最小，最大
