@@ -65,4 +65,15 @@ public interface SiteNewsInfoService {
      * @return
      */
     BizResult<PageBean<SiteNewsInfoDTO>>  querySiteNewsInfoForPage(QuerySiteNewsInfoReq req);
+
+
+    /**
+     * 查询新闻表对象，增加阅读量
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     */
+    BizResult<SiteNewsInfoDTO>  selectWebSiteNewsInfo(QuerySiteNewsInfoReq req);
+
 }

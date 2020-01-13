@@ -13,6 +13,8 @@ public enum ErrorType implements ErrorCode {
 
     AUTH_PROJECT_EMPTY("2007","该账号未关联项目"),
 
+
+
     AUTH_TOKEN_ILLEGAL("2004", "授权令牌不合法"),
     AUTH_TOKEN_AUTH_FAIL("2005", "无此权限"),
     AUTH_PASS_WRONG_NUM_OVER("2006","密码输错次数超限,"),
@@ -119,6 +121,8 @@ public enum ErrorType implements ErrorCode {
 
     /***********SYS******************/
     SYS_CODE_NOT_CONFIG("7001","字典表未配置"),
+
+    BIZ_FAILED("9999","未知异常"),
     /***********SYS******************/
     BIZ_SUCCESS("8888", "成功");
 

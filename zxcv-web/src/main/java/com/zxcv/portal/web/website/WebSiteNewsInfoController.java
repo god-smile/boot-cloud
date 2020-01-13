@@ -49,24 +49,13 @@ public class WebSiteNewsInfoController extends BaseController {
 	@Autowired
 	private SiteNewsInfoService siteNewsInfoService;
 
-
-	@ApiOperation("修改新闻表")
-	@PostMapping("/updateWebSiteNewsInfoById")
-	public BizResultVO<Integer> updateWebSiteNewsInfoById(@RequestBody SaveAndModifySiteNewsInfoReq req) {
-		logger.info("begin修改新闻表信息,入参={}", JSONObject.toJSON(req));
-		BizResult<Integer> result = siteNewsInfoService.updateSiteNewsInfoById(req);
-		logger.info("end修改新闻表信息,结果={}", JSONObject.toJSON(result));
-		return new BizResultVO<Integer>(result);
-	}
-
-
-	@ApiOperation("查询新闻表对象")
+	@ApiOperation("查询新闻表对象，增加阅读量")
 	@PostMapping("/selectWebSiteNewsInfo")
 	public BizResultVO<SiteNewsInfoDTO> selectWebSiteNewsInfo(@RequestBody QuerySiteNewsInfoReq req)
 			throws UnsupportedEncodingException
 	{
 		logger.info("begin查询新闻表对象controller,入参={}", JSONObject.toJSON(req));
-		BizResult<SiteNewsInfoDTO> result = siteNewsInfoService.selectSiteNewsInfo(req);
+		BizResult<SiteNewsInfoDTO> result = siteNewsInfoService.selectWebSiteNewsInfo(req);
 		logger.info("end查询新闻表对象controller,结果={}", JSONObject.toJSON(result));
 
 		//加载文件信息

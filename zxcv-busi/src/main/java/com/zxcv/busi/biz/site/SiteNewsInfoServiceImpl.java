@@ -75,8 +75,6 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
          if (req == null || null == req.getId()) {
              throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
          }
-         // 阅读量加1
-//         req.set
          int updateCount = siteNewsInfoDao.updateSiteNewsInfoById(req);
          logger.info("end调用新闻表service层update()方法,修改条数=【{}】条。", updateCount);
          return new BizResult<Integer>(updateCount);
@@ -148,4 +146,39 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
          logger.info("end调用service-查询新闻表列表分页()方法,查询条数={}条。", pageBean.getTotal());
          return new BizResult<PageBean<SiteNewsInfoDTO>>(pageBean);
      }
+
+
+    /**
+     * 查询新闻表，增加阅读量
+     * @author: zxcv
+     * @since 2019-12-08
+     * @param req
+     * @return
+     */
+    @Override
+    public BizResult<SiteNewsInfoDTO> selectWebSiteNewsInfo(QuerySiteNewsInfoReq req) {
+        logger.info("begin调用新闻表service层查询对象()方法,入参={}", JSONObject.toJSON(req));
+        SiteNewsInfoDTO siteNewsInfoDTO = new SiteNewsInfoDTO();
+        if (req == null || null == req.getId()) {
+            throw new BizException(ErrorType.PARAMM_NULL, "id为空!");
+        }
+        SiteNewsInfo obj = siteNewsInfoDao. selectSiteNewsInfo(req);
+        if (null != obj) {
+            BeanUtils.copyProperties(obj,siteNewsInfoDTO);
+        }
+
+        // 阅读量加1
+        SaveAndModifySiteNewsInfoReq saveAndModifySiteNewsInfoReq = new SaveAndModifySiteNewsInfoReq();
+        saveAndModifySiteNewsInfoReq.setId(req.getId());
+        saveAndModifySiteNewsInfoReq.setReadNum(obj.getReadNum()+1);
+
+        int updateCount = siteNewsInfoDao.updateSiteNewsInfoById(saveAndModifySiteNewsInfoReq);
+
+        if (updateCount <= 0) {
+            throw new BizException(ErrorType.BIZ_FAILED, "未知异常!");
+        }
+
+        logger.info("end调用新闻表service层查询对象方法,结果=【{}】", JSONObject.toJSON(siteNewsInfoDTO));
+        return new BizResult<SiteNewsInfoDTO>(siteNewsInfoDTO);
+    }
 }
