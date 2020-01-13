@@ -367,7 +367,7 @@ public class BaseController {
     }
 
     /**
-     * 获取当前登录人ID
+     * 获取当前登录人 用户编号
      * @return
      */
     public String getLoginUserNo() {
@@ -377,6 +377,43 @@ public class BaseController {
         }
         return sysUserInfoDTO.getUserNo();
     }
+
+    /**
+     * 获取当前登录人level
+     * @return
+     */
+    public Integer getLoginUserLevel() {
+        SysUserInfoDTO sysUserInfoDTO = (SysUserInfoDTO) session.getAttribute(SessionEnum.USER_INFO.key());
+        if(sysUserInfoDTO == null){
+            throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
+        }
+        return sysUserInfoDTO.getLevel();
+    }
+
+    /**
+     * 获取当前项目编号
+     * @return
+     */
+    public String getProjectNo() {
+        SysUserInfoDTO sysUserInfoDTO = (SysUserInfoDTO) session.getAttribute(SessionEnum.USER_INFO.key());
+        if(sysUserInfoDTO == null){
+            throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
+        }
+        return sysUserInfoDTO.getProjectNo();
+    }
+
+    /**
+     * 获取当前项目的入口url
+     * @return
+     */
+    public String getProjectIndexUrl() {
+        SysUserInfoDTO sysUserInfoDTO = (SysUserInfoDTO) session.getAttribute(SessionEnum.USER_INFO.key());
+        if(sysUserInfoDTO == null){
+            throw new BizException(ErrorType.AUTH_TOKEN_NOT_EXISTS);
+        }
+        return sysUserInfoDTO.getIndexUrl();
+    }
+
     /**
      * 获取当前登录人登录token
      * @return

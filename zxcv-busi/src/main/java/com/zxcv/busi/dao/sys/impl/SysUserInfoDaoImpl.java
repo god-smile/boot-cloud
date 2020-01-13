@@ -177,7 +177,6 @@ public class SysUserInfoDaoImpl implements SysUserInfoDao {
 
         QueryWrapper<SysUserInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(true, SysUserInfo::getDataState, DataStatusEnum.DATA_STATUS_VALID.getValue())
-                .eq(true, SysUserInfo::getLevel, DataStatusEnum.USER_LEVEL_USER.getValue())
                 .eq(true, SysUserInfo::getUserName, req.getUserName())
                 .eq(true, SysUserInfo::getPassword, req.getPassword());
         return sysUserInfoMapper.selectList(queryWrapper);

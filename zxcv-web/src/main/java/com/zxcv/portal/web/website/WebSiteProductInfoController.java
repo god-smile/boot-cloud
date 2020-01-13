@@ -49,6 +49,7 @@ public class WebSiteProductInfoController extends BaseController {
    @Autowired
    private SiteProductInfoService siteProductInfoService;
 
+   // 点击量，备用
    @ApiOperation("修改用户产品表")
    @PostMapping("/updateWebSiteProductInfoById")
    public BizResultVO<Integer> updateWebSiteProductInfoById(@RequestBody SaveAndModifySiteProductInfoReq req) {
