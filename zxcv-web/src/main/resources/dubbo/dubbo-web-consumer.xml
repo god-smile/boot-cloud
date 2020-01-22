@@ -19,6 +19,10 @@
 
     <!-- 用户信息 -->
     <dubbo:reference id="sysUserInfoService" interface="com.zxcv.api.commom.service.sys.SysUserInfoService" version="${spring.springdubbo.provider.version}"/>
+    <!-- 操作日志 -->
+    <dubbo:reference id="sysOpLogService" interface="com.zxcv.api.commom.service.sys.SysOpLogService" version="${spring.springdubbo.provider.version}"/>
+    <!-- 访问日志 -->
+    <dubbo:reference id="siteVisitLogService" interface="com.zxcv.api.commom.service.site.SiteVisitLogService" version="${spring.springdubbo.provider.version}"/>
     <!-- 项目信息 -->
     <dubbo:reference id="sysProjectInfoService" interface="com.zxcv.api.commom.service.sys.SysProjectInfoService" version="${spring.springdubbo.provider.version}"/>
     <!-- 项目类别 -->

@@ -40,6 +40,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/swagger-ui.html/**")
 //                .excludePathPatterns("/oAuth/**")
                 .excludePathPatterns("/sysAuth/**")
+                .excludePathPatterns("/webSiteNewsInfo/**")
+                .excludePathPatterns("/webSiteProductInfo/**")
                 .excludePathPatterns("/swagger-resources/**")
                 .excludePathPatterns("/v2/**")
                 .excludePathPatterns("/img/**")

@@ -23,6 +23,14 @@
     <dubbo:service interface="com.zxcv.api.commom.service.sys.TsOpService" version="${spring.dubbo.provider.version}"
                    timeout="10000" retries="3" loadbalance="random"
                    ref="com.zxcv.busi.biz.sys.TsOpServiceImpl" />
+    <!-- 操作日志 -->
+    <dubbo:service interface="com.zxcv.api.commom.service.sys.SysOpLogService" version="${spring.dubbo.provider.version}"
+                   timeout="10000" retries="3" loadbalance="random"
+                   ref="com.zxcv.busi.biz.sys.SysOpLogServiceImpl" />
+    <!-- 访问日志 -->
+    <dubbo:service interface="com.zxcv.api.commom.service.site.SiteVisitLogService" version="${spring.dubbo.provider.version}"
+                   timeout="10000" retries="3" loadbalance="random"
+                   ref="com.zxcv.busi.biz.site.SiteVisitLogServiceImpl" />
     <!-- 用户信息 -->
     <dubbo:service interface="com.zxcv.api.commom.service.sys.SysUserInfoService" version="${spring.dubbo.provider.version}"
                    timeout="10000" retries="3" loadbalance="random"

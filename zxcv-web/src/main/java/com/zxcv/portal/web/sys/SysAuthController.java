@@ -7,6 +7,7 @@ import com.zxcv.api.commom.constants.SessionEnum;
 import com.zxcv.api.commom.service.sys.SysUserInfoService;
 import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
 import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
+import com.zxcv.commom.annotation.SysOpLog;
 import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
 import io.swagger.annotations.Api;
@@ -48,7 +49,7 @@ public class SysAuthController extends BaseController {
     private SysUserInfoService sysUserInfoService;
 
 
-
+    @SysOpLog(value = "用户登录",isOp = "0")
     @ApiOperation("用户登录")
     @PostMapping("/userLogin")
     public BizResultVO<SysUserInfoDTO> userLogin(@RequestBody QuerySysUserInfoReq req) {

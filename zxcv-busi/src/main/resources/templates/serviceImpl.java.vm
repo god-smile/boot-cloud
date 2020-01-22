@@ -48,107 +48,107 @@ public class ${table.serviceImplName}  implements ${table.serviceName.substring(
     @Autowired
     private ${table.mapperName} ${mapperName};
 
-     /**
-      * 新增$!{table.comment}
-      * @author: ${author}
-      * @since ${date}
-      * @param req
-      * @return
-      */
-     @Override
-     public BizResult<Integer> save${table.entityName}(SaveAndModify${table.entityName}Req req) {
-         logger.info("begin调用$!{table.comment}service层add()方法,入参={}", JSONObject.toJSON(req));
-         if (req == null) {
-             throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
-         }
-         int insertCount = ${mapperName}.save${table.entityName}(req);
-         logger.info("end调用$!{table.comment}service层add()方法,插入条数=【{}】条。", insertCount);
-         return new BizResult<Integer>(insertCount);
-     }
+    /**
+     * 新增$!{table.comment}
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+    @Override
+    public BizResult<Integer> save${table.entityName}(SaveAndModify${table.entityName}Req req) {
+        logger.info("begin调用$!{table.comment}service层add()方法,入参={}", JSONObject.toJSON(req));
+        if (req == null) {
+            throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
+        }
+        int insertCount = ${mapperName}.save${table.entityName}(req);
+        logger.info("end调用$!{table.comment}service层add()方法,插入条数=【{}】条。", insertCount);
+        return new BizResult<Integer>(insertCount);
+    }
 
-     /**
-      * 修改$!{table.comment}
-      * @author: ${author}
-      * @since ${date}
-      * @param req
-      * @return
-      */
-     @Override
-     public BizResult<Integer> update${table.entityName}ById(SaveAndModify${table.entityName}Req req) {
-         logger.info("begin调用$!{table.comment}service层update()方法,入参={}", JSONObject.toJSON(req));
-         if (req == null || null == req.getId()) {
-             throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
-         }
-         int updateCount = ${mapperName}.update${table.entityName}ById(req);
-         logger.info("end调用$!{table.comment}service层update()方法,修改条数=【{}】条。", updateCount);
-         return new BizResult<Integer>(updateCount);
-     }
+    /**
+     * 修改$!{table.comment}
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+    @Override
+    public BizResult<Integer> update${table.entityName}ById(SaveAndModify${table.entityName}Req req) {
+        logger.info("begin调用$!{table.comment}service层update()方法,入参={}", JSONObject.toJSON(req));
+        if (req == null || null == req.getId()) {
+            throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
+        }
+        int updateCount = ${mapperName}.update${table.entityName}ById(req);
+        logger.info("end调用$!{table.comment}service层update()方法,修改条数=【{}】条。", updateCount);
+        return new BizResult<Integer>(updateCount);
+    }
 
-     /**
-      * 删除$!{table.comment}
-      * @author: ${author}
-      * @since ${date}
-      * @param req
-      * @return
-      */
-     @Override
-     public BizResult<Integer> delete${table.entityName}(SaveAndModify${table.entityName}Req req) {
-         logger.info("begin调用$!{table.comment}service层delete()方法,入参={}", JSONObject.toJSON(req));
-         if (req == null) {
-             throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
-         }
-         if (CollectionUtils.isEmpty(req.getIds())) {
-             throw new BizException(ErrorType.PARAMM_NULL, "id为空!");
-         }
-		 int deleteCount = ${mapperName}.delete${table.entityName}(req);
-         logger.info("end调用$!{table.comment}service层delete()方法,删除条数=【{}】条。", deleteCount);
-         return new BizResult<Integer>(deleteCount);
-     }
+    /**
+     * 删除$!{table.comment}
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+    @Override
+    public BizResult<Integer> delete${table.entityName}(SaveAndModify${table.entityName}Req req) {
+        logger.info("begin调用$!{table.comment}service层delete()方法,入参={}", JSONObject.toJSON(req));
+        if (req == null) {
+            throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
+        }
+        if (CollectionUtils.isEmpty(req.getIds())) {
+            throw new BizException(ErrorType.PARAMM_NULL, "id为空!");
+        }
+        int deleteCount = ${mapperName}.delete${table.entityName}(req);
+        logger.info("end调用$!{table.comment}service层delete()方法,删除条数=【{}】条。", deleteCount);
+        return new BizResult<Integer>(deleteCount);
+    }
 
-     /**
-      * 查询$!{table.comment}对象
-      * @author: ${author}
-      * @since ${date}
-      * @param req
-      * @return
-      *
-      */
-     @Override
-     public BizResult<${table.entityName}DTO> select${table.entityName}(Query${table.entityName}Req req) {
-         logger.info("begin调用$!{table.comment}service层查询对象()方法,入参={}", JSONObject.toJSON(req));
-         ${table.entityName}DTO ${entityName}DTO = new ${table.entityName}DTO();
-         if (req == null || null == req.getId()) {
-             throw new BizException(ErrorType.PARAMM_NULL, "id为空!");
-         }
-         ${table.entityName} obj = ${mapperName}. select${table.entityName}(req);
-         if (null != obj) {
-             BeanUtils.copyProperties(obj,${entityName}DTO);
-         }
-         logger.info("end调用$!{table.comment}service层查询对象方法,结果=【{}】", JSONObject.toJSON(${entityName}DTO));
-         return new BizResult<${table.entityName}DTO>(${entityName}DTO);
-     }
+    /**
+     * 查询$!{table.comment}对象
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     *
+     */
+    @Override
+    public BizResult<${table.entityName}DTO> select${table.entityName}(Query${table.entityName}Req req) {
+        logger.info("begin调用$!{table.comment}service层查询对象()方法,入参={}", JSONObject.toJSON(req));
+        ${table.entityName}DTO ${entityName}DTO = new ${table.entityName}DTO();
+        if (req == null || null == req.getId()) {
+            throw new BizException(ErrorType.PARAMM_NULL, "id为空!");
+        }
+        ${table.entityName} obj = ${mapperName}. select${table.entityName}(req);
+        if (null != obj) {
+            BeanUtils.copyProperties(obj,${entityName}DTO);
+        }
+        logger.info("end调用$!{table.comment}service层查询对象方法,结果=【{}】", JSONObject.toJSON(${entityName}DTO));
+        return new BizResult<${table.entityName}DTO>(${entityName}DTO);
+    }
 
-     /**
-      * 分页-查询$!{table.comment}列表
-      *
-      * @author: ${author}
-      * @since ${date}
-      * @param req
-      * @return
-      */
-     @Override
-     public BizResult<PageBean<${table.entityName}DTO>> query${table.entityName}ForPage(Query${table.entityName}Req req) {
-         logger.info("begin调用service层分页-查询$!{table.comment}列表()方法,入参={}", JSONObject.toJSON(req));
-         PageBean<${table.entityName}DTO> pageBean = new PageBean<${table.entityName}DTO>();
-         if (req == null) {
-             throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
-         }
-	     IPage<${table.entityName}> pageInfo = ${mapperName}.query${table.entityName}ForPage(req);
-         if (null != pageInfo) {
-             PageBeanUtil.copyProperties(pageInfo, pageBean, ${table.entityName}DTO.class);
-         }
-         logger.info("end调用service-查询$!{table.comment}列表分页()方法,查询条数={}条。", pageBean.getTotal());
-         return new BizResult<PageBean<${table.entityName}DTO>>(pageBean);
-     }
+    /**
+     * 分页-查询$!{table.comment}列表
+     *
+     * @author: ${author}
+     * @since ${date}
+     * @param req
+     * @return
+     */
+    @Override
+    public BizResult<PageBean<${table.entityName}DTO>> query${table.entityName}ForPage(Query${table.entityName}Req req) {
+        logger.info("begin调用service层分页-查询$!{table.comment}列表()方法,入参={}", JSONObject.toJSON(req));
+        PageBean<${table.entityName}DTO> pageBean = new PageBean<${table.entityName}DTO>();
+        if (req == null) {
+            throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
+        }
+        IPage<${table.entityName}> pageInfo = ${mapperName}.query${table.entityName}ForPage(req);
+        if (null != pageInfo) {
+            PageBeanUtil.copyProperties(pageInfo, pageBean, ${table.entityName}DTO.class);
+        }
+        logger.info("end调用service-查询$!{table.comment}列表分页()方法,查询条数={}条。", pageBean.getTotal());
+        return new BizResult<PageBean<${table.entityName}DTO>>(pageBean);
+    }
 }
 #end

@@ -8,9 +8,12 @@ import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
 import com.zxcv.api.commom.exception.BizException;
 import com.zxcv.api.commom.service.site.SiteProductInfoService;
+import com.zxcv.api.commom.service.site.SiteVisitLogService;
 import com.zxcv.api.commom.service.site.dto.SiteProductInfoDTO;
 import com.zxcv.api.commom.service.site.param.oper.SaveAndModifySiteProductInfoReq;
+import com.zxcv.api.commom.service.site.param.oper.SaveAndModifySiteVisitLogReq;
 import com.zxcv.api.commom.service.site.param.query.QuerySiteProductInfoReq;
+import com.zxcv.commom.utils.IPUtil;
 import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
 import io.swagger.annotations.Api;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Date;
@@ -48,6 +52,8 @@ public class WebSiteProductInfoController extends BaseController {
 
    @Autowired
    private SiteProductInfoService siteProductInfoService;
+   @Autowired
+   private SiteVisitLogService siteVisitLogService;
 
    // 点击量，备用
    @ApiOperation("修改用户产品表")
@@ -75,7 +81,8 @@ public class WebSiteProductInfoController extends BaseController {
 
    @ApiOperation("查询用户产品表对象")
    @PostMapping("/selectWebSiteProductInfo")
-   public BizResultVO<SiteProductInfoDTO> selectWebSiteProductInfo (@RequestBody QuerySiteProductInfoReq req)
+   public BizResultVO<SiteProductInfoDTO> selectWebSiteProductInfo (HttpServletRequest httpServletRequest
+           , @RequestBody QuerySiteProductInfoReq req)
 		   throws UnsupportedEncodingException{
 	   logger.info("begin查询用户产品表对象controller,入参={}", JSONObject.toJSON(req));
 	   BizResult<SiteProductInfoDTO> result = siteProductInfoService.selectSiteProductInfo(req);
@@ -89,6 +96,17 @@ public class WebSiteProductInfoController extends BaseController {
 		   }
 	   }
 	   logger.info("end查询用户产品表对象controller,结果={}", JSONObject.toJSON(result));
+       if(result.getData() != null && result.getData().getProductNo() != null){//保存访问日志
+           SaveAndModifySiteVisitLogReq logRequest = new SaveAndModifySiteVisitLogReq();
+           logRequest.setItemNo(result.getData().getProductNo());
+           logRequest.setItemType(1);
+           logRequest.setProjectNo(result.getData().getProjectNo());
+9           logRequest.setCreateEmpId(IPUtil.getRemoteIP(httpServletRequest));
+           logRequest.setRequestIp(IPUtil.getRemoteIP(httpServletRequest));
+           logRequest.setUserAgent(IPUtil.getRemoteUserAgent(httpServletRequest));
+           siteVisitLogService.saveSiteVisitLog(logRequest);
+       }
+
 	   return new BizResultVO<SiteProductInfoDTO>(result);
    }
 

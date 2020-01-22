@@ -54,4 +54,13 @@ public class IPUtil {
         return request.getHeader("X-Forwarded-For"); /* 返回用户真实 IP, 如为多个 IP 时, 则取第一个 */
     }
 
+    /**
+     * 获得浏览器请求头中的User-Agent
+     * @param request
+     * @return
+     */
+    public static String getRemoteUserAgent(HttpServletRequest request) {
+        return request.getHeader("user-agent"); /* 获得浏览器请求头中的User-Agent */
+    }
+
 }

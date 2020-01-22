@@ -1,17 +1,12 @@
 package com.zxcv.portal.web.sys;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zxcv.api.commom.base.ErrorType;
 import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
-import com.zxcv.api.commom.constants.SessionEnum;
-import com.zxcv.api.commom.service.sys.SysProjectInfoService;
 import com.zxcv.api.commom.service.sys.SysUserInfoService;
-import com.zxcv.api.commom.service.sys.dto.AuthUserInfoRes;
 import com.zxcv.api.commom.service.sys.dto.SysUserInfoDTO;
 import com.zxcv.api.commom.service.sys.param.oper.SaveAndModifySysUserInfoReq;
 import com.zxcv.api.commom.service.sys.param.query.QuerySysUserInfoReq;
-import com.zxcv.commom.annotation.SysLog;
 import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
 import io.swagger.annotations.Api;
@@ -26,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.List;
 
 
 /**

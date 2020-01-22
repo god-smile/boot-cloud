@@ -59,10 +59,10 @@ public class GeneratorJavaCode {
     /**
      * zxcv-api 代码.
      */
-    private static final String javaClassPreffixName = "SiteProductInfo";//更改3
+    private static final String javaClassPreffixName = "SiteVisitLog";//更改3
 
     public static void main(String[] args) {
-        String[] tableNames = new String[] {"site_product_info"};////更改4
+        String[] tableNames = new String[] {"site_visit_log"};////更改4
         String[] modules = new String[] {"DTO", "queryReq", "SaveAndModifyReq", "Service", "ServiceImpl", "Controller",
             "Dao", "DaoImpl"};
         for (String module : modules) {

@@ -3,14 +3,14 @@ package com.zxcv.portal.web.website;
 import cn.hutool.http.HttpUtil;
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.fastjson.JSONObject;
-import com.zxcv.api.commom.base.ErrorType;
 import com.zxcv.api.commom.bean.BizResult;
 import com.zxcv.api.commom.bean.PageBean;
-import com.zxcv.api.commom.exception.BizException;
 import com.zxcv.api.commom.service.site.SiteNewsInfoService;
+import com.zxcv.api.commom.service.site.SiteVisitLogService;
 import com.zxcv.api.commom.service.site.dto.SiteNewsInfoDTO;
-import com.zxcv.api.commom.service.site.param.oper.SaveAndModifySiteNewsInfoReq;
+import com.zxcv.api.commom.service.site.param.oper.SaveAndModifySiteVisitLogReq;
 import com.zxcv.api.commom.service.site.param.query.QuerySiteNewsInfoReq;
+import com.zxcv.commom.utils.IPUtil;
 import com.zxcv.portal.common.BaseController;
 import com.zxcv.portal.common.vo.BizResultVO;
 import io.swagger.annotations.Api;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Date;
 
 /**
  * 新闻表 前端控制器
@@ -48,10 +48,11 @@ public class WebSiteNewsInfoController extends BaseController {
 
 	@Autowired
 	private SiteNewsInfoService siteNewsInfoService;
-
+    @Autowired
+    private SiteVisitLogService siteVisitLogService;
 	@ApiOperation("查询新闻表对象，增加阅读量")
 	@PostMapping("/selectWebSiteNewsInfo")
-	public BizResultVO<SiteNewsInfoDTO> selectWebSiteNewsInfo(@RequestBody QuerySiteNewsInfoReq req)
+	public BizResultVO<SiteNewsInfoDTO> selectWebSiteNewsInfo(HttpServletRequest httpServletRequest, @RequestBody QuerySiteNewsInfoReq req)
 			throws UnsupportedEncodingException
 	{
 		logger.info("begin查询新闻表对象controller,入参={}", JSONObject.toJSON(req));
@@ -67,6 +68,16 @@ public class WebSiteNewsInfoController extends BaseController {
 				result.getData().setContent(content);
 			}
 		}
+        if(result.getData() != null && result.getData().getNewsNo() != null){//保存访问日志
+            SaveAndModifySiteVisitLogReq logRequest = new SaveAndModifySiteVisitLogReq();
+            logRequest.setItemNo(result.getData().getNewsNo());
+            logRequest.setItemType(0);
+            logRequest.setProjectNo(result.getData().getProjectNo());
+            logRequest.setCreateEmpId(IPUtil.getRemoteIP(httpServletRequest));
+            logRequest.setRequestIp(IPUtil.getRemoteIP(httpServletRequest));
+            logRequest.setUserAgent(IPUtil.getRemoteUserAgent(httpServletRequest));
+            siteVisitLogService.saveSiteVisitLog(logRequest);
+        }
 
 		return new BizResultVO<SiteNewsInfoDTO>(result);
 	}
