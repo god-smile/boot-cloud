@@ -101,7 +101,7 @@ public class WebSiteProductInfoController extends BaseController {
            logRequest.setItemNo(result.getData().getProductNo());
            logRequest.setItemType(1);
            logRequest.setProjectNo(result.getData().getProjectNo());
-9           logRequest.setCreateEmpId(IPUtil.getRemoteIP(httpServletRequest));
+           logRequest.setCreateEmpId(IPUtil.getRemoteIP(httpServletRequest));
            logRequest.setRequestIp(IPUtil.getRemoteIP(httpServletRequest));
            logRequest.setUserAgent(IPUtil.getRemoteUserAgent(httpServletRequest));
            siteVisitLogService.saveSiteVisitLog(logRequest);
