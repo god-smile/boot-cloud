@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxcv.busi.mapper.sys.SysOpLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zxcv.busi.domain.sys.SysOpLog">
+        <id column="id" property="id" />
+        <result column="op_code" property="opCode" />
+        <result column="op_name" property="opName" />
+        <result column="log_type" property="logType" />
+        <result column="method" property="method" />
+        <result column="method_desc" property="methodDesc" />
+        <result column="class_method" property="classMethod" />
+        <result column="request_ip" property="requestIp" />
+        <result column="request_args" property="requestArgs" />
+        <result column="response_type" property="responseType" />
+        <result column="response_body" property="responseBody" />
+        <result column="data_state" property="dataState" />
+        <result column="remark" property="remark" />
+        <result column="create_emp_id" property="createEmpId" />
+        <result column="create_emp_name" property="createEmpName" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_emp_id" property="modifyEmpId" />
+        <result column="modify_emp_name" property="modifyEmpName" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, op_code, op_name, log_type, method, method_desc, class_method, request_ip, request_args, response_type, response_body, data_state, remark, create_emp_id, create_emp_name, create_time, modify_emp_id, modify_emp_name, modify_time
+    </sql>
+
+</mapper>
