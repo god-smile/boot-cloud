@@ -1,4 +1,5 @@
 package com.zxcv.busi.biz.site;
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.zxcv.busi.domain.site.SiteProductInfo;
 import com.zxcv.busi.dao.site.SiteProductInfoDao;
 import com.zxcv.api.commom.service.site.SiteProductInfoService;
@@ -110,7 +111,7 @@ public class SiteProductInfoServiceImpl  implements SiteProductInfoService {
      public BizResult<SiteProductInfoDTO> selectSiteProductInfo(QuerySiteProductInfoReq req) {
          logger.info("begin调用用户产品表service层查询对象()方法,入参={}", JSONObject.toJSON(req));
          SiteProductInfoDTO siteProductInfoDTO = new SiteProductInfoDTO();
-         if (req == null || null == req.getId()) {
+         if (req == null || (null == req.getId() && StringUtils.isEmpty(req.getProductNo()))) {
              throw new BizException(ErrorType.PARAMM_NULL, "id为空!");
          }
          SiteProductInfo obj = siteProductInfoDao. selectSiteProductInfo(req);

@@ -85,7 +85,7 @@ public class SiteProductInfoController extends BaseController {
             String address;
             try {
                 address = this.uploadNoticeToFastDFS(req.getContent(),"txt");
-                req.setContent(address);
+                req.setContentUrl(address);
             } catch (UnsupportedEncodingException e) {
                 logger.error(JSONObject.toJSONString(e));
                 throw new BizException(ErrorType.BIZ_ERROR,"文件上传失败："+JSONObject.toJSONString(e));

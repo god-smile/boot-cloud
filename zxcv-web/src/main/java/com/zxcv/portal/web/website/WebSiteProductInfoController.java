@@ -120,6 +120,18 @@ public class WebSiteProductInfoController extends BaseController {
    }
 
 
+    @ApiOperation("分页-用户产品表对象")
+    @PostMapping("/queryAllWebSiteProductInfo")
+    public BizResultVO<PageBean<SiteProductInfoDTO>> queryAllWebSiteProductInfo(@RequestBody QuerySiteProductInfoReq req) {
+        logger.info("begin分页-查询用户产品表controller,入参={}", JSONObject.toJSON(req));
+        if(req.getPageReq().getPageSize() < 0) {
+            req.getPageReq().setPageSize(Integer.MAX_VALUE);
+        }
+        BizResult<PageBean<SiteProductInfoDTO>> result = siteProductInfoService.querySiteProductInfoForPage(req);
+        logger.info("end分页查询用户产品表controller,结果...");
+        return new BizResultVO<PageBean<SiteProductInfoDTO>>(result);
+    }
+
 
 }
 
