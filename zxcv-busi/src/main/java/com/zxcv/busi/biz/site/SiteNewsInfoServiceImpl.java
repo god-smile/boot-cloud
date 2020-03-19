@@ -1,4 +1,5 @@
 package com.zxcv.busi.biz.site;
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.zxcv.busi.domain.site.SiteNewsInfo;
 import com.zxcv.busi.dao.site.SiteNewsInfoDao;
 import com.zxcv.api.commom.service.site.SiteNewsInfoService;
@@ -159,7 +160,7 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
     public BizResult<SiteNewsInfoDTO> selectWebSiteNewsInfo(QuerySiteNewsInfoReq req) {
         logger.info("begin调用新闻表service层查询对象()方法,入参={}", JSONObject.toJSON(req));
         SiteNewsInfoDTO siteNewsInfoDTO = new SiteNewsInfoDTO();
-        if (req == null || null == req.getId()) {
+        if (req == null || (null == req.getId() && StringUtils.isEmpty(req.getNewsNo()))) {
             throw new BizException(ErrorType.PARAMM_NULL, "id为空!");
         }
         SiteNewsInfo obj = siteNewsInfoDao. selectSiteNewsInfo(req);
@@ -169,8 +170,8 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
 
         // 阅读量加1
         SaveAndModifySiteNewsInfoReq saveAndModifySiteNewsInfoReq = new SaveAndModifySiteNewsInfoReq();
-        saveAndModifySiteNewsInfoReq.setId(req.getId());
-        saveAndModifySiteNewsInfoReq.setReadNum(obj.getReadNum()+1);
+        saveAndModifySiteNewsInfoReq.setId(siteNewsInfoDTO.getId());
+        saveAndModifySiteNewsInfoReq.setReadNum(siteNewsInfoDTO.getReadNum()+1);
 
         int updateCount = siteNewsInfoDao.updateSiteNewsInfoById(saveAndModifySiteNewsInfoReq);
 
