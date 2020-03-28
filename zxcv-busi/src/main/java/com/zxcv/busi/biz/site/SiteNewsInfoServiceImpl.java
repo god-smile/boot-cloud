@@ -56,8 +56,6 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
              throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
          }
 
-         // 用户添加 或 修改新闻以后，需要 根据 userNo 去 sys_project_info 表里查projectNo set 到该请求对象中
-
          int insertCount = siteNewsInfoDao.saveSiteNewsInfo(req);
          logger.info("end调用新闻表service层add()方法,插入条数=【{}】条。", insertCount);
          return new BizResult<Integer>(insertCount);
@@ -128,6 +126,7 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
      /**
       * 分页-查询新闻表列表
       *
+      * projectNo 必须要有
       * @author: zxcv
       * @since 2019-12-08
       * @param req
@@ -137,7 +136,7 @@ public class SiteNewsInfoServiceImpl  implements SiteNewsInfoService {
      public BizResult<PageBean<SiteNewsInfoDTO>> querySiteNewsInfoForPage(QuerySiteNewsInfoReq req) {
          logger.info("begin调用service层分页-查询新闻表列表()方法,入参={}", JSONObject.toJSON(req));
          PageBean<SiteNewsInfoDTO> pageBean = new PageBean<SiteNewsInfoDTO>();
-         if (req == null) {
+         if (req == null || StringUtils.isEmpty(req.getProjectNo())) {
              throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
          }
 	     IPage<SiteNewsInfo> pageInfo = siteNewsInfoDao.querySiteNewsInfoForPage(req);

@@ -124,6 +124,7 @@ public class SiteProductInfoServiceImpl  implements SiteProductInfoService {
 
      /**
       * 分页-查询用户产品表列表
+      * projectNo 必须要有
       *
       * @author: zxcv
       * @since 2019-12-21
@@ -134,7 +135,7 @@ public class SiteProductInfoServiceImpl  implements SiteProductInfoService {
      public BizResult<PageBean<SiteProductInfoDTO>> querySiteProductInfoForPage(QuerySiteProductInfoReq req) {
          logger.info("begin调用service层分页-查询用户产品表列表()方法,入参={}", JSONObject.toJSON(req));
          PageBean<SiteProductInfoDTO> pageBean = new PageBean<SiteProductInfoDTO>();
-         if (req == null) {
+         if (req == null || StringUtils.isEmpty(req.getProjectNo())) {
              throw new BizException(ErrorType.PARAMM_NULL, "入参为空!");
          }
 	     IPage<SiteProductInfo> pageInfo = siteProductInfoDao.querySiteProductInfoForPage(req);

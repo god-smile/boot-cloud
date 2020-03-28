@@ -26,7 +26,9 @@ public class DateUtil {
     public static final String yyyyMMddHHmmssSSS = "yyyyMMddHHmmssSSS";
     
     public static final String DATETIME = "HH:mm:ss";
-    
+
+    public static final String GLOBAL_BEGIN_TIME = "1970-01-01 00:00:00";
+    public static final String GLOBAL_END_TIME = "2100-01-01 00:00:00";
 
     /**
      * 获取当前时间戳
@@ -1047,5 +1049,19 @@ public class DateUtil {
         Collections.reverse(result);
 
         return result;
+    }
+
+    /**
+     * 获取全局的有效时间 beginTime
+     */
+    public static Date getGlobalBeginTime() {
+        return strDate(GLOBAL_BEGIN_TIME);
+    }
+
+    /**
+     * 获取全局的有效时间 endTime
+     */
+    public static Date getGlobalEndTime() {
+        return strDate(GLOBAL_END_TIME);
     }
 }

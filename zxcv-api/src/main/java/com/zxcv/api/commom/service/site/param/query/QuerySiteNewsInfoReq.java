@@ -107,6 +107,18 @@ private static final long serialVersionUID=1L;
      */
     private Date modifyTime;
 
+    public int getEntrance() {
+        return entrance;
+    }
+
+    public void setEntrance(int entrance) {
+        this.entrance = entrance;
+    }
+
+    /**
+     * 入口，默认为0，官网为1
+     */
+    private int entrance;
 
     public Long getId() {
         return id;
@@ -248,23 +260,24 @@ private static final long serialVersionUID=1L;
     @Override
     public String toString() {
         return "QuerySiteNewsInfoReq{" +
-        "id=" + id +
-        ", newsNo=" + newsNo +
-        ", newsType=" + newsType +
-        ", title=" + title +
-        ", description=" + description +
-        ", beginTime=" + beginTime +
-        ", endTime=" + endTime +
-        ", content=" + content +
-        ", projectNo=" + projectNo +
-        ", dataState=" + dataState +
-        ", remark=" + remark +
-        ", createEmpId=" + createEmpId +
-        ", createEmpName=" + createEmpName +
-        ", createTime=" + createTime +
-        ", modifyEmpId=" + modifyEmpId +
-        ", modifyEmpName=" + modifyEmpName +
-        ", modifyTime=" + modifyTime +
-        "}";
+                "id=" + id +
+                ", newsNo='" + newsNo + '\'' +
+                ", newsType=" + newsType +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", beginTime=" + beginTime +
+                ", endTime=" + endTime +
+                ", content='" + content + '\'' +
+                ", projectNo='" + projectNo + '\'' +
+                ", dataState=" + dataState +
+                ", remark='" + remark + '\'' +
+                ", createEmpId='" + createEmpId + '\'' +
+                ", createEmpName='" + createEmpName + '\'' +
+                ", createTime=" + createTime +
+                ", modifyEmpId='" + modifyEmpId + '\'' +
+                ", modifyEmpName='" + modifyEmpName + '\'' +
+                ", modifyTime=" + modifyTime +
+                ", entrance=" + entrance +
+                '}';
     }
 }

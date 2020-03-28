@@ -24,6 +24,10 @@ public enum DataStatusEnum implements IEnum<Integer>{
     USER_LEVEL_NORMAL_THREE(3, "三级用户"),
     USER_LEVEL_NORMAL_FOUR(4, "四级用户"),
 
+    ENTRANCE_SITE(1, "官网入口"),
+    ENTRANCE_USER_MANAGE(0, "用户管理"),
+    ENTRANCE_USER_ADMIN(0, "管理员管理"),
+
     DATA_STATUS_VALID(1, "数据有效"),
     DATA_STATUS_NO_VALID(0, "数据无效"),
     DATA_STATUS_FROZEN(2, "冻结"),

@@ -56,6 +56,9 @@ public class WebSiteNewsInfoController extends BaseController {
 			throws UnsupportedEncodingException
 	{
 		logger.info("begin查询新闻表对象controller,入参={}", JSONObject.toJSON(req));
+
+		req.setEntrance(1);
+
 		BizResult<SiteNewsInfoDTO> result = siteNewsInfoService.selectWebSiteNewsInfo(req);
 		logger.info("end查询新闻表对象controller,结果={}", JSONObject.toJSON(result));
 
@@ -86,6 +89,9 @@ public class WebSiteNewsInfoController extends BaseController {
 	@PostMapping("/queryWebSiteNewsInfoForPage")
 	public BizResultVO<PageBean<SiteNewsInfoDTO>> queryWebSiteNewsInfoForPage(@RequestBody QuerySiteNewsInfoReq req) {
 		logger.info("begin分页-查询新闻表controller,入参={}", JSONObject.toJSON(req));
+
+		req.setEntrance(1);
+
 		BizResult<PageBean<SiteNewsInfoDTO>> result = siteNewsInfoService.querySiteNewsInfoForPage(req);
 		logger.info("end分页查询新闻表controller,结果...");
 		return new BizResultVO<PageBean<SiteNewsInfoDTO>>(result);

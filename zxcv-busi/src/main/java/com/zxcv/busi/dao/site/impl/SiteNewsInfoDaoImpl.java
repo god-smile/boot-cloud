@@ -4,6 +4,7 @@ import com.zxcv.api.commom.constants.DataStatusEnum;
 import com.zxcv.api.commom.constants.NoPrefixEnum;
 import com.zxcv.busi.domain.site.SiteNewsInfo;
 import com.zxcv.busi.mapper.site.SiteNewsInfoMapper;
+import com.zxcv.commom.utils.DateUtil;
 import com.zxcv.commom.utils.SequenceUtil;
 import org.springframework.stereotype.Component;
 import com.zxcv.busi.dao.site.SiteNewsInfoDao;
@@ -16,6 +17,11 @@ import com.zxcv.api.commom.service.site.param.query.QuerySiteNewsInfoReq;
 import com.zxcv.api.commom.service.site.param.oper.SaveAndModifySiteNewsInfoReq;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 新闻表 服务实现类
@@ -48,6 +54,15 @@ public class SiteNewsInfoDaoImpl  implements SiteNewsInfoDao {
     public Integer saveSiteNewsInfo(SaveAndModifySiteNewsInfoReq req) {
         SiteNewsInfo siteNewsInfo = new SiteNewsInfo();
         BeanUtils.copyProperties(req, siteNewsInfo);
+
+        if (siteNewsInfo.getBeginTime() == null) {
+            siteNewsInfo.setBeginTime(DateUtil.getGlobalBeginTime());
+        }
+
+        if (siteNewsInfo.getEndTime() == null) {
+            siteNewsInfo.setEndTime(DateUtil.getGlobalEndTime());
+        }
+
         siteNewsInfo.setNewsNo(SequenceUtil.getNextId(NoPrefixEnum.NEWS_NO.getValue()));
         int insertCount = siteNewsInfoMapper.insert(siteNewsInfo);
         return insertCount;
@@ -64,6 +79,15 @@ public class SiteNewsInfoDaoImpl  implements SiteNewsInfoDao {
     public Integer updateSiteNewsInfoById(SaveAndModifySiteNewsInfoReq req) {
         SiteNewsInfo siteNewsInfo = new SiteNewsInfo();
         BeanUtils.copyProperties(req, siteNewsInfo);
+
+        if (siteNewsInfo.getBeginTime() == null) {
+            siteNewsInfo.setBeginTime(DateUtil.getGlobalBeginTime());
+        }
+
+        if (siteNewsInfo.getEndTime() == null) {
+            siteNewsInfo.setEndTime(DateUtil.getGlobalEndTime());
+        }
+
         int updateCount = siteNewsInfoMapper.updateById(siteNewsInfo);
         return updateCount;
     }
@@ -103,6 +127,9 @@ public class SiteNewsInfoDaoImpl  implements SiteNewsInfoDao {
         BeanUtils.copyProperties(req, siteNewsInfoQuery);
         QueryWrapper<SiteNewsInfo> querySQL = new QueryWrapper<SiteNewsInfo>();
         querySQL.setEntity(siteNewsInfoQuery);
+        querySQL.lambda().le(req.getEntrance() == DataStatusEnum.DATA_STATUS_VALID.getValue(), SiteNewsInfo::getBeginTime, new Date())
+                .ge(req.getEntrance() == DataStatusEnum.DATA_STATUS_VALID.getValue(), SiteNewsInfo::getEndTime, new Date());
+
         SiteNewsInfo obj = siteNewsInfoMapper.selectOne(querySQL);
         return obj;
     }
@@ -122,6 +149,8 @@ public class SiteNewsInfoDaoImpl  implements SiteNewsInfoDao {
         //2.查询数据
         QueryWrapper<SiteNewsInfo> queryWrapper = new QueryWrapper<SiteNewsInfo>();
         queryWrapper.lambda().eq(true, SiteNewsInfo::getDataState,DataStatusEnum.DATA_STATUS_VALID.getValue())
+                .le(req.getEntrance() == DataStatusEnum.DATA_STATUS_VALID.getValue(), SiteNewsInfo::getBeginTime, new Date())
+                .ge(req.getEntrance() == DataStatusEnum.DATA_STATUS_VALID.getValue(), SiteNewsInfo::getEndTime, new Date())
                 .eq(!StringUtils.isBlank(req.getNewsNo()),SiteNewsInfo::getNewsNo,req.getNewsNo())
                 .eq(!StringUtils.isBlank(req.getProjectNo()),SiteNewsInfo::getProjectNo,req.getProjectNo())
                 .eq(null != (req.getNewsType()),SiteNewsInfo::getNewsType,req.getNewsType())
