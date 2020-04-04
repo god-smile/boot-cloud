@@ -38,11 +38,10 @@ public class Generator {
     private static final Boolean isFileOverride = true;
 
     /**如果不填会选择项目根路径*/
-    private static final String absolutePath = "D:/workspace_private/works/boot-cloud/";//更改1
-//  private static final String absolutePath = "D://workspace_private/works/boot-cloud/";//更改1
+    private static final String absolutePath = "D:/workspace/workspace_private/boot-cloud/";//更改1
 
     public static void main(String[] args) {
-        String[] tableNames = new String[]{"site_visit_log"};
+        String[] tableNames = new String[]{"site_config"};
         String[] modules = new String[]{"zxcv-busi"};//项目模块名，需自定义
         for (String module : modules) {
             moduleGenerator(module, tableNames);

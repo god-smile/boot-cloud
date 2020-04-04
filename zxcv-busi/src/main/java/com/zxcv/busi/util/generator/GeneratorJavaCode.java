@@ -33,8 +33,7 @@ public class GeneratorJavaCode {
      * 项目跟路径.
      */
     
-    private static final String projectRootPath = "D:/workspace_private/works/boot-cloud/";//更改1
-//    private static final String projectRootPath = "D:/workspace_private/works/boot-cloud/";//更改1
+    private static final String projectRootPath = "D:/workspace/workspace_private/boot-cloud/";//更改1
     /**
      * 项目名称.
      */
@@ -59,10 +58,10 @@ public class GeneratorJavaCode {
     /**
      * zxcv-api 代码.
      */
-    private static final String javaClassPreffixName = "SiteVisitLog";//更改3
+    private static final String javaClassPreffixName = "SiteConfig";//更改3
 
     public static void main(String[] args) {
-        String[] tableNames = new String[] {"site_visit_log"};////更改4
+        String[] tableNames = new String[] {"site_config"};////更改4
         String[] modules = new String[] {"DTO", "queryReq", "SaveAndModifyReq", "Service", "ServiceImpl", "Controller",
             "Dao", "DaoImpl"};
         for (String module : modules) {
