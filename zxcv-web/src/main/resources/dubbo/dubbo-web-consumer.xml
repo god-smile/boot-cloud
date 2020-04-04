@@ -39,6 +39,8 @@
     <dubbo:reference id="sysDictService" interface="com.zxcv.api.commom.service.sys.SysDictService" version="${spring.springdubbo.provider.version}" />
     <!-- 官网常量配置信息 -->
     <dubbo:reference id="siteConfigService" interface="com.zxcv.api.commom.service.site.SiteConfigService" version="${spring.springdubbo.provider.version}" />
+    <!-- 官网分公司信息 -->
+    <dubbo:reference id="siteCompanyInfoService" interface="com.zxcv.api.commom.service.site.SiteCompanyInfoService" version="${spring.springdubbo.provider.version}" />
 
 
 </beans>

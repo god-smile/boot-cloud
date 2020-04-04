@@ -36,3 +36,5 @@ nbdist/
 *.log
 /logs/
 LOG_FILE_IS_UNDEFINED*
+/.idea/
+/.idea/

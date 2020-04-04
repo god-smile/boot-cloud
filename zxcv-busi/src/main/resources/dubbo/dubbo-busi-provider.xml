@@ -67,6 +67,10 @@
     <dubbo:service interface="com.zxcv.api.commom.service.site.SiteConfigService" version="${spring.dubbo.provider.version}"
                    timeout="10000" retries="3" loadbalance="random"
                    ref="com.zxcv.busi.biz.site.SiteConfigServiceImpl" />
+    <!-- 官网分公司 -->
+    <dubbo:service interface="com.zxcv.api.commom.service.site.SiteCompanyInfoService" version="${spring.dubbo.provider.version}"
+                   timeout="10000" retries="3" loadbalance="random"
+                   ref="com.zxcv.busi.biz.site.SiteCompanyInfoServiceImpl" />
 
 
 </beans>
