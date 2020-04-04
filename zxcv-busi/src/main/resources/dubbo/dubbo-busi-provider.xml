@@ -59,6 +59,14 @@
     <dubbo:service interface="com.zxcv.api.commom.service.site.SiteProductInfoService" version="${spring.dubbo.provider.version}"
                    timeout="10000" retries="3" loadbalance="random"
                    ref="com.zxcv.busi.biz.site.SiteProductInfoServiceImpl" />
+    <!-- 系统字典 -->
+    <dubbo:service interface="com.zxcv.api.commom.service.sys.SysDictService" version="${spring.dubbo.provider.version}"
+                   timeout="10000" retries="3" loadbalance="random"
+                   ref="com.zxcv.busi.biz.sys.SysDictServiceImpl" />
+    <!-- 官网配置常量 -->
+    <dubbo:service interface="com.zxcv.api.commom.service.site.SiteConfigService" version="${spring.dubbo.provider.version}"
+                   timeout="10000" retries="3" loadbalance="random"
+                   ref="com.zxcv.busi.biz.site.SiteConfigServiceImpl" />
 
 
 </beans>

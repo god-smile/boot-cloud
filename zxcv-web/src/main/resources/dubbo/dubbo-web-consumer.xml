@@ -35,6 +35,10 @@
     <dubbo:reference id="siteNewsInfoService" interface="com.zxcv.api.commom.service.site.SiteNewsInfoService" version="${spring.springdubbo.provider.version}"/>
     <!-- 官网产品信息 -->
     <dubbo:reference id="siteProductInfoService" interface="com.zxcv.api.commom.service.site.SiteProductInfoService" version="${spring.springdubbo.provider.version}" />
+    <!-- 系统字典 -->
+    <dubbo:reference id="sysDictService" interface="com.zxcv.api.commom.service.sys.SysDictService" version="${spring.springdubbo.provider.version}" />
+    <!-- 官网常量配置信息 -->
+    <dubbo:reference id="siteConfigService" interface="com.zxcv.api.commom.service.site.SiteConfigService" version="${spring.springdubbo.provider.version}" />
 
 
 </beans>
