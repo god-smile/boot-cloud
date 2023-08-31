@@ -15,12 +15,12 @@ spring:
 #  redis:
 #    cluster:
 #      nodes:
-#      - 47.94.158.36:7011
-#      - 47.94.158.36:7012
-#      - 47.94.158.36:7013
-#      - 47.94.158.36:7014
-#      - 47.94.158.36:7015
-#      - 47.94.158.36:7016
+#      - 127.0.0.1:7011
+#      - 127.0.0.1:7012
+#      - 127.0.0.1:7013
+#      - 127.0.0.1:7014
+#      - 127.0.0.1:7015
+#      - 127.0.0.1:7016
 #    password: zxcv@redis
 #    max-redirects: 3  # 获取失败 最大重定向次数
 #    #连接超时时间（毫秒）
@@ -55,9 +55,9 @@ logging:
 
 
 druid:
-  url: jdbc:mysql://182.92.118.137:8002/zxcv?useUnicode=true&characterEncoding=UTF-8
+  url: jdbc:mysql://127.0.0.1:3306/zxcv?useUnicode=true&characterEncoding=UTF-8
   username: root
-  password: zxcv%^&anje
+  password: erShu666@
   driverClass: com.mysql.jdbc.Driver
   type: com.alibaba.druid.pool.DruidDataSource
   ## 初始化连接池的连接数量 大小，最小，最大
@@ -97,7 +97,7 @@ mybatis-plus:
 
 local:
   base:
-    url: http://182.92.118.137:8081
+    url: http://127.0.0.1:8081
 
 alipay:
   notify:
